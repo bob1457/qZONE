@@ -1,0 +1,67 @@
+﻿<div class="box box-solid bg-light-blue-gradient" ng-controller="userController">
+    <div class="box-header" style="color: rgba(242, 243, 151, 0.99);">
+        <i class="fa fa-user" style="color: #dd4b39;"></i>
+        <h3 class="box-title">Client Accounts &nbsp; <small class="label pull-right bg-yellow">{{userData.list.length}}</small>
+        </h3>
+
+        <div class="btn-group pull-right">
+            <a href="" class="refresh" ng-click="refresh()" title="refresh..."><i class="fa fa-refresh" aria-hidden="true" style="margin-top: 8px; margin-right: 5px;"></i></a> &nbsp; &nbsp;
+            <button class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
+            <ul class="dropdown-menu pull-right" role="menu">
+                <li><a href="" ng-click="showAddUser()"><span class="glyphicon glyphicon-plus-sign"></span> Add New</a></li>
+                <!--<li><a href="#">Clear events</a></li>-->
+                <li class="divider"></li>
+                <li><a href=""><span class="glyphicon glyphicon-eye-open"></span> View All</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div id="userDialog"></div> <!-- Load modal dialog here! -->
+
+    <div class="box-body border-radius-none">
+        <div style="margin-top: -15px; margin-bottom: 10px;">
+            <label>
+                <input type="text" ng-model="qry" placeholder="Search..." style="color: black; font-weight: 400; height: 29px; padding-left: 5px;" />
+                <i class="fa fa-search" style="margin-left: 5px;"></i>
+            </label>
+        </div>
+        <div class="" id="user_acct" style="min-height: 250px;">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-xs-6 thumb" dir-paginate="user in userData.list | filter: qry | itemsPerPage:12" pagination-id="usr">
+                    <!--ng-repeat="user in userData.list;"-->
+                    <div class="thumbnail user-acct-thumbnail">
+                        <a href="" ng-click="getUserInfo(user.userName)">
+                            <img class="img-responsive img-circle" ng-src="{{baseUrl}}{{user.avatarImgUrl}}" width="60" height="60" alt="">
+                        </a>
+                        <div class="caption text-center">
+                            <h5>{{user.firstName}} <br />{{user.lastName}}</h5>
+                            <p>
+                                <!--<span style="color: #0000cd;">{{user.name}}</span> &nbsp;-->
+                                <!--<span style="color: #dd4b39;"><i class="fa fa-phone" aria-hidden="true"></i></span>  &nbsp;
+                    <span style="color: #e1d337;"><i class="fa fa-weixin" aria-hidden="true"></i></span>-->
+                            </p>
+                            <p></p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="pull-right" style="margin-bottom: -18px; margin-top: -28px;">
+            <dir-pagination-controls pagination-id="usr"></dir-pagination-controls>
+        </div>
+
+    </div><!-- /.box-body -->
+
+    
+    <div class="box-footer no-border" style="background-color: transparent;">
+        <!--<div class="row">
+
+        </div> /.row -->
+    </div><!-- /.box-footer -->
+</div><!-- /.box -->

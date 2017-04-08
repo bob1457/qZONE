@@ -1,0 +1,55 @@
+﻿
+
+<div class="container" style="width: 98%;" data-ng-controller="loginController" >
+
+    <div class="login-page">
+        <div class="login-box">
+            <div class="login-logo">
+                <b><i class="fa fa-key" style="font-size: .75em; color: #a94442;"></i> Admin</b>LOGIN
+            </div><!-- /.login-logo -->
+            <div class="login-box-body">
+                <p class="login-box-msg">Sign in to start your session</p>
+                <form>
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control" data-ng-model="loginData.userName" placeholder="Username" autofocus="">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="password" class="form-control" data-ng-model="loginData.password" placeholder="Password">
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8" style="margin-left: 20px;">
+                            <div class="checkbox icheck">
+                                <label>
+                                    <input type="checkbox"> Remember Me
+                                </label>
+                            </div>
+                        </div><!-- /.col -->
+                        <div class="col-xs-4">
+
+                        </div><!-- /.col -->
+                        <div class="col-xs-12">
+                            <button type="submit" ng-disabled="isDisabled" class="btn btn-primary btn-block btn-flat" ng-click="login()">LOG IN</button>
+                            <!--<div class="loading">
+                                <img src="http://www.nasa.gov/multimedia/videogallery/ajax-loader.gif" width="20" height="20" />
+                            </div>-->
+                            <div style="margin-top: 10px; color: red;">{{message}}</div>
+                            <loading-spinner></loading-spinner>
+                        </div>
+                    </div>
+                </form>
+                <!--<div class="social-auth-links text-center">
+                <p>- OR -</p>
+                <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
+                <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using Google+</a>
+            </div>-->
+                <!-- /.social-auth-links -->
+                <br />
+                <a href="#">I forgot my password</a><br>
+                <!--<a href="register.html" class="text-center">Register a new membership</a>-->
+            </div><!-- /.login-box-body -->
+        </div><!-- /.login-box -->
+    </div>
+
+</div>

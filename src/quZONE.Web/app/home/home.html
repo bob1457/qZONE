@@ -1,0 +1,237 @@
+﻿<style>
+    .well {
+        border-width: 0;
+    }
+
+    .list-inline>li {
+        display: inline-block;
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .form-control {
+        padding: 5px;
+        width: 50%;
+        margin-bottom: 5px;
+    }
+
+    .navbar-inverse .navbar-toggle {
+        border-color: #f7f4f4;
+    }
+
+    
+</style>
+
+
+<section id="feature" data-ng-controller="homeController">
+    <div class="container">
+        <div class="text-center" style="background-color: transparent;">
+            <h2>Featured Choices</h2>
+            <!--<br/>-->
+
+
+        </div>
+        <br />
+        <br />
+        <div class="row" id="home-panel">
+            <div class="col-md-4">
+                <div class="panel-icon">
+
+                </div>
+                <form action="#" method="get" style="margin-bottom: 20px;">
+                    <div class="input-group">
+                        <!-- USE TWITTER TYPEAHEAD JSON WITH API TO SEARCH -->
+                        <input class="form-control" id="system-search" ng-model="q" placeholder="Search or filer your choices" required autofocus="">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+
+                <p>More Resources</p>
+                <p>
+                    
+                </p>
+                <!--<a class="btn btn-default" href="#">More Info</a>-->
+            </div><!-- /.col-md-4 -->
+            
+            <div class="col-md-8" ng-init="tab = 0">
+                <div ng-show="tab === 0">
+                    <ul class="list-unstyled">
+                        <li dir-paginate="restaurant in restaurants | filter: q | itemsPerPage:5 ">
+                            <div class="well" style="background-color: transparent; padding: 0;">
+                                <div class="media">
+                                    <a class="pull-left" href="#/details/{{restaurant.id}}" ng-click="" title="{{restaurant.name}}">
+                                        <!-- ng-click="getGuestDetails(restaurant.id)" -->
+                                        <img ng-src="{{baseUrl}}{{restaurant.logoImgUrl}}" height="100" width="100" />
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading" style="margin-bottom: 20px;" >{{restaurant.name}}<span class="pull-right">{{restaurant.city}}</span></h4>
+
+                                        <p style="font-size: 1em;">
+                                            {{restaurant.description}}
+
+                                        </p>
+                                        <a class="btn btn-primary btn-sm" ng-click="" href="#/details/{{restaurant.id}}">Details <span class="glyphicon glyphicon-chevron-right"></span></a>
+                                        <div ng-init="Res = 0" style="display: inline; margin-left: 10px;"><!--getGuestDetails(restaurant.id)-->
+                                            <a href="" ng-click="Res = 1">
+                                                <span ng-show="Res ===  0">
+                                                    <i class="fa fa-paper-plane" aria-hidden="true"></i>&nbsp; Reserve
+                                                </span>
+                                            </a>
+                                            <span ng-show="Res === 1">
+                                                <a href="" ng-click="Res = 0">
+                                                    <i class="fa fa-times" aria-hidden="true" style="color: red;"></i> &nbsp;Cancel
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <div class="reserve-form" ng-show="Res === 1">
+                                            <form name="addForm" class="form-horizontal" novalidate>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label no-bold">First Name:</label>
+                                                    <div class="col-sm-9">
+                                                        <input name="firstName" type="text" ng-model="listData.guestFirstName" class="form-control" placeholder="First Name" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label no-bold">Last Name:</label>
+                                                    <div class="col-sm-9">
+                                                        <input name="lastName" type="text" ng-model="listData.guestLastName" class="form-control" placeholder="Last Name">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label no-bold">Mobile Number</label>
+                                                    <div class="col-sm-9">
+                                                        <input name="tele" type="number" ng-model="listData.guestContactTel" ng-minlength="10"
+                                                               ng-maxlength="10" class="form-control" placeholder="Mobile Number in xxxxxxxxxx" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label no-bold">Group Size</label>
+                                                    <div class="col-sm-9">
+                                                        <input name="groupSize" type="number" ng-model="listData.guestGroupSize" class="form-control" placeholder="Group Size" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="box-footer">
+                                                    <button type="submit" style="margin-top: 10px; margin-left: 5px;" class="btn btn-default" ng-click="cancelForm(); Res = 0">Close</button>
+                                                    <button type="submit" style="margin-top: 10px;" class="btn btn-success pull-left" ng-click="addToWaitList(restaurant.id)"> <i class="fa fa-check" aria-hidden="true"></i> Submit</button>
+                                                    <loading-spinner></loading-spinner>
+                                                </div>
+                                                <!--<div style="margin-left: 10px;">-->
+                                            </form>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                    <div class="pull-right" style="margin-bottom: -18px; margin-top: -28px;">
+                        <dir-pagination-controls></dir-pagination-controls>
+                    </div>
+
+                </div>
+                <div ng-show="tab === 1">
+                    <!--<h1>Details</h1>
+                    <a href="" ng-click="tab = 0">Back</a>
+                    {{restaurantDetails.name}}-->
+                    <div >
+                        <div class="well" style="background-color: transparent; padding: 0;">
+                            <div class="media">
+                                <a class="pull-left" href="" ng-click="getGuestDetails(restaurant.id)">
+                                    <img ng-src="{{baseUrl}}{{restaurantDetails.logoImgUrl}}" height="100" width="100" />
+                                        </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading" style="margin-bottom: 20px;">{{restaurantDetails.name}} <a href="" style="font-size: 1.05em;" ng-click="tab = 0"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a> <span class="pull-right"><span style="font-size: .75em; color: red;"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i></span></span> </h4>
+                                    
+                                    <p style="font-size: 1em;">
+                                        {{restaurantDetails.addressLine1}}, {{restaurantDetails.city}} {{restaurantDetails.proState}}<a href="">View Map</a>
+                                        <br/>
+                                        {{restaurantDetails.telephone}}
+                                    </p>
+                                    <div>
+                                        {{restaurantDetails.description}}
+                                    </div>
+                                    
+                                </div>
+                                <div>
+                                    <ul class="list-inline list-unstyled" style="margin-left: 5px; margin-top: 25px;">
+                                        <li>
+                                            <img src="http://placehold.it/50x50"/>
+                                        </li>
+                                        <li>
+                                            <img src="http://placehold.it/50x50"/>
+                                        </li>
+                                        <li>
+                                            <img src="http://placehold.it/50x50"/>
+                                        </li>
+                                        <li>
+                                            <img src="http://placehold.it/50x50"/>
+                                        </li>
+                                        <li>
+                                            <img src="http://placehold.it/50x50"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--<a href="" ng-click="Res = 1">Make Reservation or Get to Wait List</a>-->
+                                <div ng-init="Res = 0">
+                                    <a href="" ng-click="Res = 1">
+                                        <span ng-show="Res ===  0"><i class="fa fa-paper-plane" aria-hidden="true"></i>&nbsp; Reserve</span>
+                                    </a>
+                                    <span ng-show="Res === 1"><a href="" ng-click="Res = 0"><i class="fa fa-times" aria-hidden="true" style="color: red;"></i> &nbsp;Cancel</a></span>
+                                </div>
+
+                                <div class="reserve-form" ng-show="Res === 1">
+                                    <form name="addForm" class="form-horizontal" novalidate >
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-bold">First Name:</label>
+                                            <div class="col-sm-9">
+                                                <input name="firstName" type="text" ng-model="listData.guestFirstName" class="form-control" placeholder="First Name" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-bold">Last Name:</label>
+                                            <div class="col-sm-9">
+                                                <input name="lastName" type="text" ng-model="listData.guestLastName" class="form-control" placeholder="Last Name">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-bold">Mobile Number</label>
+                                            <div class="col-sm-9">
+                                                <input name="tele" type="number" ng-model="listData.guestContactTel" ng-minlength="10"
+                                                       ng-maxlength="10" class="form-control" placeholder="Mobile Number in xxxxxxxxxx" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-bold">Group Size</label>
+                                            <div class="col-sm-9">
+                                                <input name="groupSize" type="number" ng-model="listData.guestGroupSize" class="form-control" placeholder="Group Size" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="box-footer">
+                                            <button type="submit" style="margin-top: 10px; margin-left: 5px;" class="btn btn-default" ng-click="cancelForm(); Res = 0">Cancel</button>
+                                            <button type="submit" style="margin-top: 10px;" class="btn btn-success pull-left" ng-click="addToWaitList(restaurantDetails.id)"> <i class="fa fa-check" aria-hidden="true"></i> Submit</button>
+                                            <loading-spinner></loading-spinner>
+                                        </div>
+                                        <!--<div style="margin-left: 10px;">-->
+                                    </form>
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div> <!-- /.col-md-8 -->
+           
+
+        </div><!--/.row-->
+    </div><!--/.container-->
+</section><!--/#feature-->

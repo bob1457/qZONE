@@ -1,0 +1,215 @@
+﻿body {
+    background-color: #eee;
+
+}
+#org-logo {
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: -15px;
+}
+
+.clear_float {
+    clear: both;
+}
+
+.loading {
+    /*border:1px solid #ddd; padding:20px; margin:40px 5px; width:40px;*/
+    padding: 0;
+    margin: 40px 5px;
+    width: 40px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+.side-panel {
+    height: 120px;
+}
+
+.title-bar {
+    margin-bottom: 0;
+}
+
+.title-bar h2 {
+    margin-top: -30px;
+    margin-left: -55px;
+}
+
+.input-padding {
+    padding-top: 10px;
+}
+
+
+#user_acct a {
+    background-color: transparent;
+    border: 0 transparent;
+}
+
+.user-acct-thumbnail {
+    background-color: #88BBCF;
+    border: 0 transparent;
+    padding-top: 10px;
+}
+
+.caption h5 p {
+    margin-top: 0;
+}
+
+/* Modal Dialog */
+.panel-heading h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1em;
+}
+
+.no-bold {
+    font-weight: 400;
+}
+
+.box-body label {
+    padding-left: 0;
+}
+
+.profile_field {
+    width: 75%;
+}
+
+.customer-dashboard-tile-bar {
+    background-color: transparent;
+    margin-bottom: 0;
+}
+
+.circle-m {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px; 
+    /* width and height can be anything, as long as they're equal */
+}
+
+.table-caption {
+    font-weight: 700;
+    color: #fff;
+}
+
+.table-color {
+    /*background-color: #00ff21;*/
+    /*background-color: #F0F312;*/
+    background-color: rgba(243, 156, 18, 0.68);;
+}
+
+.square-l {
+    width: 120px;
+    height: 100px; 
+}
+
+.table-round-m {
+    text-align: center;
+    vertical-align: middle;
+    /*padding-top: 7px;*/
+    font-size: 2.75em;
+    position: relative;
+    font-weight: 700;
+}
+
+.custom-table a {
+    color: aliceblue;
+}
+
+.custom-table a:hover {
+    color: #dceaf7;
+}
+
+
+.table-status {
+    margin-top: -15px;
+    font-size: 0.5em;
+    position: absolute;
+}
+
+
+.table-size {
+    font-size: .25em;
+    margin-top: -10px;
+    position: absolute;
+    margin-left: -12px;
+    color: #333;
+}
+
+
+.detail-value {
+    margin-top: 7px;
+}
+
+.table-available {
+    color: #85f585;
+}
+
+.table-occupied {
+    color: #ff0000;
+}
+
+
+.Table-Details {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 40px;
+    font-size: 1.15em;
+}
+
+.refresh {
+    color: #E3C5AF;
+    font-size: small;
+    float: left;
+}
+
+.row-available {
+    color: #f8bb3b;
+}
+
+.row-waiting {
+    color: #f14848;
+}
+
+.row-served {
+    color: #18f718;
+}
+
+
+input.ng-invalid {
+    background-color: pink;
+}
+input.ng-valid {
+    /*background-color: lightgreen;*/
+}
+
+.serving {
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+/* Responsive Settings */
+
+@media (max-width: 768px) {
+  .side-panel {
+    height: 320px;
+  }
+
+  .title-bar {
+    margin-bottom: 0;
+    }
+
+.title-bar h2 {
+    /*margin-top: -30px;*/
+    margin-left: -15px;
+    }
+}

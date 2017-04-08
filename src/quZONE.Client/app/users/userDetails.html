@@ -1,0 +1,78 @@
+﻿<style>
+    .panel-info > .panel-heading {
+        margin-top: -15px;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+</style>
+
+
+<div class="panel panel-info" style="position: relative; top: 30px;">
+    <div class="panel-heading" style="position: relative; top: -30px;">
+        <h3>
+            <img ng-src="{{baseUrl}}{{userInfo.avatarImgUrl}}" title="{{userInfo.firstName}}" class="img-circle" height="25" width="25" /> User Account Details
+        </h3>
+    </div>
+    <div class="panel-body">
+        
+        <form class="form-horizontal">
+            <div class="box-body" style="margin-top: -25px;">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label ">First Name</label>
+                    <div class="col-sm-8 detail-value ">
+                        <label id="inputEmail3" class="no-bold">{{userInfo.firstName}} </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label ">LastName</label>
+                    <div class="col-sm-8 detail-value">
+                        <label id="inputEmail3" class="no-bold">{{userInfo.lastName}}</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label ">Email</label>
+                    <div class="col-sm-8 detail-value">
+                        <label id="inputEmail3" class="no-bold">{{userInfo.email}}</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label ">Telephone</label>
+                    <div class="col-sm-8 detail-value">
+                        <label id="inputEmail3" class="no-bold">{{userInfo.telephone}}</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label ">Company</label>
+                    <div class="col-sm-8 detail-value">
+                        <label id="inputEmail3" class="no-bold">{{userInfo.name}}</label>
+                    </div>
+                </div>
+                <!--<div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label ">Position</label>
+                    <div class="col-sm-8 detail-value">
+                        <label id="inputEmail3" class="no-bold">{{userInfo.postZipCode}}</label>
+                    </div>
+                </div>-->
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label ">Join Time</label>
+                    <div class="col-sm-8 detail-value">
+                        <label id="inputEmail3" class="no-bold">{{userInfo.joinDate | date: 'shortDate' }}</label>
+                    </div>
+                </div>
+               
+
+            </div>
+
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-default" ng-click="closeThisDialog()">Cancel</button>
+                <button type="submit" class="btn btn-primary pull-left" style="margin-right: 5px;"> <i class="fa fa-check" aria-hidden="true"></i> Update</button>
+            </div>
+        </form>
+
+
+    </div>
+
+
+</div>

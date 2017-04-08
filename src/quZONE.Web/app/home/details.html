@@ -1,0 +1,129 @@
+﻿<style>
+    .well {
+        border-width: 0;
+    }
+
+    #map-canvas {
+        height: 200px;
+        width: 300px;
+    }
+
+    .popover {
+        max-width: 400px;
+    }
+</style>
+<section id="feature" data-ng-controller="homeController">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="well" style="background-color: transparent; padding: 0; margin-top: 25px;">
+                    <div class="media">
+                        <a class="pull-left" href="" ng-click="getGuestDetails(restaurant.id)">
+                            <img ng-src="{{baseUrl}}{{restaurantDetails.logoImgUrl}}" height="100" width="100" />
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading" style="margin-bottom: 20px;">{{restaurantDetails.name}} <a href="#/" style="font-size: 1.05em;"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i><span style="font-size: .85em"> Back To List</span></a> <span class="pull-right"><span style="font-size: .75em; color: red;"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i></span></span> </h4>
+
+                            <p style="font-size: 1em;">
+                                {{restaurantDetails.addressLine1}}, {{restaurantDetails.city}} {{restaurantDetails.provState}} {{restaurantDetails.postZipCode}}
+                                <a href="" uib-popover-template="popoverInfoBox.templateUrl" popover-animation="false" popover-append-to-body="true" popover-placement="auto top" popover-trigger="outsideClick">
+                                    Map
+                                </a>
+                                <br />
+                                {{restaurantDetails.telephone}}
+                            </p>
+                            <div>
+                                {{restaurantDetails.description}}
+                            </div>
+
+                        </div>
+                        <div>
+                            <ul class="list-inline list-unstyled" style="margin-left: 5px; margin-top: 25px;">
+                                <li>
+                                    <img src="http://placehold.it/50x50" />
+                                </li>
+                                <li>
+                                    <img src="http://placehold.it/50x50" />
+                                </li>
+                                <li>
+                                    <img src="http://placehold.it/50x50" />
+                                </li>
+                                <li>
+                                    <img src="http://placehold.it/50x50" />
+                                </li>
+                                <li>
+                                    <img src="http://placehold.it/50x50" />
+                                </li>
+                            </ul>
+                        </div>
+                        <!--<a href="" ng-click="Res = 1">Make Reservation or Get to Wait List</a>-->
+                        <div ng-init="Res = 0">
+                            <a href="" ng-click="Res = 1">
+                                <span ng-show="Res ===  0"><i class="fa fa-paper-plane" aria-hidden="true"></i>&nbsp; Reserve</span>
+                            </a>
+                            <span ng-show="Res === 1"><a href="" ng-click="Res = 0"><i class="fa fa-times" aria-hidden="true" style="color: red;"></i> &nbsp;Cancel</a></span>
+                        </div>
+
+                        <div class="reserve-form" ng-show="Res === 1">
+                            <form name="addForm" class="form-horizontal" novalidate>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-bold">First Name:</label>
+                                    <div class="col-sm-9">
+                                        <input name="firstName" type="text" ng-model="listData.guestFirstName" class="form-control" placeholder="First Name" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-bold">Last Name:</label>
+                                    <div class="col-sm-9">
+                                        <input name="lastName" type="text" ng-model="listData.guestLastName" class="form-control" placeholder="Last Name">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-bold">Mobile Number</label>
+                                    <div class="col-sm-9">
+                                        <input name="tele" type="number" ng-model="listData.guestContactTel" ng-minlength="10"
+                                               ng-maxlength="10" class="form-control" placeholder="Mobile Number in xxxxxxxxxx" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-bold">Group Size</label>
+                                    <div class="col-sm-9">
+                                        <input name="groupSize" type="number" ng-model="listData.guestGroupSize" class="form-control" placeholder="Group Size" required>
+                                    </div>
+                                </div>
+
+                                <div class="box-footer">
+                                    <button type="submit" style="margin-top: 10px; margin-left: 5px;" class="btn btn-default" ng-click="cancelForm(); Res = 0">Cancel</button>
+                                    <button type="submit" style="margin-top: 10px;" class="btn btn-success pull-left" ng-click="addToWaitList(restaurantDetails.id)"> <i class="fa fa-check" aria-hidden="true"></i> Submit</button>
+                                    <loading-spinner></loading-spinner>
+                                </div>
+                                <!--<div style="margin-left: 10px;">-->
+                            </form>
+                            <!--</div>-->
+                        </div>
+
+
+                        <script type="text/ng-template" id="popover-content.html">
+
+                            <div>
+                                <h4>Location Map</h4>
+                                
+                                <location-map id="map-canvas"></location-map>
+                                
+
+                            </div>
+
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+
+
+
+</section>

@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quZONE.Api", "quZONE.Api\quZONE.Api.csproj", "{5AE06F36-1C64-4C72-83F9-1BE1966E8189}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B8CC0C92-BD4E-40FB-B70A-A20CE8EFBAF1}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quZONE.Data", "quZONE.Data\quZONE.Data.csproj", "{09222CBF-42D6-41C7-8D8F-531B950E504E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quZONE.Services", "quZONE.Services\quZONE.Services.csproj", "{5D1A96F2-2437-451F-977B-8DE4E1E47862}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quZONE.Domain", "quZONE.Domain\quZONE.Domain.csproj", "{C4D09FF9-1DE3-46CD-99AE-7AEF06537257}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quZONE.Common", "quZONE.Common\quZONE.Common.csproj", "{9A83A119-A80F-4EE1-B8A8-83FC58073FC3}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "quZONE.Client", "http://localhost:56782", "{C3227906-C2C2-464C-9E43-B54AD67263CD}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_56782"
+		Debug.AspNetCompiler.PhysicalPath = "quZONE.Client\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_56782\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_56782"
+		Release.AspNetCompiler.PhysicalPath = "quZONE.Client\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_56782\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "quZONE.Client\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quZONE.Web", "quZONE.Web\quZONE.Web.csproj", "{A13305AE-F76E-4308-84F9-FA0ADA7DAF2E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5AE06F36-1C64-4C72-83F9-1BE1966E8189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AE06F36-1C64-4C72-83F9-1BE1966E8189}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AE06F36-1C64-4C72-83F9-1BE1966E8189}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AE06F36-1C64-4C72-83F9-1BE1966E8189}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09222CBF-42D6-41C7-8D8F-531B950E504E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09222CBF-42D6-41C7-8D8F-531B950E504E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09222CBF-42D6-41C7-8D8F-531B950E504E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09222CBF-42D6-41C7-8D8F-531B950E504E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D1A96F2-2437-451F-977B-8DE4E1E47862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D1A96F2-2437-451F-977B-8DE4E1E47862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D1A96F2-2437-451F-977B-8DE4E1E47862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D1A96F2-2437-451F-977B-8DE4E1E47862}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4D09FF9-1DE3-46CD-99AE-7AEF06537257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4D09FF9-1DE3-46CD-99AE-7AEF06537257}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4D09FF9-1DE3-46CD-99AE-7AEF06537257}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4D09FF9-1DE3-46CD-99AE-7AEF06537257}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A83A119-A80F-4EE1-B8A8-83FC58073FC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A83A119-A80F-4EE1-B8A8-83FC58073FC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A83A119-A80F-4EE1-B8A8-83FC58073FC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A83A119-A80F-4EE1-B8A8-83FC58073FC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3227906-C2C2-464C-9E43-B54AD67263CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3227906-C2C2-464C-9E43-B54AD67263CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3227906-C2C2-464C-9E43-B54AD67263CD}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3227906-C2C2-464C-9E43-B54AD67263CD}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{A13305AE-F76E-4308-84F9-FA0ADA7DAF2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A13305AE-F76E-4308-84F9-FA0ADA7DAF2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A13305AE-F76E-4308-84F9-FA0ADA7DAF2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A13305AE-F76E-4308-84F9-FA0ADA7DAF2E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

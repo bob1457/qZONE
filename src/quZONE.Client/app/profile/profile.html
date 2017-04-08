@@ -1,0 +1,221 @@
+﻿
+<div class="container" style="width: 98%;" ng-controller="profileController">
+     
+    <div ng-hide="authentication.isAdmin">
+        <page-header></page-header>
+    </div>
+    <section class="content clear_float">
+
+        <div class="jumbotron title-bar">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <h2>PROFILE</h2>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12" >
+                    <div>
+                        <button ng-click="tab = 2" ng-class="{active:tab === 2}" class="btn btn-default pull-right">Reset Password</button>
+                    </div>
+                    <div>
+                        <button ng-click="tab = 1" ng-class="{active:tab === 1}" class="btn btn-default pull-right">Personal Info</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="row" id="home-panel" >
+
+
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                
+                <div class="text-left">
+                    <img ng-src="{{baseUrl}}{{profile.avatarImgUrl}}" class="avatar img-circle img-thumbnail" alt="avatar" style="margin-top: 10px; margin-bottom: 10px;">
+                </div>
+                <div ng-show="tab === 3" ng-controller="uploadController">
+                    <a href="" class="refresh" ng-click="refresh()" title="refresh..."><i class="fa fa-refresh" aria-hidden="true" style="margin-top: 8px;"></i></a> &nbsp;
+                    <h6>Upload a different photo...</h6>
+                    <!--<input type="file" class="text-center center-block well well-sm">-->
+                    <button ng-disabled="isDisabled" type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+                            accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+                        Select File
+                    </button>
+                    <div style="margin-left: 10px;">
+                        <loading-spinner></loading-spinner>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8 col-sm-6 col-xs-12">
+                <div class="alert alert-info alert-dismissable">
+                    <a class="panel-close close" data-dismiss="alert">×</a>
+                    <i class="fa fa-coffee"></i>
+                    This is an <strong>.alert</strong>. Use this to show important messages to the user.
+                </div>
+
+                <!--<ul class="nav nav-pills" role="tablist">
+
+                    <li ng-click="tab = 1" ng-class="{active:tab === 1}" class="btn btn-success"><i class="fa fa-user"></i> Personal Info</li>
+                    <li ng-click="tab = 2" ng-class="{active:tab === 2}" class="btn btn-danger"><i class="fa fa-lock"></i> Reset Password </li>
+                </ul>-->
+                <div class="tab-content" ng-init="tab = 1">
+                    <div ng-show="tab === 1" class="tab-pane active" id="personal">
+                        <div class="form-group">
+                            <label class="col-md-3 col-sm-3 col-xs-4 control-label">First Name:</label>
+                            <div class="col-md-8 col-sm-8 col-xs-7">
+                                <label class="col-lg-3 control-label">{{profile.firstName}}</label>
+                            </div>
+                            <label class="col-md-3 col-sm-3 col-xs-4 control-label">Last Name:</label>
+                            <div class="col-md-8 col-sm-8 col-xs-7">
+                                <label class="col-lg-3 control-label">{{profile.lastName}}</label>
+                            </div>
+                            <label class="col-md-3 col-sm-3 col-xs-4 control-label">Email:</label>
+                            <div class="col-md-8 col-sm-8 col-xs-7">
+                                <label class="col-lg-3 control-label">{{profile.email}}</label>
+                            </div>
+                            <label class="col-md-3 col-sm-3 col-xs-4 control-label">Organization:</label>
+                            <div class="col-md-8 col-sm-8 col-xs-7">
+                                <label class="col-lg-3 control-label profile_field">{{profile.name}}</label>
+                            </div>
+                            <label class="col-md-3 col-sm-3 col-xs-4 control-label">Position:</label>
+                            <div class="col-md-8 col-sm-8 col-xs-7">
+                                <label class="col-lg-3 control-label">{{profile.position}}</label>
+                            </div>
+                        </div>
+                        <button ng-click="tab = 3" ng-hide="edit-mode" class="btn btn-default pull-left" style="border-color: #444; margin-top: 15px;">Edit Profile</button>
+
+                        <!--<button ng-click="" ng-show="edit-mode" class="btn btn-default pull-left" style="border-color: #444; margin-top: 15px;">Save Profile</button>-->
+                        <div>
+                            {{okMsg}}
+                        </div>
+                    </div>   
+                            
+
+                        
+                    <div ng-show="tab === 2" id="reset">
+                        <!--<div class="form-group">
+                            <label class="col-md-3 control-label  input-padding">Username:</label>
+                            <div class="col-md-8 input-padding">
+                                <label class="col-lg-3 control-label">{{profile.userName}} (login name)</label>
+                            </div>
+                        </div>-->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label  input-padding">Old Password:</label>
+                            <div class="col-md-8 input-padding">
+                                <input class="form-control" value="" ng-model="passInfo.oldPassword" type="password" placeholder="Old Password" autofocus="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label  input-padding">New Password:</label>
+                            <div class="col-md-8 input-padding">
+                                <input class="form-control" value="" ng-model="passInfo.newPassword" type="password" placeholder="New Password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Confirm New Password:</label>
+                            <div class="col-md-8 input-padding">
+                                <input class="form-control" value="" ng-model="passInfo.confirmPassword" type="password" placeholder="Confirm New Password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label  input-padding"></label>
+                            <div class="col-md-8 input-padding">
+                                <input class="btn btn-primary" ng-click="chanegPassword(profile.userName)" value="Save Changes" type="button">
+                                <span></span>
+                                <input ng-click="tab = 1" class="btn btn-default" value="Canel" type="reset">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div ng-show="tab === 3">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">First name:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" ng-model="profile.firstName" value="" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Last name:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" ng-model="profile.lastName" value="" type="text">
+                            </div>
+                        </div>
+                        <!--<div class="form-group">
+                            <label class="col-lg-3 control-label">Company:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control"   type="text">
+                            </div>
+                        </div-->
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Email:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" ng-model="profile.email" value=""  type="text">
+                            </div>
+                        </div>
+                        <!--<div class="form-group">
+                            <label class="col-lg-3 control-label">Time Zone:</label>
+                            <div class="col-lg-8">
+                                <div class="ui-select">
+                                    <select id="user_time_zone" class="form-control">
+                                        <option value="Hawaii">(GMT-10:00) Hawaii</option>
+                                        <option value="Alaska">(GMT-09:00) Alaska</option>
+                                        <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+                                        <option value="Arizona">(GMT-07:00) Arizona</option>
+                                        <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+                                        <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
+                                        <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+                                        <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Username:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" value="janeuser" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Password:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" value="11111122333" type="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Confirm password:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" value="11111122333" type="password">
+                            </div>
+                        </div>-->
+                        <div class="form-group">
+                            <label class="col-md-12 control-label">
+                                <input class="btn btn-primary" ng-click="updateProfile(profile.userName)" value="Save Changes" type="submit">
+                                <span></span>
+                                <input ng-click="tab = 1" class="btn btn-default" value="Cancel" type="reset">
+                            </label>
+                            <div class="col-md-8">
+
+                            </div>
+                        </div>
+                        <!--<button class="btn btn-default" href="" ng-click="chanegPassword(profile.userName)">test</button>-->
+                    </form>
+                    
+                    <div style="margin-left: 10px;">
+                        <loading-spinner></loading-spinner>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-md-4 -->
+
+
+
+
+        </div>
+    </section>
+</div>

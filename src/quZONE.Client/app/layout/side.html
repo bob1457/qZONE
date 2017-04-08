@@ -1,0 +1,151 @@
+﻿<link href="../../content/AdminLTE.css" rel="stylesheet" />
+
+<aside class="main-sidebar" >
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <!--<div class="pull-left image">
+                <img src="http://placehold.it/160x160" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p>Alexander Pierce</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>-->
+
+            <div id="date-time-panel" class="small-box bg-aqua side-panel, sidebar-form" style="margin-bottom: 0;">
+                <div class="inner">
+                    <div class="col-md-6">
+                        <p style="font-size: 1.25em;">{{ date | date: 'MMMM'}}</p>
+                        <h3 style="margin-top: -10px;">{{ date | date: 'd' }}</h3>
+                        <h5 style="margin-top: -10px;">{{ date | date: 'yyyy' }}</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <ds-widget-clock show-analog></ds-widget-clock>
+                        <p style="margin-top: 8px;">{{ date | date: 'EEEE'}}</p>
+                    </div>
+                </div>
+                <div class="icon">
+                    <!--<i class="ion ion-bag"></i>-->
+
+                </div>
+                <!--<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>-->
+            </div>
+
+        </div>
+
+        <div data-ng-hide="!authentication.isAuthorized">
+            <!-- search form -->
+            <form action="#" method="get" class="sidebar-form">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </form>
+            <!-- /.search form -->
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <div >
+                <div ng-hide="authentication.isAdmin">
+                    <ul class="sidebar-menu">
+                        <li class="header" style="background-color: #111; color: white; font-size: 1.15em;"><i class="fa fa-cog" style="color: green"> </i> MANAGEMENT PANEL</li>
+                        <li ng-class="{active : activeItem === 'Dashboard'}">
+                            <a href="#/userdash" ng-click="activeItem='Dashboard'; mgrTable = false">
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            </a>
+
+                        </li>
+
+                        <li ng-class="{active : activeItem === 'Wait List'}">
+                            <a href="#/waitlist" ng-click="activeItem='Wait List'">
+                                <i class="fa fa-hourglass-half"></i> <span>Wait List</span>
+                                <small class="label pull-right bg-red" title="total in wait list: {{NumberOflists}}">{{NumberOflists}}</small>
+                            </a>
+                        </li>
+<!--
+                        <li ng-class="{active : activeItem === 'Reservation'}">
+                            <a href="#/reservation" ng-click="activeItem='Reservation'">
+                                <i class="fa fa-book"></i> <span>Reservation</span> <small class="label pull-right bg-red">7</small>
+                            </a>
+                        </li>
+-->
+                        <li ng-class="{active : activeItem === 'Table'}">
+                            <a href="#/table" ng-click="activeItem='Table'; mgrTable = true">
+                                <i class="fa fa-cutlery"></i> <span>Table Mangement</span> <small class="label pull-right bg-red">{{NumberOfTables}}</small>
+                            </a>
+                        </li>
+
+<!-- 
+                        <li ng-class="{active : activeItem === 'Food ToGo'}">
+                            <a href="#/togo" ng-click="activeItem='Food ToGo'">
+                                <i class="fa fa-car"></i> <span>Food To Go</span>
+                                <small class="label pull-right bg-yellow">12</small>
+                            </a>
+                        </li>
+-->
+                        <li ng-show="profile.position === 'Manager'" ng-class="{active : activeItem === 'Administration'}">
+                            <a href="#/administration" ng-click="activeItem='Administration'"><i class="fa fa-cog"></i> <span>Administration</span></a>
+                        </li>
+                        <!--
+            <li class="header" style="background-color: #8E8E8A; color: white; font-size: 1.15em;">ADMINISTRATION</li>
+            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+            -->
+
+                    </ul>
+                </div>
+                <div ng-hide="!authentication.isAdmin">
+                    <ul class="sidebar-menu">
+                        <li class="header" style="background-color: #111; color: white; font-size: 1.15em;"><i class="fa fa-cog" style="color: #dc143c;"> </i> MANAGEMENT PANEL</li>
+                        <li ng-class="{active : activeItem === 'Admin Dashboard'}">
+                            <a href="#/dashboard" ng-click="activeItem='Admin Dashboard'">
+                                <i class="fa fa-dashboard"></i> <span>Admin Dashboard</span>
+                            </a>
+
+                        </li>
+
+                        <li ng-class="{active : activeItem === 'Client Organizations'}">
+                            <a href="#/org" ng-click="activeItem='Client Org'">
+                                <i class="fa fa-industry"></i> <span>Client Organizations</span>
+                                <small class="label pull-right bg-red">{{NumberOfOrgs}}</small>
+                            </a>
+                        </li>
+
+                        <li ng-class="{active : activeItem === 'Client Account'}">
+                            <a href="#/account" ng-click="activeItem='Client Account'">
+                                <i class="fa fa-user"></i> <span>Client Account</span> <small class="label pull-right bg-green">{{NumberOfUsers}}</small>
+                            </a>
+                        </li>
+
+
+                        <li ng-class="{active : activeItem === 'Support'}">
+                            <a href="#/support" ng-click="activeItem='Support'">
+                                <i class="fa fa-comments"></i> <span>Support</span>
+                                <small class="label pull-right bg-yellow">12</small>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#/reporting">
+                                <i class="fa fa-bar-chart"></i> <span>Reporting</span>
+                            </a>
+                        </li>
+                        <!--
+            <li class="header" style="background-color: #8E8E8A; color: white; font-size: 1.15em;">ADMINISTRATION</li>
+            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+        -->
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+
+<!-- JQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>

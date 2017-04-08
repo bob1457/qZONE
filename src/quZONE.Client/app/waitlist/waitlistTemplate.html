@@ -1,0 +1,295 @@
+﻿<style>
+    .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+        z-index: 3;
+        color: #fff;
+        cursor: default;
+        background-color: #52BB46;
+        border-color: #52BB46;
+    }
+</style>
+
+
+
+<div ng-init="tab = 1">
+    <!--<section class="panel customer-dashboard-tile-bar">
+        <div class="panel-body">
+            <div class="pull-right" style="margin-right: -14px">
+                <div class="btn-group">
+                    <button type="button" ng-click="tab = 1" ng-class="{active:tab === 1}" class="btn btn-default btn-filter" data-target="pagado">Wait List</button>
+                    <button type="button" class="btn btn-default btn-filter" data-target="pendiente">Reservations</button>
+                    <button type="button" class="btn btn-default btn-filter" data-target="cancelado">Online Orders</button>
+                    <button type="button" ng-click="tab = 4" {active:tab= = =4} class="btn btn-default btn-filter" data-target="all">Dinning Tables</button>
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+    <div class="box box-solid bg-custom-gradient" style="color: #111111; overflow-x: auto; overflow-y: hidden;">
+        <div>
+            <div ng-show="tab === 1">
+                <div class="box-header">
+                    <!--<i class="fa fa-hourglass-half" style="color: #ffd800;"></i>-->
+                    <a href="" class="refresh" ng-click="refresh()" title="refresh..."><i class="fa fa-refresh" aria-hidden="true"></i></a> &nbsp;
+                    <h3 class="box-title" style="color: #eee; font-size: 1.25em;">
+                        Wait List &nbsp; <small class="label pull-right bg-red" title="{{100*(listData.lists | filter: 'Served').length/listData.lists.length}}% served">
+                            {{(listData.lists | filter: 'Served').length}}/{{listData.lists.length}} served ({{100*(listData.lists | filter: 'Served').length/listData.lists.length | number:0}}%)
+                        </small>
+                        <!--<a href="" class="btn btn-sm btn-default" ng-click="sendMsg()"><i class="fa fa-refresh" aria-hidden="true"></i></a>-->
+                    </h3><!-- dynamic data will be used -->
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                        <!-- button with a dropdown -->
+                        <!--<button class="btn btn-linkedin" ng-click="showWalkin()">Add Walk-in Guests&nbsp;<i class="fa fa-user-plus" style="color: #ffd800;"></i></button>-->
+
+                        <button class="btn btn-success" ng-click="showAdd()" title="Add to Wait List">Add to Wait List &nbsp;<i class="fa fa-user-plus" style="color: #f58331;"></i></button>
+
+                        <!--<div class="btn-group">
+                                <button class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
+                                <ul class="dropdown-menu pull-right" role="menu">
+                                    <li><a href="" ng-click="showAdd()"><span class="glyphicon glyphicon-plus-sign"></span> Add New</a></li>
+
+                                    <li class="divider"></li>
+                                    <li><a href="#/org"><span class="glyphicon glyphicon-eye-open"></span> View All</a></li>
+                                </ul>
+                            </div>-->
+                        <!--<button class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>-->
+                    </div><!-- /. tools -->
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <!--The calendar -->
+                    <div id="comapany" style="width: 100%">
+
+
+
+
+                        <div class="box">
+                            <!-- <div class="box-header">
+                                 <h3 class="box-title">
+
+                                     <div >
+                                         <div class="col-md-2">
+                                             <input type="text" ng-model="listData.guestFirstName" />
+                                         </div>
+                                         <div class="col-md-2">
+                                             <input type="text" ng-model="listData.guestLastName" />
+                                         </div>
+                                         <div class="col-md-2">
+                                             <input type="text" ng-model="listData.guestContactTel" />
+                                         </div>
+                                         <div class="col-md-2">
+                                             <input type="text" ng-model="listData.guestGroupSize" />
+                                         </div>
+                                         <div class="col-md-2">
+                                             <input type="text" ng-model="listData.waitTime" />
+                                         </div>
+                                         <div class="col-md-1">
+                                             <button class="btn btn-default" ng-click="addToWaitList()"> Add </button>
+                                         </div>
+                                         <div class="col-md-1">
+                                             <button class="btn btn-default"> Cancel </button>
+                                         </div>
+                                     </div>
+
+                                 </h3>
+                             </div> /.box-header -->
+                            <!--<div id="listDialog"></div>--> <!-- Load modal dialog here! -->
+
+
+
+                            <div class="col-md-12" style="margin-top: 15px; margin-bottom: 8px;">
+                                <label>
+                                    <input type="text" placeholder="Search..." ng-model="q" style="font-weight: 400; padding-left: 5px; height: 29px;" />
+                                </label>
+                                <label style="margin-left: 10px; font-weight: 400; height: 29px; padding-left: 5px;">
+                                    <div ng-init="s='Waiting'">
+
+                                        <input name="state" type="radio" ng-model="s" style="vertical-align: text-bottom;" value="Waiting" ng-checked="true"> Waiting &nbsp;
+                                        <input name="state" type="radio" ng-model="s" style="vertical-align: text-bottom;" value="Available"> Ready &nbsp;
+                                        <input name="state" type="radio" ng-model="s" style="vertical-align: text-bottom;" value="Served"> Served &nbsp;
+                                        <input name="state" type="radio" ng-model="s" style="vertical-align: text-bottom;" value=""> All
+                                    </div>
+                                </label>
+                                <!--<button ng-click="sendEvent()">Trigger it!</button>-->
+                            </div>
+
+
+                            <div class="box-body">
+
+                                <div ng-show="(listData.lists | filter: 'Available').length !=0" class="serving">
+                                    <span style="font-weight: bold; color: #f58331;">Now serving...</span>
+                                    <table class="table table-hover table-striped">
+                                        <tr ng-repeat="list in listData.lists | filter: 'Available' ">
+                                            <td><i class="fa fa-user" ng-class="{'row-available': list.waitingStatus === 'Available', 'row-waiting': list.waitingStatus === 'Waiting', 'row-served': list.waitingStatus === 'Served'}" title="{{list.waitingStatus}}"></i></td>
+                                            <td>{{list.guestFirstName}} {{list.guestLastName}}</td>
+                                            <td>{{list.guestContactTel}}</td>
+                                            <td>groupe of {{list.guestGroupSize}}</td>
+                                            <td class="pull-right">
+                                                <a href="" ng-click="showDetails(list.guestId)"><i class="fa fa-file-text" aria-hidden="true" style="margin-right: 7px;" title="Details"></i></a>
+                                                <!--<a href="" ng-click=""><i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-right: 7px;" title="Quick Updtae"></i></a>-->
+                                                <a href="" ng-click="showCallGuest(list.guestId)"><i class="fa fa-bell-o" aria-hidden="true" title="Call guest"></i></a>
+                                            </td>
+                                            <!--<div>{{(listData.lists | filter: 'Available').length}}</div>-->
+                                        </tr>
+                                    </table>
+
+                                </div>
+                                <table id="example1" class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Customer Name</th>
+                                            <th>Mobile Number</th>
+                                            <th>Party Size</th>
+                                            <th>Join Time</th>
+                                            <!--<th>Status</th>-->
+                                            <!--<th>Notes</th>-->
+
+                                            <th style="color: white; text-align: right;"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <loading-spinner></loading-spinner>
+                                        <tr dir-paginate="list in listData.lists | filter: q | filter: s | itemsPerPage:10 ">
+                                            <td><i class="fa fa-user" ng-class="{'row-available': list.waitingStatus === 'Available', 'row-waiting': list.waitingStatus === 'Waiting', 'row-served': list.waitingStatus === 'Served'}" title="{{list.waitingStatus}}"></i></td>
+                                            <td>{{list.guestFirstName}} {{list.guestLastName}}</td>
+                                            <td>{{list.guestContactTel}}</td>
+                                            <td>{{list.guestGroupSize}}</td>
+                                            <td>{{list.createDate | date: 'short'}}</td>
+                                            <!--<td>{{list.waitingStatus}}</td>-->
+                                            <!--<td>{{list.notes}}</td>-->
+
+                                            <td class="pull-right">
+                                                <a href="" ng-click="showDetails(list.guestId)"><i class="fa fa-file-text" aria-hidden="true" style="margin-right: 7px;" title="Details"></i></a>
+                                                <!--<a href="" ng-click=""><i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-right: 7px;" title="Quick Updtae"></i></a>-->
+                                                <a href="" ng-show="list.waitingStatus === 'Available'" ng-click="showCallGuest(list.guestId)"><i class="fa fa-bell-o" aria-hidden="true" title="Call guest"></i></a>
+                                            </td>
+                                            <div id="listDialog"></div>
+
+                                            <!--ng-class="list.waitingStatus === 'Available' ? 'row-available' : ''"-->
+                                            <!--<div >
+                                                <form class="form-horizontal">
+                                                    <div class="box-body" style="margin-top: -25px;">
+                                                        <div class="form-group">
+                                                            <label for="inputEmail3" class="col-sm-4 control-label no-bold">Guest Name</label>
+                                                            <div class="col-sm-8 detail-value">
+                                                                <label id="inputEmail3">{{guestDetails.guestFirstName}} {{guestDetails.guestLastName}}</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="inputEmail3" class="col-sm-4 control-label no-bold">Guest Mobile</label>
+                                                            <div class="col-sm-8 detail-value">
+                                                                <label id="inputEmail3">{{guestDetails.guestContactTel}}</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="inputEmail3" class="col-sm-4 control-label no-bold">Party Size</label>
+                                                            <div class="col-sm-8 detail-value">
+                                                                <label id="inputEmail3">{{guestDetails.guestGroupSize}}</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="inputEmail3" class="col-sm-4 control-label no-bold">Notes</label>
+                                                            <div class="col-sm-8 detail-value">
+                                                                <label id="inputEmail3"></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="inputEmail3" class="col-sm-4 control-label no-bold">Join Time</label>
+                                                            <div class="col-sm-8 detail-value">
+                                                                <label id="inputEmail3">{{guestDetails.createDate | date: 'short' }}</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="inputEmail3" class="col-sm-4 control-label no-bold">Waiting Satus</label>
+                                                            <div class="col-sm-8 ">
+                                                                <div class="radio">
+                                                                    <label style="margin-left: 20px;">
+                                                                        <input type="radio" name="optionsRadios" ng-click="served = false" ng-model="guestDetails.waitingStatus" value="Waiting" id="optionsRadios1" value="" checked>
+                                                                        <span>Waiting </span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="radio">
+                                                                    <label style="margin-left: 20px;">
+                                                                        <input type="radio" name="optionsRadios" ng-click="served = true" ng-model="guestDetails.waitingStatus" value="Served" id="optionsRadios2" value="">
+                                                                        <span>Served </span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group" ng-show="served">
+                                                            <label for="inputEmail3" class="col-sm-4 control-label no-bold">Served Table</label>
+                                                            <div class="col-sm-8 detail-value" style="width: 50%;">
+                                                                <select class="form-control" ng-model="guestDetails.selectedTable" ng-options="tables.tableNumber for tables in emptyTables">
+
+
+
+
+                                                                    <option style="display: none" value="">-- Select a Table --</option>
+                                                                </select>
+                                                                {{guestDetails.selectedTable.id}}
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+                                                    <div class="box-footer">
+                                                        <button type="submit" class="btn btn-default" ng-click="closeThisDialog()"><i class="fa fa-times" aria-hidden="true"></i> Cancel</button>
+                                                        <button type="submit" ng-disabled="isDisabled" class="btn btn-primary pull-left" ng-click="updateWaitList()" style="margin-right: 5px;"><i class="fa fa-check" aria-hidden="true"></i> Update</button>
+                                                    </div>
+                                                    <div style="margin-left: 10px;">
+                                                        <loading-spinner></loading-spinner>
+                                                    </div>
+                                                </form>
+                                            </div>-->
+                                        </tr>
+
+
+
+                                        <tr ng-show=""></tr>
+
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr></tr>
+                                    </tfoot>
+                                </table>
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+
+
+
+
+                    </div>
+                    <!--<div class="col-sm-5">
+
+                    </div>-->
+                    <div class="col-sm-12">
+                        <!--<div class="box-tools pull-right" style="margin-bottom: 10px; margin-top: -10px;">
+                            <ul class="pagination pagination-sm inline">
+                                <li><a href="#">&laquo;</a></li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">&raquo;</a></li>
+                            </ul>
+                        </div>-->
+                        <!--<ul class="pagination pagination-sm pull-right" style="margin-bottom: 10px; margin-top: -10px;">
+                            <li ng-class="{active:0}"><a href="#" ng-click="firstPage()"><<</a></li>
+                            <li ng-repeat="n in range(listData.lists.length)">
+                                <a href="#" ng-click="setPage()" ng-bind="nguid+1">1</a>
+                            </li>
+                            <li><a href="" ng-click="lastPage()">>></a></li>
+                        </ul>-->
+                        <div class="pull-right" style="margin-bottom: -18px; margin-top: -28px;">
+                            <dir-pagination-controls></dir-pagination-controls>
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+            </div>
+
+        </div>
+    </div>
+</div>

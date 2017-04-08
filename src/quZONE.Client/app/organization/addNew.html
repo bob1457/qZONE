@@ -1,0 +1,123 @@
+﻿<style>
+    .panel-info>.panel-heading {
+        margin-top: -15px;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+</style>
+
+
+<div class="panel panel-info" style="position: relative; top: 30px;" >
+    <div class="panel-heading" style="position: relative;top: -30px;">
+        <h3>
+            <i class="fa fa-industry"></i> Add New Company
+        </h3>
+    </div>
+    <div class="panel-body" >
+        <!--<form role="form">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Check me out
+                    </label>
+                </div>
+            </div>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Add</button>
+                <button type="submit" class="btn btn-default">Cancel</button>
+            </div>
+        </form>-->
+
+        <form class="form-horizontal">
+            <div class="box-body" style="margin-top: -25px;">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label no-bold">Name:</label>
+                    <div class="col-sm-9">
+                        <input type="text" ng-model="orgData.Name" class="form-control" id="inputEmail3" placeholder="Company Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-3 control-label no-bold">Description:</label>
+                    <div class="col-sm-9">
+                        <textarea type="text" ng-model="orgData.Description" class="form-control" id="inputPassword3" placeholder="Description"></textarea>
+                    </div>
+                </div>
+                <div class="form-group" >
+                    <label for="inputEmail3" class="col-sm-3 control-label no-bold">Company Type</label>
+                    <div class="col-sm-9">
+                        <input type="text" ng-model="orgData.OrganizationType" class="form-control" id="inputEmail3" placeholder="Company Type">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label no-bold">Address 1</label>
+                    <div class="col-sm-9">
+                        <input type="text" ng-model="orgData.AddressLine1" class="form-control" id="inputEmail3" placeholder="Address line 1">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-3 control-label no-bold">Address 2</label>
+                    <div class="col-sm-9">
+                        <input type="text" ng-model="orgData.AddressLine2" class="form-control" id="inputPassword3" placeholder="Address line 2">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label no-bold">City</label>
+                    <div class="col-sm-9">
+                        <input type="text" ng-model="orgData.City" class="form-control" id="inputEmail3" placeholder="City">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-3 control-label no-bold">Province</label>
+                    <div class="col-sm-9">
+                        <input type="text" ng-model="orgData.ProvState" class="form-control" id="inputPassword3" placeholder="Province">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-3 control-label no-bold">Post Code</label>
+                    <div class="col-sm-9">
+                        <input type="text" ng-model="orgData.PostZipCode" class="form-control" id="inputPassword3" placeholder="Post Code">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-3 control-label no-bold">Telephone</label>
+                    <div class="col-sm-9">
+                        <input type="text" ng-model="orgData.Telephone" class="form-control" id="inputPassword3" placeholder="Telephone Number">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-3 control-label no-bold">SMS Code</label>
+                    <div class="col-sm-9">
+                        <input type="text" ng-model="orgData.MessageCode" class="form-control" id="inputPassword3" placeholder="Message Code">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-3 control-label no-bold">Notes:</label>
+                    <div class="col-sm-9">
+                        <textarea type="text" ng-model="orgData.Notes" class="form-control" id="inputPassword3" placeholder="Notes"></textarea>
+                    </div>
+                </div>
+
+            </div><!-- /.box-body -->
+            <div class="box-footer">
+                <button type="submit" class="btn btn-default" ng-click="closeThisDialog()">Cancel</button>
+                <button type="submit" class="btn btn-primary pull-left" ng-click="addCompany()" style="margin-right: 5px;"> <i class="fa fa-check" aria-hidden="true"></i> Add</button>
+            </div><!-- /.box-footer -->
+            <div style="margin-left: 10px;">
+                <loading-spinner></loading-spinner>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+

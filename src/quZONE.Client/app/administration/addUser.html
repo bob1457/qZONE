@@ -1,0 +1,83 @@
+﻿<style>
+    .panel-info > .panel-heading {
+        margin-top: -15px;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+</style>
+
+
+<div class="panel panel-info" style="position: relative; top: 30px;">
+    <!---->
+    <div class="panel-heading" style="position: relative;top: -30px;">
+        <h3>
+            <i class="fa fa-user"></i> Add New User
+        </h3>
+    </div>
+    <div class="panel-body">
+
+        <form class="form-horizontal">
+            <div class="box-body" style="margin-top: -25px;">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label no-bold">User Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" ng-model="userData.userName" id="inputEmail3" placeholder="User Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label no-bold">First Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" ng-model="userData.firstName" id="inputEmail3" placeholder="First Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label no-bold">Last Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" ng-model="userData.lastName" id="inputEmail3" placeholder="Last Name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label no-bold">Email</label>
+                    <div class="col-sm-8">
+                        <input type="email" class="form-control" ng-model="userData.email" id="inputEmail3" placeholder="Email">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-4 control-label no-bold">Password</label>
+
+
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control" ng-model="userData.password" id="inputPassword3" placeholder="Password">
+                    </div>
+
+
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-4 control-label no-bold" style="margin-top: -12px;">Confirm Password</label>
+
+
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control" ng-model="userData.confirmPassword" id="inputPassword3" placeholder="Confirm Password">
+                    </div>
+
+
+                </div>
+
+            </div><!-- /.box-body -->
+            <div class="box-footer">
+                <button type="submit" class="btn btn-default" ng-click="closeThisDialog()">Cancel</button>
+                <button type="submit" ng-disabled="isDisabled" class="btn btn-primary pull-left" style="margin-right: 5px;" ng-click="addUser()"> <i class="fa fa-check" aria-hidden="true"></i> Add</button>
+            </div><!-- /.box-footer -->
+            <div style="margin-top: 10px; margin-left: 10px; color: red; font-size: .75em;">{{errorMsg}}</div>
+            <div style="margin-left: 10px;">
+                <loading-spinner></loading-spinner>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+
+
