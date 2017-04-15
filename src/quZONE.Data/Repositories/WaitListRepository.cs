@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using quZONE.Data.Interfaces;
 using quZONE.Domain;
@@ -20,9 +21,12 @@ namespace quZONE.Data.Repositories
 
         public IEnumerable<WaitListViewModel> GetAllWaitListByOrgnization(int id)
         {
+            DateTime today = DateTime.Today;
+
+
             var result = from waitlist in context.WalkInWaitLists
                 join guest in context.Guests on waitlist.GuestId equals guest.Id
-                where (waitlist.OrganizationId == id )// && waitlist.WaitingStatus == "Waiting")
+                         where (waitlist.OrganizationId == id && DbFunctions.TruncateTime(waitlist.CreateDate) == today)// && waitlist.WaitingStatus == "Waiting")
                 select new WaitListViewModel()
                 {
                     GuestFirstName = guest.GuestFirstName,
@@ -48,7 +52,7 @@ namespace quZONE.Data.Repositories
 
 
 
-        public void AddToWaitList(Domain.Entities.WalkInWaitList list, Domain.Entities.Guest guest)
+        public void AddToWaitList(WalkInWaitList list, Guest guest)
         {
             //throw new NotImplementedException();
             list.Guest = guest;

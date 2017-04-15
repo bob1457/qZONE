@@ -75,7 +75,11 @@
 
             //console.log(companyId);
 
-            $http.get(serviceBase + 'api/waitlist/list/' + theData).success(function (response) {
+            debugger;
+            console.log(theData);
+
+            $http.get(serverBase + 'api/waitlist/list/' + theData).success(function (response) {
+                //$http.get(serviceBase + 'api/waitlist/list/' + theData).success(function (response) {
 
                 //console.log($scope.$parent.authentication.isAdmin);
                 $scope.listData.lists = response;

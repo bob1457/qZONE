@@ -21,7 +21,7 @@ namespace quZONE.Services.WaitList
             _tableManagementRepository = tableManagementRepository;
         }
 
-        public void AddToWaitList(Domain.ViewModels.WaitListViewModel waitList)
+        public void AddToWaitList(WaitListViewModel waitList)
         {
             //throw new NotImplementedException();
 

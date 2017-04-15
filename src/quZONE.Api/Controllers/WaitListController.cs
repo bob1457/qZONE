@@ -93,6 +93,13 @@ namespace quZONE.Api.Controllers
         [Route("list/add")]
         public IHttpActionResult AddToWaitList(WaitListViewModel waitListInfo)
         {
+
+            var hourOfDay = Int32.Parse(DateTime.Now.Hour.ToString());
+            var weekDay = DateTime.Now.DayOfWeek;
+
+            var waitTime = _waitTimeService.GetWaitTime(hourOfDay, weekDay);
+
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -112,7 +119,12 @@ namespace quZONE.Api.Controllers
                 waitListInfo.UpdateDate = DateTime.Now;
 
                 //Add to the wait list
-                AddToList(waitListInfo);
+
+                if (waitTime != "0")
+                {
+                    AddToList(waitListInfo);
+                }
+                
 
             }
             catch (Exception)
@@ -141,10 +153,10 @@ namespace quZONE.Api.Controllers
 
             //Get wait time depending on the hour of day
             //
-            var hourOfDay = Int32.Parse(DateTime.Now.Hour.ToString());
-            var weekDay = DateTime.Now.DayOfWeek;
+            //var hourOfDay = Int32.Parse(DateTime.Now.Hour.ToString());
+            //var weekDay = DateTime.Now.DayOfWeek;
 
-            var waitTime = _waitTimeService.GetWaitTime(hourOfDay, weekDay);
+            //var waitTime = _waitTimeService.GetWaitTime(hourOfDay, weekDay);
 
 
             //Send sms to guest
