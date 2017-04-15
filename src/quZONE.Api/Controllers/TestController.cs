@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using quZONE.Api.Infrastructure;
 using quZONE.Common.Logging;
 using quZONE.Domain;
 //using System.Web.Mvc;
@@ -40,16 +41,14 @@ namespace quZONE.Api.Controllers
             return "logged...";
         }
 
-        //[Route("error")]
-        //public string Error()
-        //{
+        [Route("email")]
+        public void SendMail()
+        {
+            Common.Email.EmailNotification email = new Common.Email.EmailNotification();
 
-        //    var bottom = 0;
-
-        //    var result = 1/bottom;
-
-        //    return "Error handled...";
-        //}
+            email.SendEmail("bob.yuan@yahoo.com", "Test to yahoo", "Testing sending email via gmail smtp... again!");
+            
+        }
 
         
     }
