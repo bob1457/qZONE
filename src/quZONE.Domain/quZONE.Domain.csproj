@@ -70,6 +70,7 @@
     <Compile Include="Entities\GuestTable.cs" />
     <Compile Include="Services\IWaitTimeService.cs" />
     <Compile Include="Entities\Position.cs" />
+    <Compile Include="Entities\TrialRequest.cs" />
     <Compile Include="ViewModels\GuestTableViewMode.cs" />
     <Compile Include="ViewModels\OrganizationViewModel.cs" />
     <Compile Include="ViewModels\SmsMessageViewModel.cs" />

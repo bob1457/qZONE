@@ -28,6 +28,8 @@ namespace quZONE.Domain
         public virtual DbSet<GuestTable> GuestTables { get; set; }
         public virtual DbSet<Position> Positions { get; set; }
 
+        public virtual DbSet<TrialRequest> TrialRequests { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Address>()

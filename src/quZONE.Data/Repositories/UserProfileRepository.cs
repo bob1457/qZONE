@@ -477,9 +477,32 @@ namespace quZONE.Data.Repositories
             return context.Organizations.FirstOrDefault(o => o.MessageCode == code);
         }
 
+        public void CreateTrialRequest(TrialRequest request)
+        {
+            //throw new NotImplementedException();
+
+            context.TrialRequests.Add(request);
+
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+        }
+
+
+
         #endregion
 
-        
+
+
+
+
 
         
     }

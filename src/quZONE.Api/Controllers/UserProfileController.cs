@@ -279,13 +279,31 @@ namespace quZONE.Api.Controllers
         
         #endregion
 
-       
 
-        
+        #region Trail Requiest
+
+        [AllowAnonymous]
+        [Route("trial")]
+        public IHttpActionResult CreateTrialRequest(TrialRequest request)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _userProfileService.AddRequest(request);
+
+            return Ok();
+        }
+
+
+        #endregion
+
 
         #region Organization
 
-    
+
         [Route("organization/create")]
         public IHttpActionResult CreateRognization(OrganizationViewModel organizationViewModel) //Organization organization, Address address)
         {

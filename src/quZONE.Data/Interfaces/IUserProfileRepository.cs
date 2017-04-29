@@ -38,6 +38,8 @@ namespace quZONE.Data.Interfaces
 
         IEnumerable<OrganizationViewModel> GetallOrganizations();
 
+        void CreateTrialRequest(TrialRequest request);
+
         Address GetOrgAddress(int id);
 
         Organization GetOrganizationById(int id);

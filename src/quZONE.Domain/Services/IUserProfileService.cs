@@ -33,6 +33,8 @@ namespace quZONE.Domain.Services
 
         Organization GetOrganizationById(int id);
 
+        void AddRequest(TrialRequest request);
+
         IEnumerable<UserProfileViewModel> GetAllUsers();
 
         IEnumerable<OrganizationViewModel> GetallOrganizations();

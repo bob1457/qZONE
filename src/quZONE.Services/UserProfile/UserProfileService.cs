@@ -240,9 +240,20 @@ namespace quZONE.Services.UserProfile
         }
 
 
+        public void AddRequest(TrialRequest request)
+        {
+            //throw new NotImplementedException();
 
+            request.CreateDate = DateTime.Now;
+
+            _userProfileRepository.CreateTrialRequest(request);
+
+        }
 
         #endregion
+
+
+
 
 
 
