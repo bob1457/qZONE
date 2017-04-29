@@ -56,6 +56,7 @@
                 guestContactTel: "",
                 guestGroupSize: "",
                 waitingStatus: "Waiting",
+                waitTime:"",
                 notes: "",
                 organizationId: ""
             };

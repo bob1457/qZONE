@@ -41,6 +41,8 @@ namespace quZONE.Domain.ViewModels
 
         public int GuestGroupSize { get; set; }
 
+        public string WaitTime { get; set; }
+
         [Required]
         [StringLength(50)]
         public string WaitingStatus { get; set; }

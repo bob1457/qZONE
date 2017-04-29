@@ -97,8 +97,17 @@ namespace quZONE.Api.Controllers
             var hourOfDay = Int32.Parse(DateTime.Now.Hour.ToString());
             var weekDay = DateTime.Now.DayOfWeek;
 
-            var waitTime = _waitTimeService.GetWaitTime(hourOfDay, weekDay);
+            var waitTime = "";
 
+            if (waitListInfo.WaitTime == null)
+            {
+                waitTime = _waitTimeService.GetWaitTime(hourOfDay, weekDay);
+            }
+            else
+            {
+                waitTime = waitListInfo.WaitTime;
+            }
+            
 
             if (!ModelState.IsValid)
             {
