@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -42,6 +43,15 @@ namespace quZONE.Api.Controllers
         public IHttpActionResult GetWaitListByOrgId(int id) //id: organization id
         {
             var list = _waitListService.GetWaitListByOrgId(id);
+
+            return Ok(list);
+        }
+
+
+        [Route("alllist/{id:int}")]
+        public IHttpActionResult GetAllWaitListByOrgId(int id) //id: organization id
+        {
+            var list = _waitListService.GetAllWaitListByOrgId(id);
 
             return Ok(list);
         }

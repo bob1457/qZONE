@@ -1,0 +1,112 @@
+﻿<style>
+    .panel-info > .panel-heading {
+        margin-top: -15px;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+</style>
+
+
+<div class="panel panel-info" style="position: relative; top: 30px;" >
+    <div class="panel-heading" style="position: relative;top: -30px;">
+        <h3>
+            <i class="fa fa-user"></i> Customer Details and Update
+        </h3>
+    </div>
+    <div class="panel-body">
+
+        <form name="detailForm" class="form-horizontal">
+            <div class="box-body" style="margin-top: -25px;">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label no-bold">Guest Name</label>
+                    <div class="col-sm-8 detail-value ">
+                        <label >{{guestDetails.guestFirstName}} {{guestDetails.guestLastName}}</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label no-bold">Guest Mobile</label>
+                    <div class="col-sm-8 detail-value">
+                        <label >{{guestDetails.guestContactTel}}</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label no-bold">Party Size</label>
+                    <div class="col-sm-8 detail-value">
+                        <label>{{guestDetails.guestGroupSize}}</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label no-bold">Notes</label>
+                    <div class="col-sm-8 detail-value">
+                        <label ></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label no-bold">Join Time</label>
+                    <div class="col-sm-8 detail-value">
+                        <label >{{guestDetails.createDate | date: 'short' }}</label>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-show="guestDetails.waitingStatus == 'Served' ">
+                    <label class="col-sm-4 control-label no-bold">Served Time</label>
+                    <div class="col-sm-8 detail-value">
+                        <label >{{guestDetails.servedTime | date: 'short' }}</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label no-bold">Waiting Satus</label>
+                    <div class="col-sm-8 " >
+                        <!--<div class="radio">
+                            <label style="margin-left: 20px;">
+                                <input ng-disabled="guestDetails.waitingStatus == 'Available' || guestDetails.waitingStatus == 'Served'" type="radio" name="optionsRadios" ng-click=" served=false" ng-model="guestDetails.waitingStatus" value="Waiting" id="optionsRadios1" value="" checked>
+                                <span >Waiting </span>
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label style="margin-left: 20px;">
+                                <input name="av" ng-disabled="guestDetails.waitingStatus == 'Served'" type="radio" name="optionsRadios" ng-click=" served=false" ng-model="guestDetails.waitingStatus" value="Available" id="optionsRadios1" value="" checked>
+                                <span>Available </span>
+                            </label>
+                        </div>--> 
+                        <div class="radio">
+                            <label style="margin-left: 20px;">
+                                <input name="se" type="radio" name="optionsRadios" ng-model="guestDetails.waitingStatus" value="Served" id="optionsRadios2" value="">
+                                <span>Served </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-show="served">
+                    <label class="col-sm-4 control-label no-bold">Served Table</label>
+                    <div class="col-sm-8 detail-value" style="width: 50%;">
+                        <select class="form-control" ng-model="guestDetails.selectedTable" ng-options="tables.tableNumber for tables in emptyTables">
+                            
+
+                            <option style="display: none" value="">-- Select a Table --</option>
+                        </select>
+                        <!--{{guestDetails.selectedTable.tableNumber}}-->
+                    </div>
+                </div>
+
+                <!--<div>{{msg}}</div>-->
+                <!--<button class="btn btn-default" ng-click="clickMe()">Click Me</button>-->
+
+            </div>
+            <div class="box-footer">
+                <button   type="submit" class="btn btn-default" ng-click="closeThisDialog()"><i class="fa fa-check" aria-hidden="true"></i> Ok</button>
+                <!--<button ng-hide="guestDetails.waitingStatus !== 'Served'" type="submit" class="btn btn-default" ng-click="closeThisDialog()"><i class="fa fa-check" aria-hidden="true"></i> Ok</button>
+                <button type="submit" ng-disabled="isDisabled || !detailForm.$dirty" class="btn btn-primary pull-left" ng-click="updateWaitList()" style="margin-right: 5px;"><i class="fa fa-check" aria-hidden="true"></i> Update</button>-->
+            </div> 
+            <div style="margin-left: 10px;">
+                <loading-spinner></loading-spinner>
+            </div>
+        </form>
+
+
+    </div>
+
+
+</div>

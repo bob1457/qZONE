@@ -21,101 +21,19 @@
                     <!-- Tabs within a box -->
                     <ul class="nav nav-tabs pull-right">
                         <!--<li class="active"><a data-toggle="tab">Area</a></li>
-                        <li><a data-toggle="tab">Donut</a></li>-->
+                <li><a data-toggle="tab">Donut</a></li>-->
                         <li class="pull-left header"><i class="fa fa-info-circle primary" aria-hidden="true"></i> Organization Information</li>
                     </ul>
-                    <div class="tab-content no-padding" >
+                    <div class="tab-content no-padding">
 
                         <div class="panel-heading" style="position: relative; top: -30px;"></div>
 
                         <div class="panel-body">
 
-                            <!--<form name="detailform" class="form-horizontal">
-                                <div class="box-body" style="margin-top: -25px;">
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-4 control-label ">Compay Name</label>
-                                        <div class="col-sm-8 detail-value ">
-                                            <span ng-hide="editing" ng-click="editing = true"><label class="no-bold">{{orgDetails.name}} </label></span>
-                                            <span ng-show="editing"><input type="text" name="oname" ng-blur="editing = false" ng-model="orgDetails.name" class="form-control" show-focus="editing" required=""></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-4 control-label ">Description</label>
-                                        <div class="col-sm-8 detail-value">
-                                            <span ng-hide="editing1" ng-click="editing1 = true"><label id="inputEmail3" class="no-bold">{{orgDetails.description}}</label></span>
-                                            <span ng-show="editing1"><textarea ng-blur="editing1 = false" ng-model="orgDetails.description" class="form-control" show-focus="editing1"></textarea></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-4 control-label ">Street Address</label>
-                                        <div class="col-sm-8 detail-value">
-                                            <span ng-hide="editing2" ng-click="editing2 = true"><label id="inputEmail3" class="no-bold">{{orgDetails.addressLine1}}</label></span>
-                                            <span ng-show="editing2"><input type="text" name="addr" ng-blur="editing2 = false" ng-model="orgDetails.addressLine1" class="form-control" show-focus="editing2" required=""></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-4 control-label ">City</label>
-                                        <div class="col-sm-8 detail-value">
-                                            <span ng-hide="editing4" ng-click="editing4 = true"><label id="inputEmail3" class="no-bold">{{orgDetails.city}}</label></span>
-                                            <span ng-show="editing4"><input type="text" name="city" ng-blur="editing4 = false" ng-model="orgDetails.city" class="form-control" show-focus="editing4" required=""></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-4 control-label ">Province</label>
-                                        <div class="col-sm-8 detail-value">
-                                            <span ng-hide="editing3" ng-click="editing3 = true"><label id="inputEmail3" class="no-bold">{{orgDetails.provState}}</label></span>
-                                            <span ng-show="editing3"><input type="text" name="province" ng-blur="editing3 = false" ng-model="orgDetails.provState" class="form-control" show-focus="editing3" required=""></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-4 control-label ">Post Code</label>
-                                        <div class="col-sm-8 detail-value">
-                                            <span ng-hide="editing5" ng-click="editing5 = true"><label id="inputEmail3" class="no-bold">{{orgDetails.postZipCode}}</label></span>
-                                            <span ng-show="editing5"><input type="text" ng-blur="editing5 = false" name="postcode" ng-model="orgDetails.postZipCode" class="form-control" show-focus="editing5" required=""></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-4 control-label ">Telephone</label>
-                                        <div class="col-sm-8 detail-value">
-                                            <span ng-hide="editing0" ng-click="editing0 = true"><label id="inputEmail3" class="no-bold">{{orgDetails.telephone}}</label></span>
-                                            <span ng-show="editing0"><input type="text" ng-blur="editing0 = false" ng-model="orgDetails.telephone" class="form-control" show-focus="editing0"></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-4 control-label ">SMS Code</label>
-                                        <div class="col-sm-8 detail-value">
-                                            <span ng-hide="editing7" ng-click="editing7 = true"><label id="inputEmail3" class="no-bold"><span ng-if="orgDetails.messageCode != null"></span>  {{orgDetails.messageCode}}<span ng-if="orgDetails.messageCode === null">00000 (not configured)</span></label></span>
-                                            <span ng-show="editing7"><input type="text" ng-blur="editing7 = false" ng-model="orgDetails.messageCode" class="form-control" show-focus="editing7"></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-4 control-label ">Join Time</label>
-                                        <div class="col-sm-8 detail-value">
-                                            <label class="no-bold">{{orgDetails.createDate | date: 'short' }}</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-4 control-label ">Last Update</label>
-                                        <div class="col-sm-8 detail-value">
-                                            <label class="no-bold">{{orgDetails.updateDate | date: 'short' }}</label>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
-                                <div class="box-footer">
-                                    <button type="submit" class="btn btn-default" ng-click="closeThisDialog()">Cancel</button>
-                                    <button type="submit" ng-disabled="isDisabled || (detailform.oname.$invalid || detailform.addr.$invalid || detailform.city.$invalid || detailform.province.$invalid || detailform.postcode.$invalid)"
-                                            class="btn btn-primary pull-left" style="margin-right: 5px;" ng-click="updateOrg(orgDetails.id)">
-                                        <i class="fa fa-check" aria-hidden="true"></i> Update
-                                    </button>
-                                </div>
-                            </form>-->
+                            
 
                             <div class="row">
+                                <!-- organization information/edit panel -->
                                 <div ng-init="edit = 0">
                                     <div ng-show="edit === 0">
                                         <div class="col-md-12">
@@ -124,7 +42,7 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <h3 style="margin-top: 6px;">
-                                                    {{profile.name}}<br/>
+                                                    {{profile.name}}<br />
                                                     <small class="pull-left">{{profile.description}}</small>
                                                 </h3>
                                             </div>
@@ -210,7 +128,7 @@
                                             </div>
                                         </form>
 
-                                        
+
                                     </div>
 
 
@@ -224,9 +142,92 @@
                         </div>
 
 
+
+
                     </div>
+
                 </div><!-- /.nav-tabs-custom -->
 
+            
+                <div class="box box-primary"><!-- all wait list -->
+                    <div class="box-header">
+                        <i class="ion ion-clipboard"></i>
+                        <h3 class="box-title">All Wait List ({{listData.lists.length}})</h3>
+                        <div class="box-tools pull-right"> <!-- paging -->
+                           
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+
+                        <table id="example1" class="table table-bordered table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Mobile Number</th>
+                                <th>Party Size</th>
+                                <th>Join Time</th>
+                                <!--<th>Status</th>-->
+                                <!--<th>Notes</th>-->
+
+                                <th style="color: white; text-align: right;"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <loading-spinner></loading-spinner>
+                                <tr dir-paginate="list in listData.lists | itemsPerPage:10 " pagination-id="lst">
+                                    <td><i class="fa fa-user" ng-class="{'row-available': list.waitingStatus === 'Available', 'row-waiting': list.waitingStatus === 'Waiting', 'row-served': list.waitingStatus === 'Served'}" title="{{list.waitingStatus}}"></i></td>
+                                    <td>{{list.guestFirstName}} {{list.guestLastName}}</td>
+                                    <td>{{list.guestContactTel}}</td>
+                                    <td>{{list.guestGroupSize}}</td>
+                                    <td>{{list.createDate | date: 'short'}}</td>
+                                    <!--<td>{{list.waitingStatus}}</td>-->
+                                    <!--<td>{{list.notes}}</td>-->
+                                    
+
+                                    <td class="pull-right">
+                                        <a href="" ng-click="showListDetails(list.guestId)"><i class="fa fa-file-text" aria-hidden="true" style="margin-right: 7px;" title="Details"></i></a>
+                                        <!--<a href="" ng-click=""><i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-right: 7px;" title="Quick Updtae"></i></a>-->
+                                        <a href="" ng-show="list.waitingStatus === 'Available'" ng-click="showCallGuest(list.guestId)"><i class="fa fa-bell-o" aria-hidden="true" title="Call guest"></i></a>
+                                    </td>
+                                    <div id="listDialog"></div>
+
+
+                                </tr>
+
+
+
+                            <tr ng-show=""></tr>
+
+
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <div style="height: 25px;">
+                                    <div class="pull-right" style="margin-bottom: -18px; margin-top: -28px; height: 25px;">
+                                        <dir-pagination-controls pagination-id="lst"></dir-pagination-controls>
+                                    </div>
+                                </div>
+                            </tr>
+                            </tfoot>
+                        </table>
+                        
+
+                        </div><!-- /.box-body -->
+                    <div class="box-footer clearfix no-border">
+
+                    </div>
+                    <div style="height: 25px;">
+                        <div class="pull-right" style="margin-bottom: -18px; margin-top: -28px; height: 25px;">
+                            <dir-pagination-controls pagination-id="lst"></dir-pagination-controls>
+                        </div>
+                    </div>
+                </div><!-- /.box -->
+                <!--<div style="height: 25px;">
+                    <div class="pull-right" style="margin-bottom: -18px; margin-top: -28px; height: 25px;">
+                        <dir-pagination-controls></dir-pagination-controls>
+                    </div>
+                </div>-->
             </section>
             <section class="col-lg-7 col-md-7 col-sm-12">
                 <div class="box box-success">
@@ -245,7 +246,7 @@
                     <div id="userDialog"></div> <!-- Load modal dialog here! -->
                     <div class="box-body " id="chat-box">
                         <div class="list-unstyled">
-                            <li dir-paginate="user in usersInOrg | filter: q | itemsPerPage:5 ">
+                            <li dir-paginate="user in usersInOrg | filter: q | itemsPerPage:5 " pagination-id="usr">
                                 <div class="well" style="background-color: transparent; padding: 0;">
                                     <div class="media">
                                         <a class="pull-left" href="" ng-click="getGuestDetails(restaurant.id)">

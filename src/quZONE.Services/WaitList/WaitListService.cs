@@ -53,6 +53,14 @@ namespace quZONE.Services.WaitList
             return list;
         }
 
+        public IEnumerable<WaitListViewModel> GetAllWaitListByOrgId(int id)
+        {
+            //throw new NotImplementedException();
+            var list = _waitListRepository.AllWaitListByOrgnization(id);
+
+            return list;
+        }
+
         public WaitListViewModel GetWaitGuest(int id, int gid)
         {
             var waitguest = _waitListRepository.GetWaitGuest(id, gid);
@@ -145,6 +153,9 @@ namespace quZONE.Services.WaitList
 
 
         #endregion
+
+
+
 
 
 

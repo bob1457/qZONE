@@ -19,7 +19,7 @@ namespace quZONE.Data.Repositories
         private qZONEDbContext context = new qZONEDbContext();
 
 
-        public IEnumerable<WaitListViewModel> GetAllWaitListByOrgnization(int id)
+        public IEnumerable<WaitListViewModel> GetAllWaitListByOrgnization(int id) //Get the waitlist for the current day
         {
             DateTime today = DateTime.Today;
 
@@ -49,6 +49,35 @@ namespace quZONE.Data.Repositories
 
         }
 
+
+        public IEnumerable<WaitListViewModel> AllWaitListByOrgnization(int id)
+        {
+            //throw new NotImplementedException();
+
+            var result = from waitlist in context.WalkInWaitLists
+                         join guest in context.Guests on waitlist.GuestId equals guest.Id
+                         //where (waitlist.OrganizationId == id && DbFunctions.TruncateTime(waitlist.CreateDate) == today)// && waitlist.WaitingStatus == "Waiting")
+                         where waitlist.OrganizationId == id
+                         select new WaitListViewModel()
+                         {
+                             GuestFirstName = guest.GuestFirstName,
+                             GuestLastName = guest.GuestLastName,
+                             GuestContactTel = guest.GuestContactTel,
+                             ArrivalTime = waitlist.ArrivalTime,
+                             StatusChangeTime = waitlist.StatusChangeTime,
+                             GuestId = guest.Id,
+                             OrganizationId = waitlist.OrganizationId,
+                             IsActive = waitlist.IsActive,
+                             GuestGroupSize = waitlist.GuestGroupSize,
+                             CreateDate = waitlist.CreateDate,
+                             UpdateDate = waitlist.UpdateDate,
+                             ServedTime = waitlist.ServedTime,
+                             WaitingStatus = waitlist.WaitingStatus,
+                             Notes = waitlist.Notes
+                         };
+
+            return result;
+        }
 
 
 
@@ -205,5 +234,8 @@ namespace quZONE.Data.Repositories
 
             return guests;
         }
+
+
+        
     }
 }

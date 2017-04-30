@@ -8,6 +8,9 @@ namespace quZONE.Domain.Services
     {
         IEnumerable<WaitListViewModel> GetWaitListByOrgId(int id);
 
+
+        IEnumerable<WaitListViewModel> GetAllWaitListByOrgId(int id);
+
         WaitListViewModel GetWaitGuest(int id, int oid);
 
         Guest GetGuestByTel(string tele);

@@ -20,7 +20,7 @@
 
         var waitListServiceFactory = {};
 
-        var _getWaitList = function (data) {
+        var _getWaitList = function (data) { //Get all waitlist for the current day
 
             var result = $http.get(serviceBase + 'list/' + data).success(function (response) {
 
@@ -33,6 +33,23 @@
 
             return result;
         };
+
+
+        var _getAllWaitList = function (data) { //Get ALL(entire, including all historic data) waitlist
+
+            var result = $http.get(serviceBase + 'alllist/' + data).success(function (response) {
+
+                //console.log($scope.$parent.authentication.isAdmin);
+                //$scope.lists = response;
+                //console.log($scope.lists);
+                console.log(response);
+                return response;
+            });
+
+            return result;
+        };
+
+
 
         var _addToWaitList = function(data) {
 
@@ -50,8 +67,10 @@
 
 
         waitListServiceFactory.getWaitList = _getWaitList;
+        waitListServiceFactory.getAllWaitList = _getAllWaitList;
         waitListService.addToWaitList = _addToWaitList;
         waitListServiceFactory.getWaitGuest = _getWaitGuest;
+
 
         return waitListServiceFactory;
 

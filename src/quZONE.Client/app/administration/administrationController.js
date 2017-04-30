@@ -5,9 +5,9 @@
         .module('qzone')
         .controller('administrationController', administrationController);
 
-    administrationController.$inject = ['$scope', '$location', '$http', 'ngDialog', 'organizationDataService', 'authService', 'userProfileService', 'userAccountService', 'serverBase'];
+    administrationController.$inject = ['$scope', '$location', '$http', 'ngDialog', 'organizationDataService', 'authService', 'userProfileService', 'userAccountService', 'waitListService', 'serverBase'];
 
-    function administrationController($scope, $location, $http, ngDialog, organizationDataService, authService, userProfileService, userAccountService, serverBase) {
+    function administrationController($scope, $location, $http, ngDialog, organizationDataService, authService, userProfileService, userAccountService, waitListService, serverBase) {
         /* jshint validthis:true */
         var vm = this;
         vm.title = 'administrationController';
@@ -83,10 +83,90 @@
                 console.log($scope.usersInOrg);
 
             });
+
+
+
+            var waitListPromise = waitListService.getAllWaitList(companyId);
+
+            //console.log(companyId);
+
+            waitListPromise.success(function (data) {
+                $scope.listData.lists = data;
+                //console.log($scope.listData.lists.length);
+            });
+
+            $scope.listData = {
+                getuestFirstName: "",
+                guestLastName: "",
+                guestContactTel: "",
+                guestGroupSize: "",
+                waitingStatus: "Waiting",
+                waitTime: "",
+                notes: "",
+                organizationId: ""
+            };
+
+            $scope.listData.OrganizationId = companyId;
+
+            
         });
 
 
         //debugger;
+        
+
+        $scope.showListDetails = function (gId) {
+
+            var uname = $scope.fromCurrentUser.userName;
+
+            var profile = userProfileService.getUserProfile(uname);
+
+            profile.success(function (profileData) {
+
+                var data = {
+                    id: "",
+                    gid: ""
+                };
+
+                $scope.profile = profileData;
+
+                data.id = $scope.profile.orgainzationId;
+
+                data.gid = gId;
+
+                var promise = waitListService.getWaitGuest(data);
+
+                promise.success(function (res) {
+
+                    $scope.guestDetails = res;
+
+                    console.log($scope.guestDetails);
+                });
+
+                var theData = $scope.profile.orgainzationId;
+
+                var tables = tableService.getAvailableTablesForOrg(theData);
+
+                tables.success(function (response) {
+                    $scope.emptyTables = response;
+                    console.log($scope.emptyTables);
+                });
+
+            });
+
+            ngDialog.open(
+                {
+                    appendTo: '#listDialog',
+                    templateUrl: 'app/waitlist/entryDetails2.html',
+                    className: 'ngdialog-theme-default',
+                    controller: 'userdashController',
+                    scope: $scope,
+                    data: $scope.$parent.gusetDetails
+                }
+            );
+        };
+
+
 
         
 
@@ -221,6 +301,9 @@
                 
 
             //}
+
+
+
 
             $scope.$emit('orgUserAdded', {
                 position: $scope.userData.positionId
