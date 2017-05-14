@@ -1,21 +1,13 @@
-﻿
-
-<div class="box box-solid bg-blue-gradient" style="color: #111111;" ng-controller="organizationController">
+﻿<div class="box box-solid bg-blue-gradient" style="color: #111111;" ng-controller="organizationController">
     <div class="box-header">
         <i class="fa fa-industry" style="color: #00c0ef;"></i>
-        <h3 class="box-title">Client Companies &nbsp; <small class="label pull-right bg-red">{{orgData.list.length}}</small></h3><!-- dynamic data will be used -->
+        <h3 class="box-title">Trial Requests &nbsp; <small class="label pull-right bg-red">{{}}</small></h3><!-- dynamic data will be used -->
         <!-- tools box -->
         <div class="pull-right box-tools">
             <!-- button with a dropdown -->
             <div class="btn-group">
                 <a href="" class="refresh" ng-click="refresh()" title="refresh..."><i class="fa fa-refresh" aria-hidden="true" style="margin-top: 8px;"></i></a> &nbsp;
-                <button class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
-                <ul class="dropdown-menu pull-right" role="menu">
-                    <li><a href="" ng-click="showAddCompany()"><span class="glyphicon glyphicon-plus-sign"></span> Add New</a></li>
-                    <!--<li><a href="#">Clear events</a></li>-->
-                    <li class="divider"></li>
-                    <li><a href="#/org"><span class="glyphicon glyphicon-eye-open"></span> View All</a></li>
-                </ul>
+
             </div>
             <!--<button class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
             <button class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>-->
@@ -37,30 +29,31 @@
                         <i class="fa fa-search" style="margin-left: 5px;"></i>
                     </label>
                 </div>
-                
+
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped table-hover">
                         <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Address</th>
-                            <th>Telephone</th>
-                            <th></th>
-                            <th style="color: white; text-align: center;">gggggg</th>
-                        </tr>
+                            <tr>
+                                <th>Date</th>
+                                <th>Contact Name</th>
+                                <th>Orgniztion</th>
+                                <th>Address</th>
+                                <th>Telephone</th>
+                                <th>Email</th>
+                                <th style="color: white; text-align: center;">gggggg</th>
+                            </tr>
                         </thead>
                         <tbody>
                             <tr dir-paginate="org in orgData.list | filter: qry | itemsPerPage:5 " pagination-id="org">
                                 <!--<td><img src="http://placehold.it/60x60" width="60" height="60"/></td>-->
-                                <td><img ng-src="{{baseUrl}}{{org.logoImgUrl}}" width="60" height="60" /></td>
-                                <td>{{org.name}}</td>
-                                <td>{{org.description}}</td>
-                                <td>{{org.addressLine1}}, {{org.city}}, {{org.provState}}</td>
-                                <td> {{org.telephone}}</td>
+                                <td>{{}}</td>
+                                <td>{{}}</td>
+                                <td>{{}}</td>
+                                <td>{{}}, {{}}, {{}}</td>
+                                <td>{{}}</td>
+                                <td>{{}}</td>
                                 <td><button ng-click="showDetails(org.id)"><i class="fa fa-file-text" aria-hidden="true"></i></button></td>
-                                <td><button><i class="fa fa-times" aria-hidden="true"></i></button></td>
+
                             </tr>
                             <tr ng-show=""></tr>
                         </tbody>
@@ -80,7 +73,7 @@
         <div class="col-sm-5">
 
         </div>
-        
+
     </div><!-- /.box-body -->
 
 </div>
