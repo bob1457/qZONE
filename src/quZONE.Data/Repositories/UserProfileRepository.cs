@@ -14,7 +14,7 @@ namespace quZONE.Data.Repositories
 {
     public class UserProfileRepository : IUserProfileRepository
     {
-        private qZONEDbContext context = new qZONEDbContext();
+        private qZONEDbContext _context = new qZONEDbContext();
 
         //public UserProfileRepository(IDbContext context)
         //    : base(context)
@@ -24,9 +24,9 @@ namespace quZONE.Data.Repositories
 
         public IEnumerable<UserProfileViewModel> GetAllUserProfiles()
         {
-            var result = from user in context.AspNetUsers
-                         join profile in context.UserProfiles on user.UserProfile_Id equals profile.Id
-                         join org in context.Organizations on profile.OrgainzationId equals org.Id
+            var result = from user in _context.AspNetUsers
+                         join profile in _context.UserProfiles on user.UserProfile_Id equals profile.Id
+                         join org in _context.Organizations on profile.OrgainzationId equals org.Id
                         
                          select new UserProfileViewModel()
                          {
@@ -47,7 +47,7 @@ namespace quZONE.Data.Repositories
 
         public UserProfile GetUserProfileById(int id)
         {
-            return context.UserProfiles.FirstOrDefault(u => u.Id == id);
+            return _context.UserProfiles.FirstOrDefault(u => u.Id == id);
         }
 
 
@@ -65,10 +65,10 @@ namespace quZONE.Data.Repositories
         {
             if (disposing)
             {
-                if (context != null)
+                if (_context != null)
                 {
-                    context.Dispose();
-                    context = null;
+                    _context.Dispose();
+                    _context = null;
                 }
             }
         }
@@ -78,7 +78,7 @@ namespace quZONE.Data.Repositories
         public AspNetUser GetUser(string id)
         {
             //throw new NotImplementedException();
-            return context.AspNetUsers.FirstOrDefault(u => u.UserName == id);
+            return _context.AspNetUsers.FirstOrDefault(u => u.UserName == id);
         }
 
 
@@ -87,11 +87,11 @@ namespace quZONE.Data.Repositories
         {
             //throw new NotImplementedException();
             //return context.AspNetUsers;
-            var result = from user in context.AspNetUsers
-                         join profile in context.UserProfiles on user.UserProfile_Id equals profile.Id
-                         join org in context.Organizations on profile.OrgainzationId equals org.Id
-                         join addres in context.Addresses on org.AddressId equals addres.Id
-                         join position in context.Positions on profile.PositionId equals position.Id
+            var result = from user in _context.AspNetUsers
+                         join profile in _context.UserProfiles on user.UserProfile_Id equals profile.Id
+                         join org in _context.Organizations on profile.OrgainzationId equals org.Id
+                         join addres in _context.Addresses on org.AddressId equals addres.Id
+                         join position in _context.Positions on profile.PositionId equals position.Id
 
 
                          
@@ -129,11 +129,11 @@ namespace quZONE.Data.Repositories
             //throw new NotImplementedException();
             
 
-            var result = from user in context.AspNetUsers
-                         join profile in context.UserProfiles on user.UserProfile_Id equals profile.Id
-                         join org in context.Organizations on profile.OrgainzationId equals org.Id
-                         join addres in context.Addresses on org.AddressId equals addres.Id
-                join position in context.Positions on profile.PositionId equals position.Id
+            var result = from user in _context.AspNetUsers
+                         join profile in _context.UserProfiles on user.UserProfile_Id equals profile.Id
+                         join org in _context.Organizations on profile.OrgainzationId equals org.Id
+                         join addres in _context.Addresses on org.AddressId equals addres.Id
+                join position in _context.Positions on profile.PositionId equals position.Id
             
             
                          where user.UserName == username
@@ -196,18 +196,18 @@ namespace quZONE.Data.Repositories
         /// <exception cref="DbUpdateException">An error occurred sending updates to the database.</exception>
         public void UpdateUserProfile(string username)//, UserProfile profile)
         {
-            var user = context.AspNetUsers.FirstOrDefault(u => u.UserName == username);
+            var user = _context.AspNetUsers.FirstOrDefault(u => u.UserName == username);
 
-            var userProfile = context.UserProfiles.Where(p => p.Id == user.UserProfile_Id);
+            var userProfile = _context.UserProfiles.Where(p => p.Id == user.UserProfile_Id);
 
-            context.UserProfiles.Attach(userProfile.FirstOrDefault());
+            _context.UserProfiles.Attach(userProfile.FirstOrDefault());
 
-            var entry = context.Entry(userProfile.FirstOrDefault());
+            var entry = _context.Entry(userProfile.FirstOrDefault());
             entry.Property(p => p.Id == user.UserProfile_Id).IsModified = true;
 
             try
             {
-                context.SaveChanges();
+                _context.SaveChanges();
             }
             catch (DbUpdateConcurrencyException dbUpdateConcurrencyException)
             {
@@ -223,7 +223,7 @@ namespace quZONE.Data.Repositories
             //throw new NotImplementedException();
             try
             {
-                var user = context.AspNetUsers.FirstOrDefault(u => u.UserName == username);
+                var user = _context.AspNetUsers.FirstOrDefault(u => u.UserName == username);
 
                 if (user != null)
                 {
@@ -231,15 +231,15 @@ namespace quZONE.Data.Repositories
                     user.LastName = userInfo.LastName;
                     user.Email = userInfo.Email;
 
-                    context.AspNetUsers.Attach(user);
+                    _context.AspNetUsers.Attach(user);
 
-                    var entry = context.Entry(user);
+                    var entry = _context.Entry(user);
                     entry.State = EntityState.Modified;
                 }
 
                 try
                 {
-                    context.SaveChanges();
+                    _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException dbUpdateConcurrencyException)
                 {
@@ -267,14 +267,14 @@ namespace quZONE.Data.Repositories
 
             try
             {
-                var user = context.AspNetUsers.Where(u=>u.UserName == userName);
+                var user = _context.AspNetUsers.Where(u=>u.UserName == userName);
 
-                var userProfile = context.UserProfiles.FirstOrDefault(p=>p.Id == user.FirstOrDefault().UserProfile_Id);
+                var userProfile = _context.UserProfiles.FirstOrDefault(p=>p.Id == user.FirstOrDefault().UserProfile_Id);
 
 
                 if (userProfile != null) userProfile.AvatarImgUrl = imgFileName;
 
-                var entry = context.Entry(userProfile);
+                var entry = _context.Entry(userProfile);
                 entry.Property(p => p.AvatarImgUrl).IsModified = true;
 
             }
@@ -289,7 +289,7 @@ namespace quZONE.Data.Repositories
 
             try
             {
-                context.SaveChanges();
+                _context.SaveChanges();
             }
             catch (DbUpdateConcurrencyException dbUpdateConcurrencyException)
             {
@@ -311,8 +311,8 @@ namespace quZONE.Data.Repositories
             //throw new NotImplementedException();
             //return context.Organizations.FirstOrDefault(o => o.Id == id);
 
-            var result = from org in context.Organizations
-                join addr in context.Addresses on org.AddressId equals addr.Id
+            var result = from org in _context.Organizations
+                join addr in _context.Addresses on org.AddressId equals addr.Id
                 where org.Id == id 
                 select new OrganizationViewModel()
                 {
@@ -342,10 +342,10 @@ namespace quZONE.Data.Repositories
         {
             organization.Address = address;
 
-            context.Organizations.Add(organization);
+            _context.Organizations.Add(organization);
             try
             {
-                context.SaveChanges();
+                _context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -360,8 +360,8 @@ namespace quZONE.Data.Repositories
         public IEnumerable<OrganizationViewModel> GetallOrganizations()
         {
             //throw new NotImplementedException();
-            var result = from org in context.Organizations
-                         join addr in context.Addresses on org.AddressId equals addr.Id
+            var result = from org in _context.Organizations
+                         join addr in _context.Addresses on org.AddressId equals addr.Id
                          where org.IsActive
                          where org.Id != 1
                          select new OrganizationViewModel()
@@ -387,26 +387,26 @@ namespace quZONE.Data.Repositories
         public Organization GetOrganizationById(int id)
         {
             //throw new NotImplementedException();
-            return context.Organizations.Include("Address").FirstOrDefault(o => o.Id == id);
+            return _context.Organizations.Include("Address").FirstOrDefault(o => o.Id == id);
         }
 
 
         public void UpdateOrganization(Organization organization, Address address)
         {
-            context.Addresses.Attach(address);
-            context.Organizations.Attach(organization);
+            _context.Addresses.Attach(address);
+            _context.Organizations.Attach(organization);
 
-            var entry = context.Entry(address);
+            var entry = _context.Entry(address);
             entry.State = EntityState.Modified;
 
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
 
         public void UpdateOrganization(int id, Organization org, Address addr)
         {
 
-            var orgForUpdate = context.Organizations.FirstOrDefault(o => o.Id == id); //get existing organization
+            var orgForUpdate = _context.Organizations.FirstOrDefault(o => o.Id == id); //get existing organization
 
             orgForUpdate = org;
 
@@ -414,17 +414,17 @@ namespace quZONE.Data.Repositories
 
             //addr = address;
 
-            context.Addresses.Attach(newAddr);
-            context.Organizations.Attach(orgForUpdate);
+            _context.Addresses.Attach(newAddr);
+            _context.Organizations.Attach(orgForUpdate);
 
-            var entryOrg = context.Entry(orgForUpdate);
+            var entryOrg = _context.Entry(orgForUpdate);
             entryOrg.State = EntityState.Modified;
 
-            var entryAddr = context.Entry(newAddr);
+            var entryAddr = _context.Entry(newAddr);
             entryAddr.State = EntityState.Modified;
             
 
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
 
@@ -442,11 +442,11 @@ namespace quZONE.Data.Repositories
 
             try
             {
-                var org = context.Organizations.FirstOrDefault(o => o.Id == id);
+                var org = _context.Organizations.FirstOrDefault(o => o.Id == id);
 
                 if (org != null) org.LogoImgUrl = imgFileName;
 
-                var entry = context.Entry(org);
+                var entry = _context.Entry(org);
                 entry.Property(p => p.LogoImgUrl).IsModified = true;
             }
             catch (Exception ex)
@@ -460,7 +460,7 @@ namespace quZONE.Data.Repositories
 
             try
             {
-                context.SaveChanges();
+                _context.SaveChanges();
             }
             catch (DbUpdateConcurrencyException dbUpdateConcurrencyException)
             {
@@ -474,18 +474,18 @@ namespace quZONE.Data.Repositories
         {
             //throw new NotImplementedException();
 
-            return context.Organizations.FirstOrDefault(o => o.MessageCode == code);
+            return _context.Organizations.FirstOrDefault(o => o.MessageCode == code);
         }
 
         public void CreateTrialRequest(TrialRequest request)
         {
             //throw new NotImplementedException();
 
-            context.TrialRequests.Add(request);
+            _context.TrialRequests.Add(request);
 
             try
             {
-                context.SaveChanges();
+                _context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -495,9 +495,18 @@ namespace quZONE.Data.Repositories
 
         }
 
+        public IEnumerable<TrialRequest> GetAllRequests()
+        {
 
+            var result = _context.TrialRequests;
+
+            return result;
+        }
 
         #endregion
+
+
+
 
 
 

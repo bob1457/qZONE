@@ -298,6 +298,19 @@ namespace quZONE.Api.Controllers
         }
 
 
+        [AllowAnonymous] //for testing only
+        [Route("requests")]
+        public IHttpActionResult GetAllTrialREquests()
+        {
+            var requests = _userProfileService.GetAllTrialRequests().ToList();
+
+            return Ok(requests);
+        }
+
+
+        
+
+
         #endregion
 
 

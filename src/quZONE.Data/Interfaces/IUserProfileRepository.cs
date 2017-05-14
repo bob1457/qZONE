@@ -49,6 +49,8 @@ namespace quZONE.Data.Interfaces
         void CreateOrganization(Organization organization, Address address);
 
         Organization GetOrganizationByCode(string code);
+
+        IEnumerable<TrialRequest> GetAllRequests();
     }
 
 }

@@ -43,6 +43,8 @@ namespace quZONE.Domain.Services
 
         Organization GetOrganizationByCode(string code);
 
+        IEnumerable<TrialRequest> GetAllTrialRequests();
+
 
     }
 }

@@ -250,6 +250,14 @@ namespace quZONE.Services.UserProfile
 
         }
 
+
+        public IEnumerable<TrialRequest> GetAllTrialRequests()
+        {
+            //throw new NotImplementedException();
+
+            return _userProfileRepository.GetAllRequests();
+        }
+
         #endregion
 
 
@@ -281,6 +289,8 @@ namespace quZONE.Services.UserProfile
 
 
 
-        
+
+
+
     }
 }
