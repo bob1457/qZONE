@@ -280,7 +280,7 @@ namespace quZONE.Api.Controllers
         #endregion
 
 
-        #region Trail Requiest
+        #region Trail Request
 
         [AllowAnonymous]
         [Route("trial")]
@@ -308,7 +308,14 @@ namespace quZONE.Api.Controllers
         }
 
 
-        
+        [AllowAnonymous] //for testing only
+        [Route("request/{id:int}")]
+        public IHttpActionResult GetTrialREquestById(int id)
+        {
+            var requests = _userProfileService.GetTrialRequestById(id);
+
+            return Ok(requests);
+        }
 
 
         #endregion

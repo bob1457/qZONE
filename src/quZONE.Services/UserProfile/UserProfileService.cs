@@ -258,7 +258,16 @@ namespace quZONE.Services.UserProfile
             return _userProfileRepository.GetAllRequests();
         }
 
+
+
+        public TrialRequest GetTrialRequestById(int id)
+        {
+            //throw new NotImplementedException();
+            return _userProfileRepository.GetTrialRequestByrId(id);
+        }
+
         #endregion
+
 
 
 

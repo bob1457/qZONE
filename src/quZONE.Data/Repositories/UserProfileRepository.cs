@@ -503,7 +503,19 @@ namespace quZONE.Data.Repositories
             return result;
         }
 
+        public TrialRequest GetTrialRequestByrId(int id)
+        {
+            //throw new NotImplementedException();
+
+            return _context.TrialRequests.FirstOrDefault(t => t.Id == id);
+        }
+
+
+
         #endregion
+
+
+
 
 
 

@@ -1,12 +1,12 @@
 ﻿<div class="box box-solid bg-blue-gradient" style="color: #111111;" ng-controller="organizationController">
     <div class="box-header">
-        <i class="fa fa-industry" style="color: #00c0ef;"></i>
+        <i class="fa fa-comment" style="color: #00c0ef;"></i>
         <h3 class="box-title">Trial Requests &nbsp; <small class="label pull-right bg-red">{{}}</small></h3><!-- dynamic data will be used -->
         <!-- tools box -->
         <div class="pull-right box-tools">
             <!-- button with a dropdown -->
             <div class="btn-group">
-                <a href="" class="refresh" ng-click="refresh()" title="refresh..."><i class="fa fa-refresh" aria-hidden="true" style="margin-top: 8px;"></i></a> &nbsp;
+                <a href="" class="refresh" ng-cltelegramick="refresh()" title="refresh..."><i class="fa fa-refresh" aria-hidden="true" style="margin-top: 8px;"></i></a> &nbsp;
 
             </div>
             <!--<button class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -34,7 +34,7 @@
                     <table id="example1" class="table table-bordered table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>Date</th>
+                                
                                 <th>Contact Name</th>
                                 <th>Orgniztion</th>
                                 <th>Address</th>
@@ -44,15 +44,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr dir-paginate="org in orgData.list | filter: qry | itemsPerPage:5 " pagination-id="org">
+                            <tr dir-paginate="req in requestData.list | filter: qry | itemsPerPage:5 " pagination-id="req">
                                 <!--<td><img src="http://placehold.it/60x60" width="60" height="60"/></td>-->
-                                <td>{{}}</td>
-                                <td>{{}}</td>
-                                <td>{{}}</td>
-                                <td>{{}}, {{}}, {{}}</td>
-                                <td>{{}}</td>
-                                <td>{{}}</td>
-                                <td><button ng-click="showDetails(org.id)"><i class="fa fa-file-text" aria-hidden="true"></i></button></td>
+                                
+                                <td>{{req.contactFirstName}} {{req.contactLastName}}</td>
+                                <td>{{req.organizationName}}</td>
+                                <td>{{req.orgAddressLine1}}, {{req.orgAddressCity}}, {{req.orgAddressProState}} {{req.orgAddressPostZipCodeva}}</td>
+                                <td>{{req.contactTel}}</td>
+                                <td>{{req.contactEmail}}</td>
+                                <td><button ng-click="showReqDetails(req.id)"><i class="fa fa-file-text" aria-hidden="true"></i></button></td>
 
                             </tr>
                             <tr ng-show=""></tr>
@@ -65,7 +65,7 @@
             </div><!-- /.box -->
 
             <div class="pull-right" style="margin-bottom: -18px; margin-top: -28px;">
-                <dir-pagination-controls pagination-id="org"></dir-pagination-controls>
+                <dir-pagination-controls pagination-id="req"></dir-pagination-controls>
             </div>
 
 

@@ -45,6 +45,8 @@ namespace quZONE.Domain.Services
 
         IEnumerable<TrialRequest> GetAllTrialRequests();
 
+        TrialRequest GetTrialRequestById(int id);
+
 
     }
 }

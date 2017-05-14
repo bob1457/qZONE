@@ -51,6 +51,8 @@ namespace quZONE.Data.Interfaces
         Organization GetOrganizationByCode(string code);
 
         IEnumerable<TrialRequest> GetAllRequests();
+
+        TrialRequest GetTrialRequestByrId(int id);
     }
 
 }

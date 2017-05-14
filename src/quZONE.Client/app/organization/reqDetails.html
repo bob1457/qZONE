@@ -1,0 +1,86 @@
+﻿<style>
+    .panel-info > .panel-heading {
+        margin-top: -15px;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+</style>
+
+
+<div class="panel panel-info" style="position: relative; top: 30px;">
+    <div class="panel-heading" style="position: relative;top: -30px;">
+        <h3>
+            <i class="fa fa-comment"></i> Request Details
+        </h3>
+    </div>
+    <div class="panel-body">
+
+        <form name="detailform" class="form-horizontal">
+            <div class="box-body" style="margin-top: -25px;">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label ">Compay Name</label>
+                    <div class="col-sm-8 detail-value ">
+                        <span ng-hide="editing" ng-click="editing = true"><label class="no-bold">{{reqDetails.organizationName}} </label></span>
+                        <span ng-show="editing"><input type="text" name="oname" ng-blur="editing = false" ng-model="orgDetails.name" class="form-control" show-focus="editing" required=""></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label ">Address</label>
+                    <div class="col-sm-8 detail-value">
+                        <span ng-hide="editing1" ng-click="editing1 = true">
+                            <label id="inputEmail3" class="no-bold">{{reqDetails.orgAddressLine1}}</label><br />
+                            {{reqDetails.orgAddressCity}} {{reqDetails.orgAddressProState}} {{reqDetails.orgAddressPostZipCodeva}}
+                        </span>
+                        <span ng-show="editing1"><textarea ng-blur="editing1 = false" ng-model="orgDetails.description" class="form-control" show-focus="editing1"></textarea></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label ">Contact Nmae</label>
+                    <div class="col-sm-8 detail-value">
+                        <span ng-hide="editing0" ng-click="editing0 = true"><label id="inputEmail3" class="no-bold">{{reqDetails.contactFirstName}}  {{reqDetails.contactLastName}}</label></span>
+                        <span ng-show="editing0"><input type="text" ng-blur="editing0 = false" ng-model="orgDetails.telephone" class="form-control" show-focus="editing0"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label ">Telephone</label>
+                    <div class="col-sm-8 detail-value">
+                        <span ng-hide="editing0" ng-click="editing0 = true"><label id="inputEmail3" class="no-bold">{{reqDetails.contactTel}}</label></span>
+                        <span ng-show="editing0"><input type="text" ng-blur="editing0 = false" ng-model="orgDetails.telephone" class="form-control" show-focus="editing0" ></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label ">Email</label>
+                    <div class="col-sm-8 detail-value">
+                        <span ng-hide="editing0" ng-click="editing0 = true"><label id="inputEmail3" class="no-bold">{{reqDetails.contactEmail}}</label></span>
+                        <span ng-show="editing0"><input type="text" ng-blur="editing0 = false" ng-model="orgDetails.telephone" class="form-control" show-focus="editing0"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label ">Request Date</label>
+                    <div class="col-sm-8 detail-value">
+                        <span ng-hide="editing0" ng-click="editing0 = true"><label id="inputEmail3" class="no-bold">{{reqDetails.createDate | date: 'short' }}</label></span>
+                        <span ng-show="editing0"><input type="text" ng-blur="editing0 = false" ng-model="orgDetails.telephone" class="form-control" show-focus="editing0"></span>
+                    </div>
+                </div>
+                
+                
+
+            </div>
+
+            
+            <div class="box-footer">
+                <button type="submit" class="btn btn-default" ng-click="closeThisDialog()">Cancel</button>
+                <button type="submit" ng-disabled="isDisabled || (detailform.oname.$invalid || detailform.addr.$invalid || detailform.city.$invalid || detailform.province.$invalid || detailform.postcode.$invalid)"
+                        class="btn btn-primary pull-left" style="margin-right: 5px;" ng-click="updateOrg(orgDetails.id)">
+                    <i class="fa fa-check" aria-hidden="true"></i> Update
+                </button>
+            </div>
+        </form>
+        
+
+    </div>
+
+
+</div>

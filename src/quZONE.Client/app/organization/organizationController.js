@@ -42,6 +42,21 @@
 
         };
 
+        $scope.requestData = {
+            organizationName: "",
+            orgAddressLine1: "",
+            orgAddressCity: "",
+            orgAddressProState: "",
+            orgAddressPostZipCodeva:"",
+            contactFirstName: "",
+            contactLastName:"",
+            contactEmail:"",
+            contactTel:"",
+            notes: "",
+            createDate:""
+        };
+
+
 
         var refresh = function () {
 
@@ -104,7 +119,7 @@
 
         };
 
-
+        
         
         $scope.$on('orgAdd', function (event, data) {
             //alert(data + " is received in dinning table controller for waitlist updates!");
@@ -157,7 +172,27 @@
         };
 
 
+        $scope.showReqDetails = function (rId) {
+            //debugger;
+            var promise = organizationDataService.getRequestById(rId);
 
+            promise.success(function (res) {
+
+                $scope.reqDetails = res;
+
+                console.log($scope.reqDetails);
+            });
+
+
+            ngDialog.open(
+                {
+                    template: 'app/organization/reqDetails.html',
+                    className: 'ngdialog-theme-default',
+                    scope: $scope,
+                    data: $scope.$parent.reqDetails
+                }
+            );
+        };
 
 
 
@@ -241,6 +276,18 @@
                     });
                 });
 
+
+                //debugger;
+
+                var promise_requet = organizationDataService.getAllTrialRequests();
+
+                promise_requet.success(function (response) {
+
+                    $scope.requestData.list = response;
+
+                    console.log($scope.requestData.list);
+
+                });
 
 
             }

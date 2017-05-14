@@ -32,8 +32,16 @@
         };
 
 
+
+        //debugger;
         organizationData.getAllTrialRequests = function() {
-            var promise = $http.get(serviceBase + 'api/profile/organizations/');
+            var promise = $http.get(serviceBase + 'api/profile/requests/');
+            return promise;
+        };
+
+
+        organizationData.getRequestById = function (id) {
+            var promise = $http.get(serviceBase + 'api/profile/request/' + id);
             return promise;
         };
 
