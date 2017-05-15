@@ -53,6 +53,7 @@
             contactEmail:"",
             contactTel:"",
             notes: "",
+            isProcessed:"",
             createDate:""
         };
 

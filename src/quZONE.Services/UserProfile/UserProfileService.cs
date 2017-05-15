@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization.Formatters;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -245,6 +246,7 @@ namespace quZONE.Services.UserProfile
             //throw new NotImplementedException();
 
             request.CreateDate = DateTime.Now;
+            request.IsProcessed = false;
 
             _userProfileRepository.CreateTrialRequest(request);
 

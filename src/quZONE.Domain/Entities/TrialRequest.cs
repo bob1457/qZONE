@@ -49,6 +49,8 @@ namespace quZONE.Domain.Entities
         [StringLength(450)]
         public string Notes { get; set; }
 
+        public bool IsProcessed { get; set; }
+
         [Column(TypeName = "datetime2")]
         public DateTime CreateDate { get; set; }
     }
