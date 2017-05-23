@@ -40,6 +40,8 @@ namespace quZONE.Data.Interfaces
 
         void CreateTrialRequest(TrialRequest request);
 
+        void UpdateTrialRequest(int id);
+
         Address GetOrgAddress(int id);
 
         Organization GetOrganizationById(int id);

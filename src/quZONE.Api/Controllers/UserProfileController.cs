@@ -394,6 +394,8 @@ namespace quZONE.Api.Controllers
 
             var orgData = _userProfileService.GetTrialRequestById(id);
 
+            var request = _userProfileService.GetTrialRequestById(id);
+
             OrganizationViewModel orgModel = new OrganizationViewModel();
 
             orgModel.Name = orgData.OrganizationName;
@@ -415,7 +417,7 @@ namespace quZONE.Api.Controllers
             //update request status
             //
 
-
+            _userProfileService.UpdateRequest(id);
 
 
 
@@ -508,6 +510,13 @@ namespace quZONE.Api.Controllers
 
         #endregion
 
-        
+        [AllowAnonymous] //testing mathod
+        [Route("request/update/{id:int}")]
+        public IHttpActionResult UpdateRequest(int id)
+        {
+            _userProfileService.UpdateRequest(id);
+
+            return Ok();
+        }
     }
 }

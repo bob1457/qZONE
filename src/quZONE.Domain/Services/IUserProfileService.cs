@@ -37,6 +37,8 @@ namespace quZONE.Domain.Services
 
         void AddRequest(TrialRequest request);
 
+        void UpdateRequest(int id);
+
         IEnumerable<UserProfileViewModel> GetAllUsers();
 
         IEnumerable<OrganizationViewModel> GetallOrganizations();

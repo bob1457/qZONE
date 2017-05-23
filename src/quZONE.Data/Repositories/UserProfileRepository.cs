@@ -517,6 +517,21 @@ namespace quZONE.Data.Repositories
             return _context.Organizations.FirstOrDefault(o => o.Name == name);
         }
 
+        public void UpdateTrialRequest(int id)
+        {
+            //throw new NotImplementedException();
+            var request = _context.TrialRequests.FirstOrDefault(r => r.Id == id);
+
+            if (request != null)
+            {
+                request.IsProcessed = true;
+
+                _context.SaveChanges();
+            }
+
+            
+        }
+
 
         #endregion
 
@@ -534,5 +549,8 @@ namespace quZONE.Data.Repositories
 
 
 
+
+
+        
     }
 }

@@ -277,9 +277,16 @@ namespace quZONE.Services.UserProfile
         }
 
 
-
+        public void UpdateRequest(int id)
+        {
+            //throw new NotImplementedException();
+            _userProfileRepository.UpdateTrialRequest(id);
+        }
 
         #endregion
+
+
+
 
 
 

@@ -222,6 +222,9 @@
 
                 //refresh();
 
+                //update request status
+                //
+
                 $scope.$parent.$broadcast('orgAdd', "");
 
             });
