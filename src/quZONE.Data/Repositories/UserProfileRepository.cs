@@ -498,7 +498,7 @@ namespace quZONE.Data.Repositories
         public IEnumerable<TrialRequest> GetAllRequests()
         {
 
-            var result = _context.TrialRequests;
+            var result = _context.TrialRequests.Where(p=>p.IsProcessed == false);
 
             return result;
         }
