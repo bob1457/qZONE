@@ -44,6 +44,8 @@ namespace quZONE.Data.Interfaces
 
         Organization GetOrganizationById(int id);
 
+        Organization GetOrganizationByName(string name);
+
         OrganizationViewModel GetOrganizationDetails(int id); //id: organization id
 
         void CreateOrganization(Organization organization, Address address);

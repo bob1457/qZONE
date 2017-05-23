@@ -19,6 +19,7 @@ using quZONE.Data.Interfaces;
 using quZONE.Domain.Entities;
 using quZONE.Domain.Services;
 using quZONE.Domain.ViewModels;
+using SendGrid.Resources;
 
 namespace quZONE.Api.Controllers
 {
@@ -270,10 +271,73 @@ namespace quZONE.Api.Controllers
         {
             return fileData.Headers.ContentDisposition.FileName;
         }
-        
-        
-        
-        
+
+
+
+        [AllowAnonymous]
+        //[Authorize]
+        [Route("createtrial/{id:int}")]
+        public async Task<IHttpActionResult> CreateTrialUser(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+
+
+            var req = _userProfileService.GetTrialRequestById(id);
+
+            var org = _userProfileService.GetOrganizationByName(req.OrganizationName);
+
+
+
+
+            var user = new ApplicationUser()
+            {
+                UserName = req.ContactFirstName.Substring(0, 1) + req.ContactLastName,
+                Email = req.ContactEmail,
+                FirstName = req.ContactFirstName,
+                LastName = req.ContactLastName,
+                Level = 0,
+                JoinDate = DateTime.Now.Date,
+                EmailConfirmed = true,
+
+                UserProfile = new Api.Infrastructure.UserProfile()
+                {
+                    ContactEmail = req.ContactEmail,
+                    OrgainzationId = org.Id,
+                    //AvatarImgUrlMd = "content/images/avatars/avatar-default-md.png",
+                    //AvatarImgUrlSm = "content/images/avatars/avatar-default-sm.png",
+                    PositionId = 1,
+                    AvatarImgUrl = "content/images/avatars/avatar-default.png"
+
+                }
+            };
+
+            IdentityResult addUserResult = await this.AppUserManager.CreateAsync(user, "ChangeIt!");
+
+            if (!addUserResult.Succeeded)
+            {
+                return GetErrorResult(addUserResult);
+            }
+
+            //Add client role - default
+            //
+            var currentUser = AppUserManager.FindByName(user.UserName);
+
+            AppUserManager.AddToRoles(currentUser.Id, "manager");
+
+
+
+
+
+            Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
+
+            return Created(locationHeader, TheModelFactory.Create(user));
+
+
+        }
         
         
         
@@ -359,6 +423,14 @@ namespace quZONE.Api.Controllers
             return Ok();
         }
 
+        [AllowAnonymous] //for testing only
+        [Route("org/{name}")]
+        public IHttpActionResult GetOrgnizationByName(string name)
+        {
+            var org = _userProfileService.GetOrganizationByName(name);
+
+            return Ok(org);
+        }
 
         #endregion
 

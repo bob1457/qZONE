@@ -81,7 +81,7 @@
 
 
         $scope.addUser = function () {
-            //debugger;
+            debugger;
 
             $scope.isDisabled = true;
             $scope.loading = true;
@@ -99,7 +99,7 @@
             //ngDialog.close();
 
             if ($scope.userData.password === $scope.userData.confirmPassword) {
-                $http.post(serviceBase + 'create', $scope.userData).success(function (response) {
+                $http.post(serviceBase + 'api/accounts/create', $scope.userData).success(function (response) {
 
                     $scope.loading = false;
 

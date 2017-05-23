@@ -510,6 +510,12 @@ namespace quZONE.Data.Repositories
             return _context.TrialRequests.FirstOrDefault(t => t.Id == id);
         }
 
+        public Organization GetOrganizationByName(string name)
+        {
+            //throw new NotImplementedException();
+
+            return _context.Organizations.FirstOrDefault(o => o.Name == name);
+        }
 
 
         #endregion
@@ -525,6 +531,8 @@ namespace quZONE.Data.Repositories
 
 
 
-        
+
+
+
     }
 }

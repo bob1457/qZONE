@@ -206,7 +206,21 @@
             $http.post(serverBase + 'api/profile/request/create/'+ rId).success(function (res) {
                 //make a new http request to create user account - on hold for now, manual crate user account after org is created
 
-                refresh();
+
+
+                $http.post(serverBase + 'api/profile/createtrial/create' + rId).success(function (response) {
+
+                   // $scope.loading = false;
+
+                    //$scope.$parent.userData.list.push($scope.userData);
+                   
+
+                    $scope.$parent.$broadcast('userAdd', "");
+
+                    
+                });
+
+                //refresh();
 
                 $scope.$parent.$broadcast('orgAdd', "");
 

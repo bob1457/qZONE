@@ -268,6 +268,17 @@ namespace quZONE.Services.UserProfile
             return _userProfileRepository.GetTrialRequestByrId(id);
         }
 
+
+
+        public Organization GetOrganizationByName(string name)
+        {
+            //throw new NotImplementedException();
+            return _userProfileRepository.GetOrganizationByName(name);
+        }
+
+
+
+
         #endregion
 
 
@@ -303,5 +314,8 @@ namespace quZONE.Services.UserProfile
 
 
 
+
+
+        
     }
 }

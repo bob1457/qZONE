@@ -6,6 +6,7 @@ using System.Web.Http.Results;
 using Microsoft.AspNet.Identity;
 using quZONE.Api.Infrastructure;
 using quZONE.Api.Models;
+using quZONE.Domain.Services;
 
 
 namespace quZONE.Api.Controllers
@@ -13,7 +14,7 @@ namespace quZONE.Api.Controllers
     [RoutePrefix("api/accounts")]
     public class AccountsController : BaseApiController
     {
-
+        
         [Authorize(Roles = "admin")]
         [Route("users")]
         public IHttpActionResult GetUsers()
@@ -134,6 +135,77 @@ namespace quZONE.Api.Controllers
 
             //return Ok();
         }
+
+/*
+
+        [AllowAnonymous]
+        //[Authorize]
+        [Route("createtrial")]
+        public async Task<IHttpActionResult> CreateTrialUser(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            
+
+            var req = _profileService.GetTrialRequestById(id);
+
+            var org = _profileService.GetOrganizationByName(req.OrganizationName);
+
+            
+
+
+            var user = new ApplicationUser()
+            {
+                UserName = req.ContactFirstName.Substring(0,1) + req.ContactLastName,
+                Email = req.ContactEmail,
+                FirstName = req.ContactFirstName,
+                LastName = req.ContactLastName,
+                Level = 0,
+                JoinDate = DateTime.Now.Date,
+                EmailConfirmed = true,
+
+                UserProfile = new UserProfile()
+                {
+                    ContactEmail = req.ContactEmail,
+                    OrgainzationId = org.Id,
+                    //AvatarImgUrlMd = "content/images/avatars/avatar-default-md.png",
+                    //AvatarImgUrlSm = "content/images/avatars/avatar-default-sm.png",
+                    PositionId = 1,
+                    AvatarImgUrl = "content/images/avatars/avatar-default.png"
+
+                }
+            };
+
+            IdentityResult addUserResult = await this.AppUserManager.CreateAsync(user, "ChangeIt!");
+
+            if (!addUserResult.Succeeded)
+            {
+                return GetErrorResult(addUserResult);
+            }
+
+            //Add client role - default
+            //
+            var currentUser = AppUserManager.FindByName(user.UserName);
+
+            AppUserManager.AddToRoles(currentUser.Id, "manager");
+
+            
+
+
+
+            Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
+
+            return Created(locationHeader, TheModelFactory.Create(user));
+
+
+        }
+
+
+*/
+
 
         [Route("update/{username}")]
         public async Task<IHttpActionResult> UpdateUser(string username, CreateUserBindingModel userModel)
