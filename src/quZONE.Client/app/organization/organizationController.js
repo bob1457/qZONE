@@ -195,7 +195,25 @@
             );
         };
 
+        $scope.createTrialAcct = function (rId) {
 
+            debugger;
+
+            $scope.isDisabled = true;
+            $scope.loading = true;
+
+
+            $http.post(serverBase + 'api/profile/request/create/'+ rId).success(function (res) {
+                //make a new http request to create user account - on hold for now, manual crate user account after org is created
+
+                refresh();
+
+                $scope.$parent.$broadcast('orgAdd', "");
+
+            });
+
+            ngDialog.close();
+        }
 
         $scope.updateOrg = function (oId) {
 

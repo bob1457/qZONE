@@ -69,12 +69,15 @@
 
             </div>
 
-            
+
             <div class="box-footer">
                 <button type="submit" class="btn btn-default" ng-click="closeThisDialog()">Cancel</button>
-                <button type="submit" class="btn btn-success pull-left" style="margin-right: 5px;" ng-click="updateOrg(orgDetails.id)">
+                <button type="submit" class="btn btn-success pull-left" style="margin-right: 5px;" ng-click="createTrialAcct(reqDetails.id)">
                     <i class="fa fa-check" aria-hidden="true"></i> Create Trial Account
                 </button>
+            </div>
+            <div style="margin-left: 10px;">
+                <loading-spinner></loading-spinner>
             </div>
         </form>
         

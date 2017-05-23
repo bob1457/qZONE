@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -315,6 +316,47 @@ namespace quZONE.Api.Controllers
             var requests = _userProfileService.GetTrialRequestById(id);
 
             return Ok(requests);
+        }
+
+
+        [AllowAnonymous] //for testing only
+        [Route("request/create/{id:int}")]
+        public IHttpActionResult CreateTrialAccount(int id) //id is the request id
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var orgData = _userProfileService.GetTrialRequestById(id);
+
+            OrganizationViewModel orgModel = new OrganizationViewModel();
+
+            orgModel.Name = orgData.OrganizationName;
+            orgModel.Description = "";
+            orgModel.OrganizationType = "Restaurant";
+            orgModel.AddressLine1 = orgData.OrgAddressLine1;
+            orgModel.City = orgData.OrgAddressCity;
+            orgModel.ProvState = orgData.OrgAddressProState;
+            orgModel.PostZipCode = orgData.OrgAddressPostZipCodeva;
+            orgModel.LogoImgUrl = "content/images/organizations/fs-logo-default.png";
+            orgModel.LogoImgUrlMd = "";
+            orgModel.LogoImgUrlSm = "";
+            orgModel.IsActive = true;
+            orgModel.Telephone = orgData.ContactTel;
+
+            _userProfileService.AddOrganization(orgModel);
+
+
+            //update request status
+            //
+
+
+
+
+
+
+            return Ok();
         }
 
 
