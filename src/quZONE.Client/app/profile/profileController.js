@@ -5,9 +5,9 @@
         .module('qzone')
         .controller('profileController', profileController);
 
-    profileController.$inject = ["$scope", '$location', '$http', 'userProfileService', 'serverBase'];
+    profileController.$inject = ["$scope", '$location', '$http', 'ngDialog', 'userProfileService', 'serverBase'];
 
-    function profileController($scope, $location, $http, userProfileService, serverBase) {
+    function profileController($scope, $location, $http, ngDialog, userProfileService, serverBase) {
         /* jshint validthis:true */
         var vm = this;
         vm.title = 'profileController';
@@ -34,7 +34,17 @@
             email: ""
         };
 
-
+        $scope.upgradeAcct = function() {
+            ngDialog.open(
+                {
+                    appendTo: '#modalDialog',
+                    template: 'app/organization/addNew.html',
+                    scope: $scope,
+                    className: 'ngdialog-theme-plain',
+                    controller: 'organizationController'
+                }
+            );
+        };
 
 
         var promise = userProfileService.getUserProfile(data);
@@ -43,6 +53,16 @@
             $scope.profile = data;
             $scope.$parent.authentication.userAvatarImgUrl = $scope.profile.avatarImgUrl;
             console.log($scope.profile);
+
+            if ($scope.profile.level === 0) {
+                $scope.trial = true;
+            } else {
+                $scope.trial = false;
+            }
+
+            console.log($scope.trial);
+
+
         });
 
         $scope.updateProfile = function (uname) {

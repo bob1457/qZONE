@@ -147,7 +147,7 @@ namespace quZONE.Data.Repositories
                              PhoneNumber = user.PhoneNumber,
                              UserName = user.UserName,
                              JoinDate = user.JoinDate,
-                             
+                             Level = user.Level,
                              OrgainzationId = profile.OrgainzationId,
                              Position = position.PoistionTitle,
                              Name = org.Name,
@@ -159,7 +159,7 @@ namespace quZONE.Data.Repositories
                              ProvState = addres.ProvState,
                              PostCode = addres.PostZipCode,
                              Telephone = org.Telephone,
-
+                             
                              AvatarImgUrl = profile.AvatarImgUrl
                          };
 

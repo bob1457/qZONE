@@ -26,7 +26,8 @@
             //
             userAvatarImgUrl: "",
             isAdmin: false,
-            orgId:""
+            orgId: "",
+            level:"" // 0 - trial account, 3 - paid account
         };
 
         var _saveRegistration = function (registration) {
@@ -105,6 +106,7 @@
                 //_authentication.userAvatarImgUrl = 'content/images/avatars/' + authData.userName + ".jpg";
                 _authentication.isAdmin = authData.isAdmin;
                 _authentication.orgId = authData.orgId;
+                _authentication.level = authData.level;
             }
 
         };

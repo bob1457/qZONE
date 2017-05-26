@@ -142,10 +142,10 @@
             ngDialog.open(
                 {
                     appendTo: '#modalDialog',
-                    template: 'app/organization/addNew.html',
+                    template: 'app/profile/upgrade.html',
                     scope: $scope,
                     className: 'ngdialog-theme-plain',
-                    controller: 'organizationController'
+                    controller: 'profileController'
                 }
             );
         };
@@ -203,16 +203,17 @@
             $scope.loading = true;
 
 
-            $http.post(serverBase + 'api/profile/request/create/'+ rId).success(function (res) {
-                //make a new http request to create user account - on hold for now, manual crate user account after org is created
+            $http.post(serverBase + 'api/profile/request/create/' + rId).success(function (res) {
 
-
-
+                //make a new http request to create user account
+                //
                 $http.post(serverBase + 'api/profile/createtrial/create' + rId).success(function (response) {
 
-                   // $scope.loading = false;
+                    $scope.loading = false;
 
-                    //$scope.$parent.userData.list.push($scope.userData);
+                    $scope.$parent.userData.list.push($scope.userData);
+
+                    refresh(); //refresh organization data
                    
 
                     $scope.$parent.$broadcast('userAdd', "");

@@ -35,7 +35,8 @@ namespace quZONE.Domain.ViewModels
         [StringLength(256)]
         public string UserName { get; set; }
 
-        
+        public byte Level { get; set; }
+
         //Orgainzation info
         //
         public string AvatarImgUrl { get; set; }
