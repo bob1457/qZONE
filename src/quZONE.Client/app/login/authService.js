@@ -27,7 +27,10 @@
             userAvatarImgUrl: "",
             isAdmin: false,
             orgId: "",
-            level:"" // 0 - trial account, 3 - paid account
+            level: "", // 0 - trial account, 3 - paid account
+            firstName: "",
+            position: "",
+            joinDate: ""
         };
 
         var _saveRegistration = function (registration) {
@@ -60,6 +63,11 @@
 
                 profileResult.success(function(res) {
                     _authentication.orgId = res.orgainzationId;
+                    _authentication.level = res.level;
+                    _authentication.firstName = res.firstName;
+                    _authentication.position = res.position;
+                    _authentication.joinDate = res.joinDate;
+
                     _authentication.userAvatarImgUrl = res.avatarImgUrl;
 
                     if (loginData.userName === "admin") {
@@ -107,6 +115,10 @@
                 _authentication.isAdmin = authData.isAdmin;
                 _authentication.orgId = authData.orgId;
                 _authentication.level = authData.level;
+                _authentication.firstName = authData.firtName;
+                _authentication.position = authData.position;
+                _authentication.joinDate = authData.joinDate;
+
             }
 
         };

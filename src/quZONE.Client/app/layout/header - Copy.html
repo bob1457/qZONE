@@ -33,11 +33,11 @@
                         <li class="user-header">
                             <img ng-src="{{baseUrl}}{{authentication.userAvatarImgUrl}}" class="img-circle" style="height: 60px; width: 60px;" alt="User Image">
                             <p class="pull-right" style="font-style: italic;">
-                                {{authentication.firstName}}{{profile.firstName}} ({{authentication.position}})
+                                {{profile.firstName}} ({{profile.position}})
                                 <small>Member since {{profile.joinDate | date : "shortDate"}}</small>
-                                <!--{profile.level}}--> <span ng-if="trial2">
-    <small style="color: #ffd800"> Trial Account <a href="" ng-click="upgradeAcct()" class="btn btn-sm btn-danger">Upgrade</a> </small>
-</span>
+                                <!--{profile.level}}--> <span ng-if="trial">
+                                    <small style="color: #ffd800"> Trial Account <a href="" ng-click="upgradeAcct()" class="btn btn-sm btn-danger">Upgrade</a> </small>
+                                </span>
                             </p>
                         </li>
                         <!-- Menu Body

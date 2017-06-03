@@ -79,6 +79,13 @@
                 console.log($scope.profile);
 
                 console.log($scope.profile.position);
+
+                if ($scope.profile.level === 0) {
+                    $scope.trial2 = true;
+                } else {
+                    $scope.trial2 = false;
+                }
+
             });
 
 
@@ -114,7 +121,13 @@
         $scope.companyId = authService.authentication.orgId;
 
 
+        if ($scope.authentication.level === 0) {
+            $scope.trial2 = true;
+        } else {
+            $scope.trial2 = false;
+        }
 
+        console.log($scope.trial2);
 
         //console.log($scope.companyId);
 

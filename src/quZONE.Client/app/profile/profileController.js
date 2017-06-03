@@ -38,7 +38,7 @@
             ngDialog.open(
                 {
                     appendTo: '#modalDialog',
-                    template: 'app/organization/addNew.html',
+                    template: 'app/profile/upgrade.html',
                     scope: $scope,
                     className: 'ngdialog-theme-plain',
                     controller: 'organizationController'
@@ -54,7 +54,7 @@
             $scope.$parent.authentication.userAvatarImgUrl = $scope.profile.avatarImgUrl;
             console.log($scope.profile);
 
-            if ($scope.profile.level === 0) {
+            if ($scope.profile.level == 0) {
                 $scope.trial = true;
             } else {
                 $scope.trial = false;
@@ -125,6 +125,24 @@
 
         activate();
 
-        function activate() { }
+        function activate() {
+            var promise = userProfileService.getUserProfile(data);
+            debugger;
+            promise.success(function (data) {
+                $scope.profile = data;
+                $scope.$parent.authentication.userAvatarImgUrl = $scope.profile.avatarImgUrl;
+                console.log($scope.profile);
+
+                if ($scope.profile.level == 0) {
+                    $scope.trial = true;
+                } else {
+                    $scope.trial = false;
+                }
+
+                console.log($scope.trial);
+
+
+            });
+        }
     }
 })();

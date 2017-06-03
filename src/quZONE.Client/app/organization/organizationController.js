@@ -142,10 +142,10 @@
             ngDialog.open(
                 {
                     appendTo: '#modalDialog',
-                    template: 'app/profile/upgrade.html',
+                    template: 'app/organization/addNew.html',
                     scope: $scope,
                     className: 'ngdialog-theme-plain',
-                    controller: 'profileController'
+                    controller: 'organizationController'
                 }
             );
         };
