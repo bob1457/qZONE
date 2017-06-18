@@ -92,7 +92,7 @@
 
             waitListPromise.success(function (data) {
                 $scope.listData.lists = data;
-                //console.log($scope.listData.lists.length);
+                console.log($scope.listData.lists);
             });
 
             $scope.listData = {
@@ -108,7 +108,7 @@
 
             $scope.listData.OrganizationId = companyId;
 
-            
+            console.log($scope.listData);
         });
 
 
@@ -304,10 +304,21 @@
 
 
 
-
+            // Emit the event
             $scope.$emit('orgUserAdded', {
                 position: $scope.userData.positionId
             });
+
+
+            //Get today's date
+
+            var today = new Date();
+
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();
+
+            $scope.tday = yyyy + "-" + mm + "-" + dd;
         }
     }
 })();

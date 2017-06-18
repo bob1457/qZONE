@@ -75,7 +75,8 @@
                 guestGroupSize: "",
                 waitingStatus: "Waiting",
                 notes: "",
-                organizationId: ""
+                organizationId: ""//,
+                //createDate:"" //added attribute
             };
 
             $scope.tableData = {

@@ -159,6 +159,16 @@
                     </div><!-- /.box-header -->
                     <div class="box-body">
 
+
+                        <!-- Filter here
+                        <div ng-init="s='today'">
+
+                            <input name="state" type="radio" ng-model="s" style="vertical-align: text-bottom;" value="today" ng-checked="true"> Today &nbsp;
+
+                            <input name="state" type="radio" ng-model="s" style="vertical-align: text-bottom;" value=""> All
+                        </div>
+                        -->
+
                         <table id="example1" class="table table-bordered table-striped table-hover">
                             <thead>
                             <tr>
@@ -175,7 +185,10 @@
                             </thead>
                             <tbody>
                             <loading-spinner></loading-spinner>
-                                <tr dir-paginate="list in listData.lists | itemsPerPage:10 " pagination-id="lst">
+
+                                <!--{{tday}}-->
+                            <tr dir-paginate="list in listData.lists |  itemsPerPage:10 " pagination-id="lst"><!-- Need to considre filteirng by creatge datewith filter: s |, custom filter might needed -->
+                                <div ng-show="">
                                     <td><i class="fa fa-user" ng-class="{'row-available': list.waitingStatus === 'Available', 'row-waiting': list.waitingStatus === 'Waiting', 'row-served': list.waitingStatus === 'Served'}" title="{{list.waitingStatus}}"></i></td>
                                     <td>{{list.guestFirstName}} {{list.guestLastName}}</td>
                                     <td>{{list.guestContactTel}}</td>
@@ -183,7 +196,7 @@
                                     <td>{{list.createDate | date: 'short'}}</td>
                                     <!--<td>{{list.waitingStatus}}</td>-->
                                     <!--<td>{{list.notes}}</td>-->
-                                    
+
 
                                     <td class="pull-right">
                                         <a href="" ng-click="showListDetails(list.guestId)"><i class="fa fa-file-text" aria-hidden="true" style="margin-right: 7px;" title="Details"></i></a>
@@ -191,7 +204,7 @@
                                         <a href="" ng-show="list.waitingStatus === 'Available'" ng-click="showCallGuest(list.guestId)"><i class="fa fa-bell-o" aria-hidden="true" title="Call guest"></i></a>
                                     </td>
                                     <div id="listDialog"></div>
-
+                                </div>
 
                                 </tr>
 

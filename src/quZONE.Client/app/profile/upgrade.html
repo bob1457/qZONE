@@ -1,5 +1,5 @@
 ﻿<style>
-    .panel-info>.panel-heading {
+    .panel-info > .panel-heading {
         margin-top: -15px;
         margin-left: -15px;
         margin-right: -15px;
@@ -7,13 +7,13 @@
 </style>
 
 
-<div class="panel panel-info" style="position: relative; top: 30px;" >
+<div class="panel panel-info" style="position: relative; top: 30px;">
     <div class="panel-heading" style="position: relative;top: -30px;">
         <h3>
             <i class="fa fa-caret-square-o-up"></i> Account Upgrade
         </h3>
     </div>
-    <div class="panel-body" >
+    <div class="panel-body">
         <!--<form role="form">
             <div class="box-body">
                 <div class="form-group">
@@ -35,7 +35,7 @@
                 <button type="submit" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Add</button>
                 <button type="submit" class="btn btn-default">Cancel</button>
             </div>
-        </form>-->
+        </form>
 
         <form class="form-horizontal">
             <div class="box-body" style="margin-top: -25px;">
@@ -51,7 +51,7 @@
                         <textarea type="text" ng-model="orgData.Description" class="form-control" id="inputPassword3" placeholder="Description"></textarea>
                     </div>
                 </div>
-                <div class="form-group" >
+                <div class="form-group">
                     <label for="inputEmail3" class="col-sm-3 control-label no-bold">Company Type</label>
                     <div class="col-sm-9">
                         <input type="text" ng-model="orgData.OrganizationType" class="form-control" id="inputEmail3" placeholder="Company Type">
@@ -107,15 +107,53 @@
                     </div>
                 </div>
 
-            </div><!-- /.box-body -->
+            </div>
             <div class="box-footer">
                 <button type="submit" class="btn btn-default" ng-click="closeThisDialog()">Cancel</button>
                 <button type="submit" class="btn btn-primary pull-left" ng-click="addCompany()" style="margin-right: 5px;"> <i class="fa fa-check" aria-hidden="true"></i> Add</button>
-            </div><!-- /.box-footer -->
+            </div>
             <div style="margin-left: 10px;">
                 <loading-spinner></loading-spinner>
             </div>
         </form>
+
+        -->
+
+        <div style="margin-top: -2.75em; color: #9a2d12;">
+            <h4><i class="fa fa-hand-o-right" aria-hidden="true"></i> &nbsp; Yes, upgrade my account</h4>
+        </div>
+        <div class="row" style="margin-top: 1.5em;">
+            <div class="col-md-3">
+                <img src="../../content/images/upgrade.png"/>
+            </div>
+
+            <div class="col-md-9">
+                <!--Choose the plan:<br/>
+                <input name="plan" type="radio" ng-model="s" style="vertical-align: text-bottom;" value="basic" ng-checked="true"> Basic &nbsp;
+                <input name="plan" type="radio" ng-model="s" style="vertical-align: text-bottom;" value="pro"> Professional &nbsp;
+                <input name="state" type="radio" ng-model="s" style="vertical-align: text-bottom;" value="Served"> Served &nbsp;
+                <input name="state" type="radio" ng-model="s" style="vertical-align: text-bottom;" value=""> All-->
+                <h4><input name="plan" type="radio" ng-model="s" checked=""> Price Plan</h4>
+                <div>
+                    Annual subscripton fee: $29.99<br/>
+                    100 wait list guest groups per month, $.99 per group thereafter.
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <hr style="color: green;"/>
+                Please upgrade my account to the price plan above, and accept the <a href="">Licensing Terms and Conditions</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="box-footer">
+        <button type="submit" class="btn btn-default pull-right" ng-click="closeThisDialog()">Cancel</button>
+        <button type="submit" class="btn btn-success pull-right" ng-click="upgrade()" style="margin-right: 5px;"> <i class="fa fa-check" aria-hidden="true"></i> Upgrade</button>
     </div>
 
 
