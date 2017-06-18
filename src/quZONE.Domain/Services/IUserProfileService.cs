@@ -39,6 +39,8 @@ namespace quZONE.Domain.Services
 
         void UpdateRequest(int id);
 
+        void ActivateAccount(int id);
+
         IEnumerable<UserProfileViewModel> GetAllUsers();
 
         IEnumerable<OrganizationViewModel> GetallOrganizations();

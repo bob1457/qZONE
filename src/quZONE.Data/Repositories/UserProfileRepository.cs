@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using quZONE.Data.Interfaces;
 using quZONE.Domain;
 using quZONE.Domain.Entities;
+using quZONE.Domain.Temp;
 using quZONE.Domain.ViewModels;
 
 namespace quZONE.Data.Repositories
@@ -533,6 +534,36 @@ namespace quZONE.Data.Repositories
         }
 
 
+
+        public void AddOrgAccount(int id)
+        {
+            //throw new NotImplementedException();
+
+            Account account = new Account
+            {
+                OrganizationId = id,
+                CreateDate = DateTime.Now,
+                UpdateDate = DateTime.Now,
+                EffectiveDate = DateTime.Now,
+                IsActive = true,
+                PaymentHistoryId = 0
+            };
+
+
+            _context.Accounts.Add(account);
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
+        }
+
+
         #endregion
 
 
@@ -551,6 +582,5 @@ namespace quZONE.Data.Repositories
 
 
 
-        
     }
 }

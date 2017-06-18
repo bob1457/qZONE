@@ -42,6 +42,8 @@ namespace quZONE.Data.Interfaces
 
         void UpdateTrialRequest(int id);
 
+        void AddOrgAccount(int id);
+
         Address GetOrgAddress(int id);
 
         Organization GetOrganizationById(int id);

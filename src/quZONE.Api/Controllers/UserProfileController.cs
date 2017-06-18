@@ -363,7 +363,7 @@ namespace quZONE.Api.Controllers
         }
 
 
-        [AllowAnonymous] //for testing only
+        //[AllowAnonymous] //for testing only
         [Route("requests")]
         public IHttpActionResult GetAllTrialREquests()
         {
@@ -396,20 +396,22 @@ namespace quZONE.Api.Controllers
 
             var request = _userProfileService.GetTrialRequestById(id);
 
-            OrganizationViewModel orgModel = new OrganizationViewModel();
+            OrganizationViewModel orgModel = new OrganizationViewModel
+            {
+                Name = orgData.OrganizationName,
+                Description = "",
+                OrganizationType = "Restaurant",
+                AddressLine1 = orgData.OrgAddressLine1,
+                City = orgData.OrgAddressCity,
+                ProvState = orgData.OrgAddressProState,
+                PostZipCode = orgData.OrgAddressPostZipCodeva,
+                LogoImgUrl = "content/images/organizations/fs-logo-default.png",
+                LogoImgUrlMd = "",
+                LogoImgUrlSm = "",
+                IsActive = true,
+                Telephone = orgData.ContactTel
+            };
 
-            orgModel.Name = orgData.OrganizationName;
-            orgModel.Description = "";
-            orgModel.OrganizationType = "Restaurant";
-            orgModel.AddressLine1 = orgData.OrgAddressLine1;
-            orgModel.City = orgData.OrgAddressCity;
-            orgModel.ProvState = orgData.OrgAddressProState;
-            orgModel.PostZipCode = orgData.OrgAddressPostZipCodeva;
-            orgModel.LogoImgUrl = "content/images/organizations/fs-logo-default.png";
-            orgModel.LogoImgUrlMd = "";
-            orgModel.LogoImgUrlSm = "";
-            orgModel.IsActive = true;
-            orgModel.Telephone = orgData.ContactTel;
 
             _userProfileService.AddOrganization(orgModel);
 
@@ -504,8 +506,19 @@ namespace quZONE.Api.Controllers
             return Ok();
         }
 
+        [AllowAnonymous] //testing only
+        [Route("organization/account/{id:int}")]
+        public IHttpActionResult ActivateOrgAccount(int id) //id is org id, to create an account connected to the organization for billing and management
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            _userProfileService.ActivateAccount(id);
 
+            return Ok();
+        }
 
 
         #endregion

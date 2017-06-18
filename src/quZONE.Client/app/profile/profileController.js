@@ -28,6 +28,9 @@
         //    console.log($scope.profile);
         //});
 
+        $scope.isDisabled = false;
+        $scope.loading = false;
+
         $scope.profile = {
             firstName: "",
             lastName: "",
@@ -41,7 +44,7 @@
                     template: 'app/profile/upgrade.html',
                     scope: $scope,
                     className: 'ngdialog-theme-plain',
-                    controller: 'organizationController'
+                    controller: 'profileController'
                 }
             );
         };
@@ -54,7 +57,7 @@
             $scope.$parent.authentication.userAvatarImgUrl = $scope.profile.avatarImgUrl;
             console.log($scope.profile);
 
-            if ($scope.profile.level == 0) {
+            if ($scope.profile.level === 0) {
                 $scope.trial = true;
             } else {
                 $scope.trial = false;
@@ -120,8 +123,17 @@
             
         };
 
+        debugger;
 
+        $scope.upgrade = function() {
+            //alert("upgrade!");
+            $scope.isDisabled = true;
+            $scope.loading = true;
 
+            //call web api to do the upgrade
+
+            ngDialog.close();
+        }
 
         activate();
 

@@ -283,7 +283,20 @@ namespace quZONE.Services.UserProfile
             _userProfileRepository.UpdateTrialRequest(id);
         }
 
+
+
+        public void ActivateAccount(int id)
+        {
+            //throw new NotImplementedException();
+
+            _userProfileRepository.AddOrgAccount(id);
+        }
+
+
         #endregion
+
+
+
 
 
 
