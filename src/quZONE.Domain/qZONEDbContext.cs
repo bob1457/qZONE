@@ -1,5 +1,5 @@
 using quZONE.Domain.Entities;
-using quZONE.Domain.Temp;
+
 
 namespace quZONE.Domain
 {
@@ -34,9 +34,10 @@ namespace quZONE.Domain
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<KBVersionHistory> KBVersionHistories { get; set; }
         public virtual DbSet<KnowledgeBase> KnowledgeBases { get; set; }
-        public virtual DbSet<PaymentHistory> PaymentHistories { get; set; }
+        public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
         public virtual DbSet<PaymentType> PaymentTypes { get; set; }
+        
         public virtual DbSet<RequestResponse> RequestResponses { get; set; }
         public virtual DbSet<Resolution> Resolutions { get; set; }
         public virtual DbSet<SupportRequest> SupportRequests { get; set; }
@@ -66,17 +67,22 @@ namespace quZONE.Domain
             //    .WithRequired(e => e.Organization)
             //    .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<PaymentHistory>()
+            modelBuilder.Entity<Account>()
+                .HasMany(e => e.Payments)
+                .WithRequired(e => e.Account)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Payment>()
                 .Property(e => e.PaymentAmount)
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<PaymentMethod>()
-                .HasMany(e => e.PaymentHistories)
+                .HasMany(e => e.Payments)
                 .WithRequired(e => e.PaymentMethod)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<PaymentType>()
-                .HasMany(e => e.PaymentHistories)
+                .HasMany(e => e.Payments)
                 .WithRequired(e => e.PaymentType)
                 .WillCascadeOnDelete(false);
 

@@ -12,7 +12,7 @@ namespace quZONE.Domain.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PaymentMethod()
         {
-            PaymentHistories = new HashSet<PaymentHistory>();
+            Payments = new HashSet<Payment>();
         }
 
         public int Id { get; set; }
@@ -26,6 +26,6 @@ namespace quZONE.Domain.Entities
         public string Description { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PaymentHistory> PaymentHistories { get; set; }
+        public virtual ICollection<Payment> Payments { get; set; }
     }
 }

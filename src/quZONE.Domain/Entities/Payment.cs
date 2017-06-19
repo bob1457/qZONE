@@ -6,10 +6,12 @@ namespace quZONE.Domain.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("PaymentHistory")]
-    public partial class PaymentHistory
+    [Table("Payment")]
+    public partial class Payment
     {
         public long Id { get; set; }
+
+        public int AccountId { get; set; }
 
         public decimal PaymentAmount { get; set; }
 
@@ -22,6 +24,8 @@ namespace quZONE.Domain.Entities
 
         [Column(TypeName = "datetime2")]
         public DateTime? PaymentDate { get; set; }
+
+        public virtual Account Account { get; set; }
 
         public virtual PaymentMethod PaymentMethod { get; set; }
 
