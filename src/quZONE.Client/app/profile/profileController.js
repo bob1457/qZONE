@@ -18,6 +18,7 @@
 
         var data = $scope.$parent.authentication.userName;
         
+        
         $scope.name = data;
 
         //var profileData = profileService.getData(data);
@@ -36,6 +37,11 @@
             lastName: "",
             email: ""
         };
+
+        $scope.acctInfo = {
+            id: "",
+            pymnt:""
+        }
 
         $scope.upgradeAcct = function() {
             ngDialog.open(
@@ -63,8 +69,11 @@
                 $scope.trial = false;
             }
 
-            console.log($scope.trial);
 
+            console.log($scope.profile.orgainzationId);
+            $scope.id = $scope.profile.orgainzationId;
+            console.log($scope.id);
+            
 
         });
 
@@ -123,16 +132,27 @@
             
         };
 
-        debugger;
+        
+        $scope.upgrade = function (companyId, pymnt) {
+            debugger;
 
-        $scope.upgrade = function() {
-            //alert("upgrade!");
+            alert("upgrade!");
             $scope.isDisabled = true;
             $scope.loading = true;
 
-            //call web api to do the upgrade
+            //call web api to do the upgrade (create org account)
+            $http.post(serviceBase + 'api/profile/organization/account/' + companyId + "/" + pymnt).success(function (response) {
 
-            ngDialog.close();
+                //update user level
+                $http.post(serviceBase + 'api/profile/organization/user/update/' + uname).success(function(res) {});
+
+                $scope.loading = false;
+                $scope.isDisabled = false;
+
+                
+            });
+
+            ngDialog.close(); 
         }
 
         activate();

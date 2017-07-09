@@ -61,4 +61,9 @@ namespace quZONE.Api.Models
         public string ConfirmPassword { get; set; }
 
     }
+
+    public class ForgotPasswordModel
+    {
+        public string Email { get; set; }
+    }
 }

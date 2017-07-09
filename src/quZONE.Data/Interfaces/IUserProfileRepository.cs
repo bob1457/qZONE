@@ -42,7 +42,7 @@ namespace quZONE.Data.Interfaces
 
         void UpdateTrialRequest(int id);
 
-        void AddOrgAccount(int id);
+        void AddOrgAccount(int id, int pymnt);
 
         Address GetOrgAddress(int id);
 

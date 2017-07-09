@@ -506,16 +506,44 @@ namespace quZONE.Api.Controllers
             return Ok();
         }
 
-        [AllowAnonymous] //testing only
-        [Route("organization/account/{id:int}")]
-        public IHttpActionResult ActivateOrgAccount(int id) //id is org id, to create an account connected to the organization for billing and management
+        //[AllowAnonymous] //testing only
+        [Route("organization/account/{id:int}/{pymnt:int}")]
+        public IHttpActionResult ActivateOrgAccount(int id, int pymnt) //id is org id, to create an account connected to the organization for billing and management
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _userProfileService.ActivateAccount(id);
+            //try
+            //{
+            //    _userProfileService.ActivateAccount(id, pymnt);
+            //}
+            //catch (Exception)
+            //{
+                
+            //    throw;
+            //}
+
+            _userProfileService.ActivateAccount(id, pymnt);
+
+            return Ok();
+        }
+
+        [AllowAnonymous] //testing only
+        [Route("organization/user/update/{uname}")]
+        public IHttpActionResult UpdateUserLevel(string uname)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = AppUserManager.FindByName(uname);
+
+            user.Level = 1;
+
+            AppUserManager.Update(user);
 
             return Ok();
         }

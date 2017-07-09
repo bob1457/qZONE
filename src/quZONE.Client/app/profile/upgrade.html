@@ -133,10 +133,18 @@
                 <input name="plan" type="radio" ng-model="s" style="vertical-align: text-bottom;" value="pro"> Professional &nbsp;
                 <input name="state" type="radio" ng-model="s" style="vertical-align: text-bottom;" value="Served"> Served &nbsp;
                 <input name="state" type="radio" ng-model="s" style="vertical-align: text-bottom;" value=""> All-->
-                <h4><input name="plan" type="radio" ng-model="s" checked=""> Price Plan</h4>
+                <h4 style="font-weight: bold;"> Price Plan</h4>
                 <div>
-                    Annual subscripton fee: $29.99<br />
+                    Annual subscripton fee: $99.99<br/>
                     100 wait list guest groups per month, $.99 per group thereafter.
+                </div>
+                <hr/>
+                <div>
+                    <input name="pymnt" type="radio" ng-model="pymnt" style="vertical-align: text-bottom;" value="1" ng-checked="true"> Bank Transfer &nbsp;
+                    <input name="pymnt" type="radio" ng-model="pymnt" style="vertical-align: text-bottom;" value="2"> Monthly Bill
+                </div>
+                <div>
+                    
                 </div>
 
             </div>
@@ -153,7 +161,7 @@
     </div>
     <div class="box-footer">
         <button type="submit" class="btn btn-default pull-right" ng-click="closeThisDialog()">Cancel</button>
-        <button type="submit" ng-disabled="isDisabled" class=" btn btn-success pull-right" ng-click="upgrade()" style="margin-right: 5px;"> <i class="fa fa-check" aria-hidden="true"></i> Upgrade</button>
+        <button type="submit" ng-disabled="isDisabled" class=" btn btn-success pull-right" ng-click="upgrade(id, pymnt)" style="margin-right: 5px;"> <i class="fa fa-check" aria-hidden="true"></i> Upgrade</button>
     </div>
     <div style="margin-left: 10px;">
         <loading-spinner></loading-spinner>

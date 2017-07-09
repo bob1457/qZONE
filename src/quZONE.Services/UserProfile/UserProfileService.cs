@@ -285,11 +285,11 @@ namespace quZONE.Services.UserProfile
 
 
 
-        public void ActivateAccount(int id)
+        public void ActivateAccount(int id, int pymnt)
         {
             //throw new NotImplementedException();
 
-            _userProfileRepository.AddOrgAccount(id);
+            _userProfileRepository.AddOrgAccount(id, pymnt);
         }
 
 

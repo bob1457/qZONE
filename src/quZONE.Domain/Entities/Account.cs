@@ -21,6 +21,8 @@ namespace quZONE.Domain.Entities
 
         public bool IsActive { get; set; }
 
+        public int PaymentOption { get; set; }
+
         [Column(TypeName = "datetime2")]
         public DateTime CreateDate { get; set; }
 

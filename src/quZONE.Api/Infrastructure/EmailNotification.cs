@@ -5,6 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 
+
+/**************************************/
+/*          NOT BEING USED            */
+/**************************************/
+
+
 namespace quZONE.Api.Infrastructure
 {
     public class EmailNotification

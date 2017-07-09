@@ -100,7 +100,8 @@ namespace quZONE.Api.Controllers
 
             //Enable immediate account activation
             //
-            //currentUser.EmailConfirmed = true;
+            currentUser.EmailConfirmed = true;
+
 
             //update user profile
             //
@@ -118,16 +119,19 @@ namespace quZONE.Api.Controllers
 
             //await this.AppUserManager.SendEmailAsync(createUserModel.Email,
             //                                        "Confirm your account",
-            //                                        "Your account has been setup. The username and password are:" + createUserModel.Username 
-            //                                        + "/" + createUserModel.Password + "." );
+            //                                        "Your account has been setup. The username and password are:" + createUserModel.Username
+            //                                        + "/" + createUserModel.Password + ".");
 
-            //EmailNotification emailNotication = new EmailNotification();
+            EmailNotification emailNotication = new EmailNotification();
 
-
+            emailNotication.SendEmail(createUserModel.Email,
+                                                    "Confirm your account",
+                                                    "Your account has been setup. The username and password are:" + createUserModel.Username
+                                                    + "/" + createUserModel.Password + ".");
 
             Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
 
-            return Created(locationHeader, TheModelFactory.Create(user));
+            return Created(locationHeader, TheModelFactory.Create(user)); // Factory pattern is used here to create user account
 
 
             
@@ -280,6 +284,44 @@ namespace quZONE.Api.Controllers
 
         //    return Ok();
         //}
+
+        /**/
+
+        public async Task<IHttpActionResult> ForgotPassword(ForgotPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await AppUserManager.FindByNameAsync(model.Email);
+                // If user has to activate his email to confirm his account, then use code listing below
+                //if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                //{
+                //    return Ok();
+                //}
+                if (user == null)
+                {
+                    return Ok(); // Don't reveal that the user does not exist or is not confirmed
+                    
+                }
+
+                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                // Send an email with this link
+                string code = await AppUserManager.GeneratePasswordResetTokenAsync(user.Id);
+                //await AppUserManager.SendEmailAsync(user.Id, "Reset Password", $"Please reset your password by using this {code}");
+
+                EmailNotification email = new EmailNotification();
+
+                email.SendEmail(model.Email,"Reset Password", "Please reset your password by using this " + code );
+
+                return Ok();
+            }
+
+            // If we got this far, something failed, redisplay form
+            return BadRequest(ModelState);
+        }
+
+
+
+
 
 
         [Authorize(Roles = "admin")]

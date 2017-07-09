@@ -39,7 +39,7 @@ namespace quZONE.Domain.Services
 
         void UpdateRequest(int id);
 
-        void ActivateAccount(int id);
+        void ActivateAccount(int id, int pymnt);
 
         IEnumerable<UserProfileViewModel> GetAllUsers();
 

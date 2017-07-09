@@ -535,13 +535,14 @@ namespace quZONE.Data.Repositories
 
 
 
-        public void AddOrgAccount(int id)
+        public void AddOrgAccount(int id, int pymnt)
         {
             //throw new NotImplementedException();
 
             Account account = new Account
             {
                 OrganizationId = id,
+                PaymentOption = pymnt,
                 CreateDate = DateTime.Now,
                 UpdateDate = DateTime.Now,
                 EffectiveDate = DateTime.Now,
