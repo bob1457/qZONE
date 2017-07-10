@@ -293,6 +293,12 @@ namespace quZONE.Services.UserProfile
         }
 
 
+        public Account GetOrgAccount(int id)
+        {
+            //throw new NotImplementedException();
+            return _userProfileRepository.GetOrgAccount(id);
+        }
+
         #endregion
 
 
@@ -336,6 +342,8 @@ namespace quZONE.Services.UserProfile
 
 
 
-        
+
+
+
     }
 }

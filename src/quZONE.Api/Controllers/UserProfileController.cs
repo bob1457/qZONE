@@ -551,7 +551,10 @@ namespace quZONE.Api.Controllers
 
         #endregion
 
-        [AllowAnonymous] //testing mathod
+
+        #region Organization Account
+
+        //[AllowAnonymous] //testing mathod
         [Route("request/update/{id:int}")]
         public IHttpActionResult UpdateRequest(int id)
         {
@@ -559,5 +562,21 @@ namespace quZONE.Api.Controllers
 
             return Ok();
         }
+
+        [AllowAnonymous] //testing mathod
+        [Route("account/{id:int}")]
+        public IHttpActionResult GetOrgAccountDetails(int id) //id: organziation id
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var account = _userProfileService.GetOrgAccount(id);
+
+            return Ok(account);
+        }
+
+        #endregion
     }
 }

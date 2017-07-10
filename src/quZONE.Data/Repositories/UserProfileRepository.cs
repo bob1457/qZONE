@@ -563,6 +563,14 @@ namespace quZONE.Data.Repositories
                 throw;
             }
         }
+        
+
+        public Account GetOrgAccount(int id)
+        {
+            //throw new NotImplementedException();
+            return _context.Accounts.FirstOrDefault(o => o.OrganizationId == id);
+        }
+
 
 
         #endregion

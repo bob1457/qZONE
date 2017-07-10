@@ -33,6 +33,8 @@ namespace quZONE.Domain.Services
 
         Organization GetOrganizationById(int id);
 
+        Account GetOrgAccount(int id);
+
         Organization GetOrganizationByName(string name);
 
         void AddRequest(TrialRequest request);

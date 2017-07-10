@@ -120,7 +120,14 @@
 
         };
 
-        
+        $scope.accountDetails = {
+            id: "",
+            isActive: "",
+            notes: "",
+            organizationId:"",
+            paymentOption: ""
+
+        };
         
         $scope.$on('orgAdd', function (event, data) {
             //alert(data + " is received in dinning table controller for waitlist updates!");
@@ -259,7 +266,26 @@
             
         };
 
+        debugger;
 
+        $scope.showAccountDetails = function (oId) {
+            var promise = organizationDataService.getOrgAccount(oId);
+
+            promise.success(function(respond) {
+                $scope.accountDetails = respond;
+
+                console.log($scope.accountDetails);
+            });
+
+            ngDialog.open(
+                {
+                    template: 'app/organization/accountDetails.html',
+                    className: 'ngdialog-theme-default',
+                    scope: $scope,
+                    data: $scope.$parent.accountDetails
+                }
+            );
+        }
         //// tab operation
         //$scope.tab = 1;
 

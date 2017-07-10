@@ -45,6 +45,11 @@
             return promise;
         };
 
+        organizationData.getOrgAccount = function(id) {
+            var promise = $http.get(serviceBase + 'api/profile/account/' + id);
+            return promise;
+        }
+
 
         return organizationData;
     }
