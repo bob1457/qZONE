@@ -17,16 +17,16 @@
         <div class="row">
             <div class="col-md-2 col-sm-2 hidden-xs">
                 <figure class="thumbnail">
-                    <img class="img-responsive" ng-src="{{baseUrl}}{{orgDetails.logoImgUrl}}" title="{{orgDetails.name}}"/>
+                    <img class="img-responsive" ng-src="{{baseUrl}}{{accountDetails.logoImgUrl}}" title="{{accountDetails.name}}" />
                 </figure>
             </div>
             <div class="col-md-10 col-sm-10">
                 <div class="panel panel-default arrow left">
                     <div class="panel-body">
                         <header class="text-left">
-                            <div class="org-title">{{orgDetails.name}}</div>
+                            <div class="org-title">{{accountDetails.name}}</div>
                             <div class="org-add">
-                                {{orgDetails.addressLine1}} {{orgDetails.city}} {{orgDetails.provState}} {{orgDetails.postZipCode}}<br/>
+                                {{accountDetails.addressLine1}} {{accountDetails.city}} {{accountDetails.provState}} {{accountDetails.postZipCode}}<br/>
                                 {{orgDetails.telephone}}
                             </div>
                         </header>
@@ -60,73 +60,32 @@
                                         <div class="form-group">
                                             <label for="inputEmail3" class="col-sm-4 control-label ">Account ID</label>
                                             <div class="col-sm-8 detail-value ">
-                                                <span ng-hide="editing" ng-click="editing = true"><label class="no-bold">{{accountDetails.id}} </label></span>
+                                                <span ><label class="no-bold">{{accountDetails.accountId}} </label></span>
 
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3" class="col-sm-4 control-label ">Description</label>
+                                            <label for="inputEmail3" class="col-sm-4 control-label ">Payment Option</label>
                                             <div class="col-sm-8 detail-value">
-                                                <span ng-hide="editing1" ng-click="editing1 = true"><label id="inputEmail3" class="no-bold">{{orgDetails.description}}</label></span>
-                                                <span ng-show="editing1"><textarea ng-blur="editing1 = false" ng-model="orgDetails.description" class="form-control" show-focus="editing1"></textarea></span>
+                                                <span  ><label id="inputEmail3" class="no-bold">{{accountDetails.paymentOption}}</label></span>
+                                                
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3" class="col-sm-4 control-label ">Street Address</label>
+                                            <label for="inputEmail3" class="col-sm-4 control-label ">Is Active</label>
                                             <div class="col-sm-8 detail-value">
-                                                <span ng-hide="editing2" ng-click="editing2 = true"><label id="inputEmail3" class="no-bold">{{orgDetails.addressLine1}}</label></span>
-                                                <span ng-show="editing2"><input type="text" name="addr" ng-blur="editing2 = false" ng-model="orgDetails.addressLine1" class="form-control" show-focus="editing2" required=""></span>
+                                                <span ><input type="checkbox" ng-checked="accountDetails.isActive" /></span>
+                                                
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3" class="col-sm-4 control-label ">City</label>
+                                            <label for="inputEmail3" class="col-sm-4 control-label ">Effecgive Date</label>
                                             <div class="col-sm-8 detail-value">
-                                                <span ng-hide="editing4" ng-click="editing4 = true"><label id="inputEmail3" class="no-bold">{{orgDetails.city}}</label></span>
-                                                <span ng-show="editing4"><input type="text" name="city" ng-blur="editing4 = false" ng-model="orgDetails.city" class="form-control" show-focus="editing4" required=""></span>
+                                                <span ><label id="inputEmail3" class="no-bold">{{accountDetails.effectiveDate | date :  'short' }}</label></span>
+                                                
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="inputEmail3" class="col-sm-4 control-label ">Province</label>
-                                            <div class="col-sm-8 detail-value">
-                                                <span ng-hide="editing3" ng-click="editing3 = true"><label id="inputEmail3" class="no-bold">{{orgDetails.provState}}</label></span>
-                                                <span ng-show="editing3"><input type="text" name="province" ng-blur="editing3 = false" ng-model="orgDetails.provState" class="form-control" show-focus="editing3" required=""></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputEmail3" class="col-sm-4 control-label ">Post Code</label>
-                                            <div class="col-sm-8 detail-value">
-                                                <span ng-hide="editing5" ng-click="editing5 = true"><label id="inputEmail3" class="no-bold">{{orgDetails.postZipCode}}</label></span>
-                                                <span ng-show="editing5"><input type="text" ng-blur="editing5 = false" name="postcode" ng-model="orgDetails.postZipCode" class="form-control" show-focus="editing5" required=""></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputEmail3" class="col-sm-4 control-label ">Telephone</label>
-                                            <div class="col-sm-8 detail-value">
-                                                <span ng-hide="editing0" ng-click="editing0 = true"><label id="inputEmail3" class="no-bold">{{orgDetails.telephone}}</label></span>
-                                                <span ng-show="editing0"><input type="text" ng-blur="editing0 = false" ng-model="orgDetails.telephone" class="form-control" show-focus="editing0"></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="inputEmail3" class="col-sm-4 control-label ">SMS Code</label>
-                                            <div class="col-sm-8 detail-value">
-                                                <span ng-hide="editing7" ng-click="editing7 = true"><label id="inputEmail3" class="no-bold"><span ng-if="orgDetails.messageCode != null"></span>  {{orgDetails.messageCode}}<span ng-if="orgDetails.messageCode === null">00000 (not configured)</span></label></span>
-                                                <span ng-show="editing7"><input type="text" ng-blur="editing7 = false" ng-model="orgDetails.messageCode" class="form-control" show-focus="editing7"></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="inputEmail3" class="col-sm-4 control-label ">Join Time</label>
-                                            <div class="col-sm-8 detail-value">
-                                                <label id="inputEmail3" class="no-bold">{{orgDetails.createDate | date: 'short' }}</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputEmail3" class="col-sm-4 control-label ">Last Update</label>
-                                            <div class="col-sm-8 detail-value">
-                                                <label id="inputEmail3" class="no-bold">{{orgDetails.updateDate | date: 'short' }}</label>
-                                            </div>
-                                        </div>
+                                        
 
                                     </div>
 

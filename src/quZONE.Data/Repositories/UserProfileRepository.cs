@@ -568,12 +568,50 @@ namespace quZONE.Data.Repositories
         public Account GetOrgAccount(int id)
         {
             //throw new NotImplementedException();
-            return _context.Accounts.FirstOrDefault(o => o.OrganizationId == id);
+            //return _context.Accounts.FirstOrDefault(o => o.OrganizationId == id);
+            var result = (from account in _context.Accounts.Include("Payments")
+                join org in _context.Organizations on account.OrganizationId equals org.Id
+                join addr in _context.Addresses on org.AddressId equals addr.Id
+                where org.Id == id
+                select account).Include("Payments");
+
+            return result.FirstOrDefault();
         }
 
+        
+        public AccountViewModel GetAccountInfo(int id)
+        {
+            //throw new NotImplementedException();
 
+            var result = from account in _context.Accounts.Include("Payments")
+                         join org in _context.Organizations on account.OrganizationId equals org.Id
+                         join addr in _context.Addresses on org.AddressId equals addr.Id
+                         where org.Id == id
+                         select new AccountViewModel()
+                         {
+                             Name = org.Name,
+                             AddressLine1 = addr.AddressLine1,
+                             City = addr.City,
+                             ProvState = addr.ProvState,
+                             PostZipCode = addr.PostZipCode,
+                             Description = org.Description,
+                             LogoImgUrl = org.LogoImgUrl,
+                             AccountId = account.Id,
+                             IsActive = account.IsActive,
+                             PaymentOption = account.PaymentOption,
+                             EffectiveDate = account.EffectiveDate
+                            
+                         };
+
+            return result.FirstOrDefault();
+
+
+
+
+        }
 
         #endregion
+
 
 
 

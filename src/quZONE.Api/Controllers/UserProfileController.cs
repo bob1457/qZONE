@@ -572,7 +572,7 @@ namespace quZONE.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            var account = _userProfileService.GetOrgAccount(id);
+            var account = _userProfileService.GetAccountInfo(id);//.GetOrgAccount(id);
 
             return Ok(account);
         }

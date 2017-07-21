@@ -274,6 +274,8 @@
             promise.success(function(respond) {
                 $scope.accountDetails = respond;
 
+                //make another http call(s) to retrieve usage and payment data
+
                 console.log($scope.accountDetails);
             });
 
@@ -286,18 +288,7 @@
                 }
             );
         }
-        //// tab operation
-        //$scope.tab = 1;
-
-        //$scope.setTab = function (newTab) {
-        //    $scope.tab = newTab;
-        //};
-
-        //$scope.isSet = function (tabNum) {
-        //    return $scope.tab === tabNum;
-        //};
-
-
+       
 
 
 

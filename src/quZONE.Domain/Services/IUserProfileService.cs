@@ -35,6 +35,8 @@ namespace quZONE.Domain.Services
 
         Account GetOrgAccount(int id);
 
+        AccountViewModel GetAccountInfo(int id);
+
         Organization GetOrganizationByName(string name);
 
         void AddRequest(TrialRequest request);

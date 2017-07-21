@@ -81,6 +81,7 @@
     <Compile Include="Entities\Payment.cs" />
     <Compile Include="Entities\PaymentMethod.cs" />
     <Compile Include="Entities\PaymentType.cs" />
+    <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\GuestTableViewMode.cs" />
     <Compile Include="ViewModels\OrganizationViewModel.cs" />
     <Compile Include="ViewModels\SmsMessageViewModel.cs" />

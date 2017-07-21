@@ -298,6 +298,15 @@ namespace quZONE.Services.UserProfile
             //throw new NotImplementedException();
             return _userProfileRepository.GetOrgAccount(id);
         }
+        
+
+        public AccountViewModel GetAccountInfo(int id)
+        {
+            //throw new NotImplementedException();
+            return _userProfileRepository.GetAccountInfo(id);
+        }
+
+
 
         #endregion
 

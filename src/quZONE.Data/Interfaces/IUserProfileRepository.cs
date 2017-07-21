@@ -50,6 +50,8 @@ namespace quZONE.Data.Interfaces
 
         Account GetOrgAccount(int id);
 
+        AccountViewModel GetAccountInfo(int id);
+
         Organization GetOrganizationByName(string name);
 
         OrganizationViewModel GetOrganizationDetails(int id); //id: organization id
