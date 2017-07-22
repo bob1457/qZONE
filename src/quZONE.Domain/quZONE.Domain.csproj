@@ -85,6 +85,7 @@
     <Compile Include="ViewModels\GuestTableViewMode.cs" />
     <Compile Include="ViewModels\OrganizationViewModel.cs" />
     <Compile Include="ViewModels\SmsMessageViewModel.cs" />
+    <Compile Include="ViewModels\UsageBillinngViewModel.cs" />
     <Compile Include="ViewModels\UserProfileViewModel.cs" />
     <Compile Include="ViewModels\WaitListViewModel.cs" />
   </ItemGroup>

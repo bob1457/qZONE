@@ -50,6 +50,15 @@
             return promise;
         }
 
+        organizationData.getOrgWaitList = function (id) {
+            var promise = $http.get(serviceBase + 'api/waitlist/list/' + id);
+            return promise;
+        }
+
+        organizationData.getOrgPayment = function (id) {
+            var promise = $http.get(serviceBase + 'api/profile/payments/' + id);
+            return promise;
+        }
 
         return organizationData;
     }

@@ -563,7 +563,7 @@ namespace quZONE.Api.Controllers
             return Ok();
         }
 
-        [AllowAnonymous] //testing mathod
+        //[AllowAnonymous] //testing mathod
         [Route("account/{id:int}")]
         public IHttpActionResult GetOrgAccountDetails(int id) //id: organziation id
         {
@@ -575,6 +575,21 @@ namespace quZONE.Api.Controllers
             var account = _userProfileService.GetAccountInfo(id);//.GetOrgAccount(id);
 
             return Ok(account);
+        }
+
+
+        [AllowAnonymous] //testing mathod
+        [Route("payments/{id:int}")]
+        public IHttpActionResult GetOrgAccountPayments(int id) //id: organziation id
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var paymentList = _userProfileService.GetAccountInfo(id);//.GetOrgAccount(id);
+
+            return Ok(paymentList);
         }
 
         #endregion

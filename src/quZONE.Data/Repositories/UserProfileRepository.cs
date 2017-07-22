@@ -610,7 +610,28 @@ namespace quZONE.Data.Repositories
 
         }
 
+
+
+        public IEnumerable<Payment> GetPaymentsByOrgacct(int id)
+        {
+            //throw new NotImplementedException();
+
+            var result = from payment in _context.Payments
+                join acct in _context.Accounts on payment.AccountId equals acct.Id
+                join org in _context.Organizations on acct.OrganizationId equals org.Id
+                where org.Id == id
+                select new Payment();
+
+            return result;
+
+            //return _context.Payments.Include(a=>a.Account)
+
+        }
+
+
         #endregion
+
+
 
 
 

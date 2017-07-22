@@ -52,6 +52,8 @@ namespace quZONE.Data.Interfaces
 
         AccountViewModel GetAccountInfo(int id);
 
+        IEnumerable<Payment> GetPaymentsByOrgacct(int id);
+            
         Organization GetOrganizationByName(string name);
 
         OrganizationViewModel GetOrganizationDetails(int id); //id: organization id

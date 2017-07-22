@@ -37,6 +37,8 @@ namespace quZONE.Domain.Services
 
         AccountViewModel GetAccountInfo(int id);
 
+        IEnumerable<Payment> GetPaymentsByOrgAcct(int id); //id: org id
+
         Organization GetOrganizationByName(string name);
 
         void AddRequest(TrialRequest request);

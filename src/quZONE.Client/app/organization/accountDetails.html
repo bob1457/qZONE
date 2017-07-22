@@ -100,9 +100,46 @@
                                 </form>
 </div>
                         <div class="tab-pane active" ng-show="tab===2">
-                            <p>
-                                Howdy, I'm in Tab 2.
+                            <p style="font-weight: bold;">
+                                Wait Lists Served
                             </p>
+
+                            <div class="form-group">
+                                
+                                <div class="col-sm-12 ">
+                                    <div class="radio">
+                                        <label style="margin-left: 20px;">
+                                            <input type="radio" name="optionsRadios" ng-click="served = false" ng-model="guestDetails.waitingStatus" value="all" id="optionsRadios1" value="" ng-checked>
+                                            <span>All </span>
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label style="margin-left: 20px;">
+                                            <input type="radio" name="optionsRadios" ng-click="served = true" ng-model="guestDetails.waitingStatus" value="Served" id="optionsRadios2" value="">
+                                            <span>Period </span>
+                                        </label>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <p class="input-group">
+                                            <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="input-group">
+                                            <input type="text" class="form-control" uib-datepicker-popup ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
                             <p>
                                 Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation.
                             </p>

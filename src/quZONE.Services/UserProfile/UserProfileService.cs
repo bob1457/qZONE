@@ -306,7 +306,12 @@ namespace quZONE.Services.UserProfile
             return _userProfileRepository.GetAccountInfo(id);
         }
 
+        public IEnumerable<Payment> GetPaymentsByOrgAcct(int id)
+        {
+            //throw new NotImplementedException();
 
+            return _userProfileRepository.GetPaymentsByOrgacct(id);
+        }
 
         #endregion
 
@@ -354,5 +359,8 @@ namespace quZONE.Services.UserProfile
 
 
 
+
+
+        
     }
 }
