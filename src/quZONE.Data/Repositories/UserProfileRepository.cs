@@ -596,6 +596,7 @@ namespace quZONE.Data.Repositories
                              PostZipCode = addr.PostZipCode,
                              Description = org.Description,
                              LogoImgUrl = org.LogoImgUrl,
+                             OrganizationId = org.Id,
                              AccountId = account.Id,
                              IsActive = account.IsActive,
                              PaymentOption = account.PaymentOption,

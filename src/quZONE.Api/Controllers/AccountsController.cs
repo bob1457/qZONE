@@ -14,7 +14,7 @@ namespace quZONE.Api.Controllers
     [RoutePrefix("api/accounts")]
     public class AccountsController : BaseApiController
     {
-        
+
         [Authorize(Roles = "admin")]
         [Route("users")]
         public IHttpActionResult GetUsers()

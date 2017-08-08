@@ -57,6 +57,14 @@ namespace quZONE.Api.Controllers
         }
 
 
+        [Route("currentlist/{id:int}")]
+        public IHttpActionResult GetCurrentWaitListByOrgId(int id) //id: organization id
+        {
+            var list = _waitListService.GetCurrentWaitListByOrgId(id);
+
+            return Ok(list);
+        }
+
         //[Route("guest/{id:int}")]
         [Route("list/{id:int}/guest/{gid:int}")]
         [HttpGet]

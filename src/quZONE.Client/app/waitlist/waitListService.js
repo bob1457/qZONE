@@ -22,7 +22,7 @@
 
         var _getWaitList = function (data) { //Get all waitlist for the current day
 
-            var result = $http.get(serviceBase + 'list/' + data).success(function (response) {
+            var result = $http.get(serviceBase + 'currentlist/' + data).success(function (response) {
 
                 //console.log($scope.$parent.authentication.isAdmin);
                 //$scope.lists = response;

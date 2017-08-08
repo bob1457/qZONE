@@ -61,6 +61,15 @@ namespace quZONE.Services.WaitList
             return list;
         }
 
+
+        public IEnumerable<WaitListViewModel> GetCurrentWaitListByOrgId(int id)
+        {
+            //throw new NotImplementedException();
+            var list = _waitListRepository.GetCurrentWaitListByOrgnization(id);
+
+            return list;
+        }
+
         public WaitListViewModel GetWaitGuest(int id, int gid)
         {
             var waitguest = _waitListRepository.GetWaitGuest(id, gid);
@@ -165,6 +174,8 @@ namespace quZONE.Services.WaitList
 
 
 
-        
+
+
+
     }
 }

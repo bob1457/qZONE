@@ -26,7 +26,7 @@ namespace quZONE.Data.Repositories
 
             var result = from waitlist in context.WalkInWaitLists
                 join guest in context.Guests on waitlist.GuestId equals guest.Id
-                         where (waitlist.OrganizationId == id && DbFunctions.TruncateTime(waitlist.CreateDate) == today)// && waitlist.WaitingStatus == "Waiting")
+                         //where (waitlist.OrganizationId == id && DbFunctions.TruncateTime(waitlist.CreateDate) == today)// && waitlist.WaitingStatus == "Waiting")
                 select new WaitListViewModel()
                 {
                     GuestFirstName = guest.GuestFirstName,
@@ -44,6 +44,36 @@ namespace quZONE.Data.Repositories
                     WaitingStatus = waitlist.WaitingStatus,
                     Notes = waitlist.Notes
                 };
+
+            return result;
+
+        }
+
+        public IEnumerable<WaitListViewModel> GetCurrentWaitListByOrgnization(int id) //Get the waitlist for the current day
+        {
+            DateTime today = DateTime.Today;
+
+
+            var result = from waitlist in context.WalkInWaitLists
+                         join guest in context.Guests on waitlist.GuestId equals guest.Id
+                         where (waitlist.OrganizationId == id && DbFunctions.TruncateTime(waitlist.CreateDate) == today)// && waitlist.WaitingStatus == "Waiting")
+                         select new WaitListViewModel()
+                         {
+                             GuestFirstName = guest.GuestFirstName,
+                             GuestLastName = guest.GuestLastName,
+                             GuestContactTel = guest.GuestContactTel,
+                             ArrivalTime = waitlist.ArrivalTime,
+                             StatusChangeTime = waitlist.StatusChangeTime,
+                             GuestId = guest.Id,
+                             OrganizationId = waitlist.OrganizationId,
+                             IsActive = waitlist.IsActive,
+                             GuestGroupSize = waitlist.GuestGroupSize,
+                             CreateDate = waitlist.CreateDate,
+                             UpdateDate = waitlist.UpdateDate,
+                             ServedTime = waitlist.ServedTime,
+                             WaitingStatus = waitlist.WaitingStatus,
+                             Notes = waitlist.Notes
+                         };
 
             return result;
 

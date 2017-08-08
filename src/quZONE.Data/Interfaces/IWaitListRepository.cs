@@ -8,6 +8,8 @@ namespace quZONE.Data.Interfaces
     {
         IEnumerable<WaitListViewModel> GetAllWaitListByOrgnization(int id);
 
+        IEnumerable<WaitListViewModel> GetCurrentWaitListByOrgnization(int id);
+
         IEnumerable<WaitListViewModel> AllWaitListByOrgnization(int id);
 
         WaitListViewModel GetWaitGuest(int id, int oid);

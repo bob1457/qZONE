@@ -18,6 +18,8 @@
         //var data = $scope.$parent.$parent.authentication.userName;
 
         //for date picker;
+        //
+        
 
         $scope.today = function () {
             $scope.dt = new Date();
@@ -103,6 +105,9 @@
 
             return '';
         }
+
+
+        //End of date pikcer
 
 
 
@@ -366,13 +371,18 @@
             promise.success(function(respond) {
                 $scope.accountDetails = respond;
 
-                //make another http call(s) to retrieve usage and payment data
+                debugger;
+
+                //make another http call(s) to retrieve usage data
                 var promiseUsage = organizationDataService.getOrgWaitList(oId);
 
                 promiseUsage.success(function(res) {
                     $scope.accountWaitList = res;
+
+                    console.log($scope.accountWaitList);
                 });
 
+                //make another http call(s) to retrieve payment data
                 var promisePayment = organizationDataService.getOrgPayment(oId);
 
                 promisePayment.success(function (resp) {
@@ -392,7 +402,9 @@
                 }
             );
         }
-       
+
+
+        
 
 
 

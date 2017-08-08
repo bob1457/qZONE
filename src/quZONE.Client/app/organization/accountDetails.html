@@ -105,24 +105,30 @@
                             </p>
 
                             <div class="form-group">
-                                
+
                                 <div class="col-sm-12 ">
-                                    <div class="radio">
-                                        <label style="margin-left: 20px;">
-                                            <input type="radio" name="optionsRadios" ng-click="served = false" ng-model="guestDetails.waitingStatus" value="all" id="optionsRadios1" value="" ng-checked>
-                                            <span>All </span>
-                                        </label>
+                                    <div class="col-sm-6">
+                                        <div class="radio">
+                                            <label style="margin-left: 20px;">
+                                                <input type="radio" name="optionsRadios" ng-click="" ng-model="guestDetails.waitingStatus" value="all" id="optionsRadios1" value="" ng-checked="true">
+                                                <span>All </span>
+                                            </label>
+                                        </div>
                                     </div>
-                                    <div class="radio">
-                                        <label style="margin-left: 20px;">
-                                            <input type="radio" name="optionsRadios" ng-click="served = true" ng-model="guestDetails.waitingStatus" value="Served" id="optionsRadios2" value="">
-                                            <span>Period </span>
-                                        </label>
+                                    <div class="col-sm-6">
+                                        <div class="radio">
+                                            <label style="margin-left: 20px;">
+                                                <input type="radio" name="optionsRadios" ng-click="" ng-model="guestDetails.waitingStatus" value="perild" id="optionsRadios2" value="">
+                                                <span>Period </span>
+                                            </label>
+                                        </div>
                                     </div>
+                                    
+                                    
 
                                     <div class="col-sm-6">
                                         <p class="input-group">
-                                            <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                            <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"/>
                                             <span class="input-group-btn">
                                                 <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
                                             </span>
@@ -130,7 +136,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <p class="input-group">
-                                            <input type="text" class="form-control" uib-datepicker-popup ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                            <input type="text" class="form-control" uib-datepicker-popup ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
                                             <span class="input-group-btn">
                                                 <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
                                             </span>
@@ -140,9 +146,46 @@
                             </div>
 
 
-                            <p>
-                                Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation.
-                            </p>
+                            <div class="box-body">
+                                <table id="example1" class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Customer Name</th>
+                                            <th>Mobile Number</th>
+                                            <th>Party Size</th>
+                                            <th>Join Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <loading-spinner></loading-spinner>
+                                        <tr dir-paginate="list in accountWaitList | filter: q | filter: s | itemsPerPage:10 ">
+                                            <td><i class="fa fa-user" ng-class="{'row-available': list.waitingStatus === 'Available', 'row-waiting': list.waitingStatus === 'Waiting', 'row-served': list.waitingStatus === 'Served'}" title="{{list.waitingStatus}}"></i></td>
+                                            <td>{{list.guestFirstName}} {{list.guestLastName}}</td>
+                                            <td>{{list.guestContactTel}}</td>
+                                            <td>{{list.guestGroupSize}}</td>
+                                            <td>{{list.createDate | date: 'short'}}</td>
+                                            
+
+                                              <!--<td>{{list.waitingStatus}}</td>-->
+                                            <!--<td>{{list.notes}}</td>-->
+
+                                            
+
+
+                                        </tr>
+
+
+
+                                        <tr ng-show=""></tr>
+
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr></tr>
+                                    </tfoot>
+                                </table>
+                            </div>
                             
                         </div>
 

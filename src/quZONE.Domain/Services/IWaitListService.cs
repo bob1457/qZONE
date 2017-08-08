@@ -11,6 +11,8 @@ namespace quZONE.Domain.Services
 
         IEnumerable<WaitListViewModel> GetAllWaitListByOrgId(int id);
 
+        IEnumerable<WaitListViewModel> GetCurrentWaitListByOrgId(int id);
+
         WaitListViewModel GetWaitGuest(int id, int oid);
 
         Guest GetGuestByTel(string tele);
