@@ -27,6 +27,7 @@ namespace quZONE.Data.Repositories
             var result = from waitlist in context.WalkInWaitLists
                 join guest in context.Guests on waitlist.GuestId equals guest.Id
                          //where (waitlist.OrganizationId == id && DbFunctions.TruncateTime(waitlist.CreateDate) == today)// && waitlist.WaitingStatus == "Waiting")
+                         where waitlist.WaitingStatus == "Served" && waitlist.OrganizationId == id //Get only served lists for billing purposes - may use a different method?
                 select new WaitListViewModel()
                 {
                     GuestFirstName = guest.GuestFirstName,
