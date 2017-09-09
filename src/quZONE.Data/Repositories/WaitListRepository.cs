@@ -19,7 +19,7 @@ namespace quZONE.Data.Repositories
         private qZONEDbContext context = new qZONEDbContext();
 
 
-        public IEnumerable<WaitListViewModel> GetAllWaitListByOrgnization(int id) //Get the waitlist for the current day
+        public IEnumerable<WaitListViewModel> GetAllWaitListByOrgnization(int id) 
         {
             DateTime today = DateTime.Today;
 
