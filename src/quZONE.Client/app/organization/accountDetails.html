@@ -107,27 +107,31 @@
                             <div class="form-group">
 
                                 <div class="col-sm-12 ">
+                                    
                                     <div class="col-sm-2">
                                         <div class="radio">
                                             <label style="margin-left: 10px;">
-                                                <input type="radio" name="optionsRadios" ng-click="" ng-model="guestDetails.waitingStatus" value="all" id="optionsRadios1" value="" ng-checked="true">
-                                                <span>All </span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="radio">
-                                            <label style="margin-left: 10px;">
-                                                <input type="radio" name="optionsRadios" ng-click="" ng-model="guestDetails.waitingStatus" value="perild" id="optionsRadios2" value="">
+                                                <input type="radio" name="optionsRadios" ng-click="" ng-model="guestDetails.waitingStatus" value="perild" id="optionsRadios2" value="" ng-checked="true">
                                                 <span>Monthly </span>
                                             </label>
                                         </div>
                                     </div>
+                                    <div ></div>
                                     <div class="col-sm-5" style="text-align: right; margin-top: 10px;">
                                         <select>
+                                            <option>Select a Month</option>
                                             <option>January</option>
                                             <option>Februrary</option>
                                             <option>March</option>
+                                            <option>April</option>
+                                            <option>May</option>
+                                            <option>June</option>
+                                            <option>July</option>
+                                            <option>August</option>
+                                            <option>September</option>
+                                            <option>Ocotober</option>
+                                            <option>November</option>
+                                            <option>December</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-3" style="text-align: right; margin-top: 10px;">
@@ -135,9 +139,21 @@
                                             <option>2017</option>
                                             <option>2018</option>
                                             <option>2019</option>
+                                            <option>2020</option>
+                                            <option>2021</option>
+                                            <option>2022</option>
                                         </select>
                                     </div>
-             <!--                       
+
+                                    <div class="col-sm-2">
+                                        <div class="radio">
+                                            <label style="margin-left: 10px;">
+                                                <input type="radio" name="optionsRadios" ng-click="" ng-model="guestDetails.waitingStatus" value="all" id="optionsRadios1" value="" >
+                                                <span>All </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <!--                       
 
                                     <div class="col-sm-6">
                                         <p class="input-group">
@@ -165,7 +181,7 @@
                             <div class="box-body">
                                 <table id="example1" class="table table-bordered table-striped table-hover">
                                     <thead>
-                                        <tr>
+                                        <tr style="font-size: .75em;">
                                             <th></th>
                                             <th>Customer Name</th>
                                             <th>Mobile Number</th>
@@ -173,7 +189,7 @@
                                             <th>Join Time</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody style="font-size: .75em;">
                                         <loading-spinner></loading-spinner>
                                         <tr dir-paginate="list in accountWaitList | filter: q | filter: s | itemsPerPage:10 ">
                                             <td><i class="fa fa-user" ng-class="{'row-available': list.waitingStatus === 'Available', 'row-waiting': list.waitingStatus === 'Waiting', 'row-served': list.waitingStatus === 'Served'}" title="{{list.waitingStatus}}"></i></td>
@@ -181,12 +197,12 @@
                                             <td>{{list.guestContactTel}}</td>
                                             <td>{{list.guestGroupSize}}</td>
                                             <td>{{list.createDate | date: 'short'}}</td>
-                                            
 
-                                              <!--<td>{{list.waitingStatus}}</td>-->
+
+                                            <!--<td>{{list.waitingStatus}}</td>-->
                                             <!--<td>{{list.notes}}</td>-->
 
-                                            
+
 
 
                                         </tr>

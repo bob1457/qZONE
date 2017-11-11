@@ -370,7 +370,7 @@ namespace quZONE.Api.Controllers
             {
                 msg = "Dear " + waitListInfo.GuestFirstName + ", you have been put in our waitlist. " +
                       "The approximate wait time is " + waitTime +
-                      " min. You will be notified when a table is available. Thanks." + "  " + org.Name + ".";
+                      " min. You will be notified when a table is available. Thanks for chossing " + "  " + org.Name + ".";
             }
             //Send sms to guest
             //

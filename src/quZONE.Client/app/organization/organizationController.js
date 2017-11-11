@@ -366,14 +366,14 @@
         debugger;
 
         $scope.showAccountDetails = function (oId) {
-            var promise = organizationDataService.getOrgAccount(oId);
+            var promise = organizationDataService.getOrgAccount(oId); //Get account details
 
             promise.success(function(respond) {
                 $scope.accountDetails = respond;
 
                 debugger;
 
-                //make another http call(s) to retrieve usage data
+                //make another http call(s) to retrieve usage data on success of getting account details
                 var promiseUsage = organizationDataService.getOrgWaitList(oId);
 
                 promiseUsage.success(function(res) {
