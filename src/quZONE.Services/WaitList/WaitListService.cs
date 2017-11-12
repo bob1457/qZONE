@@ -136,8 +136,18 @@ namespace quZONE.Services.WaitList
             throw new NotImplementedException();
 
 
+        }
+
+        public WalkInWaitList GetWaitListByOrgByMonth(int id, string monthYear)
+        {
+            throw new NotImplementedException();
+
+
+
 
         }
+
+
 
         public void ClearTableInWaitList(string tableNo, int oid)
         {
@@ -177,5 +187,8 @@ namespace quZONE.Services.WaitList
 
 
 
+
+
+        
     }
 }

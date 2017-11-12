@@ -100,25 +100,34 @@
                                 </form>
 </div>
                         <div class="tab-pane active" ng-show="tab===2">
-                            <p style="font-weight: bold;">
+                            <p style="font-weight: bold; margin-left: 16px;">
                                 Wait Lists Served
                             </p>
 
                             <div class="form-group">
 
                                 <div class="col-sm-12 ">
-                                    
+
                                     <div class="col-sm-2">
                                         <div class="radio">
                                             <label style="margin-left: 10px;">
-                                                <input type="radio" name="optionsRadios" ng-click="" ng-model="guestDetails.waitingStatus" value="perild" id="optionsRadios2" value="" ng-checked="true">
-                                                <span>Monthly </span>
+                                                <input type="radio" name="optionsRadios" ng-click="getAllWaitList(accountDetails.organizationId)" ng-model="value" value="all" id="optionsRadios1" ng-checked="true">
+                                                <span style="font-size: .9em;">All </span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-2">
+                                        <div class="radio">
+                                            <label style="margin-left: 10px;">
+                                                <input type="radio" name="optionsRadios" ng-click="" ng-model="value" value="monthYear" id="optionsRadios2" >
+                                                <span style="font-size: .9em;">Monthly </span> <!-- - {{value}} -->
                                             </label>
                                         </div>
                                     </div>
                                     <div ></div>
-                                    <div class="col-sm-5" style="text-align: right; margin-top: 10px;">
-                                        <select>
+                                    <div class="col-sm-5" style="text-align: right; margin-top: 10px; padding-right: 0;">
+                                        <select style="font-size: .9em;">
                                             <option>Select a Month</option>
                                             <option>January</option>
                                             <option>Februrary</option>
@@ -134,8 +143,8 @@
                                             <option>December</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-3" style="text-align: right; margin-top: 10px;">
-                                        <select>
+                                    <div class="col-sm-3" style="text-align: right; margin-top: 10px; padding-right: 0;">
+                                        <select style="font-size: .9em;">
                                             <option>2017</option>
                                             <option>2018</option>
                                             <option>2019</option>
@@ -145,15 +154,8 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-sm-2">
-                                        <div class="radio">
-                                            <label style="margin-left: 10px;">
-                                                <input type="radio" name="optionsRadios" ng-click="" ng-model="guestDetails.waitingStatus" value="all" id="optionsRadios1" value="" >
-                                                <span>All </span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <!--                       
+
+                                    <!--
 
                                     <div class="col-sm-6">
                                         <p class="input-group">
@@ -172,7 +174,7 @@
                                         </p>
                                     </div>
 
--->
+                                    -->
 
                                 </div>
                             </div>
@@ -181,42 +183,43 @@
                             <div class="box-body">
                                 <table id="example1" class="table table-bordered table-striped table-hover">
                                     <thead>
-                                        <tr style="font-size: .75em;">
-                                            <th></th>
-                                            <th>Customer Name</th>
-                                            <th>Mobile Number</th>
-                                            <th>Party Size</th>
-                                            <th>Join Time</th>
-                                        </tr>
+                                    <tr style="font-size: .75em;">
+                                        <th></th>
+                                        <th>Customer Name</th>
+                                        <th>Mobile Number</th>
+                                        <th>Party Size</th>
+                                        <th>Join Time</th>
+                                    </tr>
                                     </thead>
                                     <tbody style="font-size: .75em;">
-                                        <loading-spinner></loading-spinner>
-                                        <tr dir-paginate="list in accountWaitList | filter: q | filter: s | itemsPerPage:10 ">
-                                            <td><i class="fa fa-user" ng-class="{'row-available': list.waitingStatus === 'Available', 'row-waiting': list.waitingStatus === 'Waiting', 'row-served': list.waitingStatus === 'Served'}" title="{{list.waitingStatus}}"></i></td>
-                                            <td>{{list.guestFirstName}} {{list.guestLastName}}</td>
-                                            <td>{{list.guestContactTel}}</td>
-                                            <td>{{list.guestGroupSize}}</td>
-                                            <td>{{list.createDate | date: 'short'}}</td>
+                                    <loading-spinner></loading-spinner>
+                                    <tr dir-paginate="list in accountWaitList | filter: q | filter: s | itemsPerPage:5 ">
+                                        <td><i class="fa fa-user" ng-class="{'row-available': list.waitingStatus === 'Available', 'row-waiting': list.waitingStatus === 'Waiting', 'row-served': list.waitingStatus === 'Served'}" title="{{list.waitingStatus}}"></i></td>
+                                        <td>{{list.guestFirstName}} {{list.guestLastName}}</td>
+                                        <td>{{list.guestContactTel}}</td>
+                                        <td>{{list.guestGroupSize}}</td>
+                                        <td>{{list.createDate | date: 'short'}}</td>
 
 
-                                            <!--<td>{{list.waitingStatus}}</td>-->
-                                            <!--<td>{{list.notes}}</td>-->
-
-
-
-
-                                        </tr>
+                                        <!--<td>{{list.waitingStatus}}</td>-->
+                                        <!--<td>{{list.notes}}</td>-->
 
 
 
-                                        <tr ng-show=""></tr>
+
+                                    </tr>
+
+
+
+                                    <tr ng-show=""></tr>
 
 
                                     </tbody>
                                     <tfoot>
-                                        <tr></tr>
+                                    <tr></tr>
                                     </tfoot>
                                 </table>
+                                <dir-pagination-controls "></dir-pagination-controls>
                             </div>
                             
                         </div>

@@ -47,6 +47,16 @@ namespace quZONE.Api.Controllers
             return Ok(list);
         }
 
+        [Route("list/{id:int}/month")] // id is org Id and month is a string
+        public IHttpActionResult GetWaitListByOrgByMonth(int id, string month)
+        {
+
+
+
+            return Ok();
+        }
+
+
 
         [Route("alllist/{id:int}")]
         public IHttpActionResult GetAllWaitListByOrgId(int id) //id: organization id

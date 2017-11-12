@@ -266,7 +266,20 @@ namespace quZONE.Data.Repositories
             return guests;
         }
 
-
         
+
+        public WalkInWaitList GetWaitListByOrgByMonthYear(int id, string monthYear)
+        {
+            throw new NotImplementedException();
+
+
+
+
+        }
+
+
+
+
+
     }
 }

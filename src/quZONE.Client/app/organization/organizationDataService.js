@@ -55,6 +55,12 @@
             return promise;
         }
 
+        organizationData.getOrgWaitListByMonthYear = function (id, monthYear) {
+            var promise = $http.get(serviceBase + 'api/waitlist/list/' + id + "/" + monthYear); // monthYear format MMYYYY, e.g. 07/2017 and 11/2017
+            return promise;
+        }
+
+
         organizationData.getOrgPayment = function (id) {
             var promise = $http.get(serviceBase + 'api/profile/payments/' + id);
             return promise;

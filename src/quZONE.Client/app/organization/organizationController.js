@@ -222,7 +222,8 @@
             isActive: "",
             notes: "",
             organizationId:"",
-            paymentOption: ""
+            paymentOption: ""//,
+            //usageOption: "" //newly added
 
         };
         
@@ -365,22 +366,76 @@
 
         debugger;
 
-        $scope.showAccountDetails = function (oId) {
-            var promise = organizationDataService.getOrgAccount(oId); //Get account details
+        var getAllWaitList = function (oId) {
+            var promiseUsage = organizationDataService.getOrgWaitList(oId);
 
+            promiseUsage.success(function (res) {
+                $scope.accountWaitList = res; //ALL waitlist
+
+                console.log($scope.accountWaitList);
+            });
+        }
+
+        $scope.getAllWaitList = function(oId) {
+            getAllWaitList(oId);
+        }
+
+        $scope.showAccountDetails = function (oId) {
+
+            // delete $scope.accountDetails;
+
+            var promise = organizationDataService.getOrgAccount(oId); //Get account details
+            $scope.value = "all";
             promise.success(function(respond) {
                 $scope.accountDetails = respond;
 
                 debugger;
 
-                //make another http call(s) to retrieve usage data on success of getting account details
-                var promiseUsage = organizationDataService.getOrgWaitList(oId);
+                //make another http call(s) to retrieve usage data (All wait list) on success of getting account details - this part needs to be REFACTORED!!!
+                //if ($scope.value === "all") {
+                   /* */var promiseUsage = organizationDataService.getOrgWaitList(oId);
 
-                promiseUsage.success(function(res) {
-                    $scope.accountWaitList = res;
+                    promiseUsage.success(function(res) {
+                        $scope.accountWaitList = res; //ALL waitlist
 
-                    console.log($scope.accountWaitList);
-                });
+                        console.log($scope.accountWaitList);
+                    });
+                              //This part has been moved to a function.
+
+                    // getAllWaitList(oId);
+
+                //}
+                
+
+                debugger;
+                //Test radio button selection
+
+                
+                console.log($scope.value);
+
+
+                // make a request to get waitlist by org and by month/year IF THE MONTH IS SELECTED!!!
+
+
+                // conditions are put here!!!
+                $scope.getWaitListByMonthYearForOrg = function (oId, monthYear) {
+
+                    var promise = organizationDataService.getOrgWaitListByMonthYear(oId, monthYear);
+
+                    promise.success(function(res) {
+                        $scope.accoiuntListByMonthYear = res;
+
+                        console.log($scope.accoiuntListByMonthYea);
+
+                    });
+
+                }
+
+
+
+
+
+
 
                 //make another http call(s) to retrieve payment data
                 var promisePayment = organizationDataService.getOrgPayment(oId);
@@ -388,6 +443,12 @@
                 promisePayment.success(function (resp) {
                     $scope.accountPaymentList = resp;
                 });
+
+
+
+
+
+
 
 
                 console.log($scope.accountDetails);

@@ -15,6 +15,8 @@ namespace quZONE.Data.Interfaces
         WaitListViewModel GetWaitGuest(int id, int oid);
         WalkInWaitList GetWalkInWaitListByGuestId(int id);
 
+        WalkInWaitList GetWaitListByOrgByMonthYear(int id, string monthYear);
+
         Guest GetGuestById(long id);
 
         Guest GetGuestByTel(string tele);

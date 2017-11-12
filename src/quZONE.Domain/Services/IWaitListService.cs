@@ -19,6 +19,8 @@ namespace quZONE.Domain.Services
 
         WalkInWaitList GetWaitList(string tableNo, int oid);
 
+        WalkInWaitList GetWaitListByOrgByMonth(int id, string monthYear);
+
         Guest GetGuestFromWaitList(long id); //id; guest Id from the wait list
 
         void UpdateWaitList(int id, WalkInWaitList list);
