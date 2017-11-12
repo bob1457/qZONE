@@ -100,8 +100,8 @@
                                 </form>
 </div>
                         <div class="tab-pane active" ng-show="tab===2">
-                            <p style="font-weight: bold; margin-left: 16px;">
-                                Wait Lists Served
+                            <p style=" margin-left: 16px;">
+                                Wait Lists Served <span style="color:red">({{accountWaitList.length}})</span>
                             </p>
 
                             <div class="form-group">
@@ -117,7 +117,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-2" style="padding-left: 0;">
                                         <div class="radio">
                                             <label style="margin-left: 10px;">
                                                 <input type="radio" name="optionsRadios" ng-click="" ng-model="value" value="monthYear" id="optionsRadios2" >
@@ -126,9 +126,9 @@
                                         </div>
                                     </div>
                                     <div ></div>
-                                    <div class="col-sm-5" style="text-align: right; margin-top: 10px; padding-right: 0;">
+                                    <div class="col-sm-4" style="text-align: right; margin-top: 10px; padding-right: 0;">
                                         <select style="font-size: .9em;">
-                                            <option>Select a Month</option>
+                                            <!--<option>Select a Month</option>-->
                                             <option>January</option>
                                             <option>Februrary</option>
                                             <option>March</option>
@@ -143,8 +143,9 @@
                                             <option>December</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-3" style="text-align: right; margin-top: 10px; padding-right: 0;">
+                                    <div class="col-sm-4" style="text-align: center; margin-top: 10px; padding-right: 0;">
                                         <select style="font-size: .9em;">
+                                            <option>2016</option>
                                             <option>2017</option>
                                             <option>2018</option>
                                             <option>2019</option>
@@ -152,6 +153,7 @@
                                             <option>2021</option>
                                             <option>2022</option>
                                         </select>
+                                        <a href=""><i class="fa fa-arrow-circle-o-right" aria-hidden="true" style="color: #e82e2e;font-size: 1.25em;" title="filter..."></i></a>
                                     </div>
 
 
@@ -221,7 +223,7 @@
                                 </table>
                                 <dir-pagination-controls "></dir-pagination-controls>
                             </div>
-                            
+                           <!- Total: {{accountWaitList.length}}--->
                         </div>
 
                     </div>
