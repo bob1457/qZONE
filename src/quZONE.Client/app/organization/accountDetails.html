@@ -121,14 +121,14 @@
                                         <div class="radio">
                                             <label style="margin-left: 10px;">
                                                 <input type="radio" name="optionsRadios" ng-click="" ng-model="value" value="monthYear" id="optionsRadios2" >
-                                                <span style="font-size: .9em;">Monthly </span> <!-- - {{value}} -->
+                                                <span style="font-size: .9em;">Monthly </span>  - {{value}} <!---->
                                             </label>
                                         </div>
                                     </div>
                                     <div ></div>
                                     <div class="col-sm-4" style="text-align: right; margin-top: 10px; padding-right: 0;">
-                                        <select style="font-size: .9em;">
-                                            <!--<option>Select a Month</option>-->
+                                        <select ng-model="mregister.monthId" ng-options="month.id as month.name for month in mregister.months" style="font-size: .9em;">
+                                            <!--<option>Select a Month</option>
                                             <option>January</option>
                                             <option>Februrary</option>
                                             <option>March</option>
@@ -140,20 +140,22 @@
                                             <option>September</option>
                                             <option>Ocotober</option>
                                             <option>November</option>
-                                            <option>December</option>
+                                            <option>December</option>-->
                                         </select>
+                                        {{mregister.monthId}}
                                     </div>
                                     <div class="col-sm-4" style="text-align: center; margin-top: 10px; padding-right: 0;">
-                                        <select style="font-size: .9em;">
-                                            <option>2016</option>
-                                            <option>2017</option>
-                                            <option>2018</option>
-                                            <option>2019</option>
-                                            <option>2020</option>
-                                            <option>2021</option>
-                                            <option>2022</option>
+                                        <select ng-model="yregister.yearId" ng-options="year.id as year.name for year in yregister.years" style="font-size: .9em;">
+                                            <!--<option>2016</option>
+        <option>2017</option>
+        <option>2018</option>
+        <option>2019</option>
+        <option>2020</option>
+        <option>2021</option>
+        <option>2022</option>-->
                                         </select>
-                                        <a href=""><i class="fa fa-arrow-circle-o-right" aria-hidden="true" style="color: #e82e2e;font-size: 1.25em;" title="filter..."></i></a>
+                                        {{yregister.yearId}}
+                                        <a href="" ng-click="getMonthlyList(accountDetails.organizationId, mregister.monthId + yregister.yearId)"><i class="fa fa-arrow-circle-o-right" aria-hidden="true" style="color: #e82e2e;font-size: 1.25em;" title="filter..."></i></a>
                                     </div>
 
 
@@ -221,9 +223,9 @@
                                     <tr></tr>
                                     </tfoot>
                                 </table>
-                                <dir-pagination-controls "></dir-pagination-controls>
+                                <dir-pagination-controls ></dir-pagination-controls>
                             </div>
-                           <!- Total: {{accountWaitList.length}}--->
+                           <!-- Total: {{accountWaitList.length}} -->
                         </div>
 
                     </div>

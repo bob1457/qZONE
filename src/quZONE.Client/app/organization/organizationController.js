@@ -278,6 +278,120 @@
         };
 
 
+        $scope.mregister = {};
+        $scope.mregister.monthId = "01";
+
+        $scope.mregister.months = [
+            {
+                id: "01",
+                name: "January"
+            },
+            {
+                id: "02",
+                name: "Februrary"
+            },
+            {
+                id: "03",
+                name: "March"
+            },
+            {
+                id: "04",
+                name: "April"
+            },
+            {
+                id: "05",
+                name: "May"
+            },
+            {
+                id: "06",
+                name: "June"
+            },
+            {
+                id: "07",
+                name: "July"
+            },
+            {
+                id: "08",
+                name: "August"
+            },
+            {
+                id: "09",
+                name: "September"
+            },
+            {
+                id: "10",
+                name: "October"
+            },
+            {
+                id: "11",
+                name: "November"
+            },
+             {
+                 id: "12",
+                 name: "December"
+             }
+        ];
+
+
+        $scope.yregister = {};
+        $scope.yregister.yearId = "2016";
+
+        $scope.yregister.years = [
+            {
+                id: "2016",
+                name: "2016"
+            },
+            {
+                id: "2017",
+                name: "2017"
+            },
+            {
+                id: "2018",
+                name: "2018"
+            },
+            {
+                id: "2019",
+                name: "2019"
+            },
+             {
+                 id: "2020",
+                 name: "2020"
+             }
+        ];
+
+        
+
+        // make a request to get waitlist by org and by month/year IF THE MONTH IS SELECTED!!!
+
+
+        // conditions are put here!!!
+        //if ($scope.value === "monthYear") {
+
+        
+
+        var data = $scope.mregister.monthId + $scope.yregister.yearId;
+
+        // $scope.getMonthlyList = function(oId, data) {
+
+        // var month = 
+        $scope.getMonthlyList = function (oId, data) {
+
+            debugger;
+
+            /**/ var promise = organizationDataService.getOrgWaitListByMonthYear(oId, data);
+
+            promise.success(function (res) {
+                $scope.accoiuntListByMonthYear = res;
+
+                console.log($scope.accoiuntListByMonthYea);
+
+            });
+
+        }
+
+
+
+
         $scope.showReqDetails = function (rId) {
             //debugger;
             var promise = organizationDataService.getRequestById(rId);
@@ -392,7 +506,8 @@
                 debugger;
 
                 //make another http call(s) to retrieve usage data (All wait list) on success of getting account details - this part needs to be REFACTORED!!!
-                //if ($scope.value === "all") {
+
+                //if ($scope.value === "all") { //This is default selection, will change
                    /* */var promiseUsage = organizationDataService.getOrgWaitList(oId);
 
                     promiseUsage.success(function(res) {
@@ -413,25 +528,17 @@
                 
                 console.log($scope.value);
 
+                //set select box for month and year
 
-                // make a request to get waitlist by org and by month/year IF THE MONTH IS SELECTED!!!
+                
+                        
+                    //}
 
-
-                // conditions are put here!!!
-                $scope.getWaitListByMonthYearForOrg = function (oId, monthYear) {
-
-                    var promise = organizationDataService.getOrgWaitListByMonthYear(oId, monthYear);
-
-                    promise.success(function(res) {
-                        $scope.accoiuntListByMonthYear = res;
-
-                        console.log($scope.accoiuntListByMonthYea);
-
-                    });
-
-                }
+                    
+                //}
 
 
+                
 
 
 
