@@ -138,14 +138,35 @@ namespace quZONE.Services.WaitList
 
         }
 
-        public WalkInWaitList GetWaitListByOrgByMonth(int id, string monthYear)
+        /*
+        public IEnumerable<WalkInWaitList> GetWaitListByOrgByMonth(int id, string monthYear)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+
+            //DateTime moyr = Convert.ToDateTime(monthYear);
 
 
+            var list = _waitListRepository.GetWaitListByOrgByMonthYear(id, monthYear);
+
+            return list;
 
 
         }
+
+
+        */
+
+
+        public IEnumerable<WaitListViewModel> GetWaitListByOrgByMonth(int id, string monthYear)
+        {
+            //throw new NotImplementedException();
+
+            var list = _waitListRepository.GetWaitListByOrgByMonthYear(id, monthYear);
+
+            return list;
+        }
+
+
 
 
 
@@ -172,6 +193,9 @@ namespace quZONE.Services.WaitList
 
 
         #endregion
+
+
+
 
 
 

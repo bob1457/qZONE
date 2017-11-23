@@ -101,7 +101,7 @@
 </div>
                         <div class="tab-pane active" ng-show="tab===2">
                             <p style=" margin-left: 16px;">
-                                Wait Lists Served <span style="color:red">({{accountWaitList.length}})</span>
+                                Wait Lists Served <span style="color:red">({{accoiuntListByMonthYear.length}})</span>
                             </p>
 
                             <div class="form-group">
@@ -197,21 +197,21 @@
                                     </thead>
                                     <tbody style="font-size: .75em;">
                                     <loading-spinner></loading-spinner>
-                                    <tr dir-paginate="list in accountWaitList | filter: q | filter: s | itemsPerPage:5 ">
-                                        <td><i class="fa fa-user" ng-class="{'row-available': list.waitingStatus === 'Available', 'row-waiting': list.waitingStatus === 'Waiting', 'row-served': list.waitingStatus === 'Served'}" title="{{list.waitingStatus}}"></i></td>
-                                        <td>{{list.guestFirstName}} {{list.guestLastName}}</td>
-                                        <td>{{list.guestContactTel}}</td>
-                                        <td>{{list.guestGroupSize}}</td>
-                                        <td>{{list.createDate | date: 'short'}}</td>
+                                        <tr dir-paginate="list in accoiuntListByMonthYear | filter: q | filter: s | itemsPerPage:5 ">
+                                            <td><i class="fa fa-user" ng-class="{'row-available': list.waitingStatus === 'Available', 'row-waiting': list.waitingStatus === 'Waiting', 'row-served': list.waitingStatus === 'Served'}" title="{{list.waitingStatus}}"></i></td>
+                                            <td>{{list.guestFirstName}} {{list.guestLastName}}</td>
+                                            <td>{{list.guestContactTel}}</td>
+                                            <td>{{list.guestGroupSize}}</td>
+                                            <td>{{list.createDate | date: 'short'}}</td>
 
 
-                                        <!--<td>{{list.waitingStatus}}</td>-->
-                                        <!--<td>{{list.notes}}</td>-->
+                                            <!--<td>{{list.waitingStatus}}</td>-->
+                                            <!--<td>{{list.notes}}</td>-->
 
 
 
 
-                                    </tr>
+                                        </tr>
 
 
 
@@ -225,7 +225,7 @@
                                 </table>
                                 <dir-pagination-controls ></dir-pagination-controls>
                             </div>
-                           <!-- Total: {{accountWaitList.length}} -->
+                           <!-- Total: {{accoiuntListByMonthYear.length}} -->
                         </div>
 
                     </div>

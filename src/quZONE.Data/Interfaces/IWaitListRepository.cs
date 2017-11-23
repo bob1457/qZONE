@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using quZONE.Domain.Entities;
 using quZONE.Domain.ViewModels;
@@ -15,7 +16,12 @@ namespace quZONE.Data.Interfaces
         WaitListViewModel GetWaitGuest(int id, int oid);
         WalkInWaitList GetWalkInWaitListByGuestId(int id);
 
-        WalkInWaitList GetWaitListByOrgByMonthYear(int id, string monthYear);
+        // IEnumerable<WalkInWaitList> GetWaitListByOrgByMonthYear(int id, string monthYear);
+
+        IEnumerable<WalkInWaitList> GetWaitListByOrgByMonthYear(int id, DateTime monthYear);
+
+        IEnumerable<WaitListViewModel> GetWaitListByOrgByMonthYear(int id, string monthYear);
+        
 
         Guest GetGuestById(long id);
 

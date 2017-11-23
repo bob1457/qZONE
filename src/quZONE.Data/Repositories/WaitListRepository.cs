@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Objects;
 using quZONE.Data.Interfaces;
 using quZONE.Domain;
 using quZONE.Domain.Entities;
@@ -267,19 +268,99 @@ namespace quZONE.Data.Repositories
         }
 
         
-
-        public WalkInWaitList GetWaitListByOrgByMonthYear(int id, string monthYear)
+        /*
+        public IEnumerable<WalkInWaitList> GetWaitListByOrgByMonthYear(int id, string monthYear)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            
+            var month = monthYear.Substring(0, 2);
+            var year = monthYear.Substring(2, 4);
+
+            //DateTime period = Convert.ToDateTime(monthYear);
 
 
 
+            var list = context.WalkInWaitLists.Where(i => i.OrganizationId == id 
+                && (i.CreateDate.Month).ToString() == month 
+                && (i.CreateDate.Year).ToString() == year);
 
+            return list;
+
+
+        }
+
+        */
+
+
+
+        public IEnumerable<WaitListViewModel> GetWaitListByOrgByMonthYear(int id, string monthYear)
+        {
+            //throw new NotImplementedException();
+
+
+            var month = monthYear.Substring(0, 2);
+            var year = monthYear.Substring(2, 4);
+
+            string mdy = month + "/01/" + year;
+
+            DateTime moyr = Convert.ToDateTime(mdy);
+
+            string m = moyr.Month.ToString();
+            string y = moyr.Year.ToString();
+
+            if (moyr.Month.ToString().Contains('0'))
+            {
+                m = "0" + moyr.Month;
+            }
+
+            
+
+            var result = from waitlist in context.WalkInWaitLists
+                         join guest in context.Guests on waitlist.GuestId equals guest.Id
+                         where (waitlist.OrganizationId == id && waitlist.UpdateDate.Month.ToString() == m && waitlist.CreateDate.Year.ToString() == y)     // && waitlist.WaitingStatus == "Waiting")
+                        // where waitlist.OrganizationId == id
+                         //&& (waitlist.CreateDate.Month).ToString() == month 
+                         //&& (waitlist.CreateDate.Year).ToString() == year
+
+                         select new WaitListViewModel()
+                         {
+                             GuestFirstName = guest.GuestFirstName,
+                             GuestLastName = guest.GuestLastName,
+                             GuestContactTel = guest.GuestContactTel,
+                             ArrivalTime = waitlist.ArrivalTime,
+                             StatusChangeTime = waitlist.StatusChangeTime,
+                             GuestId = guest.Id,
+                             OrganizationId = waitlist.OrganizationId,
+                             IsActive = waitlist.IsActive,
+                             GuestGroupSize = waitlist.GuestGroupSize,
+                             CreateDate = waitlist.CreateDate,
+                             UpdateDate = waitlist.UpdateDate,
+                             ServedTime = waitlist.ServedTime,
+                             WaitingStatus = waitlist.WaitingStatus,
+                             Notes = waitlist.Notes
+                         };
+
+            return result;
+            
         }
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+        public IEnumerable<WalkInWaitList> GetWaitListByOrgByMonthYear(int id, DateTime monthYear)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
