@@ -308,16 +308,16 @@ namespace quZONE.Data.Repositories
             string m = moyr.Month.ToString();
             string y = moyr.Year.ToString();
 
-            if (moyr.Month.ToString().Contains('0'))
-            {
-                m = "0" + moyr.Month;
-            }
+            //if (moyr.Month.ToString().Contains('0'))
+            //{
+            //    m = "0" + moyr.Month;
+            //}
 
             
 
             var result = from waitlist in context.WalkInWaitLists
                          join guest in context.Guests on waitlist.GuestId equals guest.Id
-                         where (waitlist.OrganizationId == id && waitlist.UpdateDate.Month.ToString() == m && waitlist.CreateDate.Year.ToString() == y)     // && waitlist.WaitingStatus == "Waiting")
+                         where (waitlist.OrganizationId == id && waitlist.CreateDate.Month.ToString() == m && waitlist.CreateDate.Year.ToString() == y)     // && waitlist.WaitingStatus == "Waiting")
                         // where waitlist.OrganizationId == id
                          //&& (waitlist.CreateDate.Month).ToString() == month 
                          //&& (waitlist.CreateDate.Year).ToString() == year
