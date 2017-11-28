@@ -317,11 +317,10 @@ namespace quZONE.Data.Repositories
 
             var result = from waitlist in context.WalkInWaitLists
                          join guest in context.Guests on waitlist.GuestId equals guest.Id
-                         where (waitlist.OrganizationId == id && waitlist.CreateDate.Month.ToString() == m && waitlist.CreateDate.Year.ToString() == y)     // && waitlist.WaitingStatus == "Waiting")
-                        // where waitlist.OrganizationId == id
-                         //&& (waitlist.CreateDate.Month).ToString() == month 
-                         //&& (waitlist.CreateDate.Year).ToString() == year
-
+                         where (waitlist.OrganizationId == id && waitlist.UpdateDate.Month.ToString() == m 
+                         && waitlist.UpdateDate.Year.ToString() == y)     
+                        
+                         // the above condition needs to be the status of the list is "served" -- add it later !
                          select new WaitListViewModel()
                          {
                              GuestFirstName = guest.GuestFirstName,
