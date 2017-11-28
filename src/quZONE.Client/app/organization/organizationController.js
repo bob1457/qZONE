@@ -526,7 +526,7 @@
                 //Test radio button selection
 
                 
-                console.log($scope.value);
+                // console.log($scope.value);
 
                 //set select box for month and year
 
@@ -566,9 +566,15 @@
                     template: 'app/organization/accountDetails.html',
                     className: 'ngdialog-theme-default',
                     scope: $scope,
+                    showClose: false,
+                    closeByDocument: false,
                     data: $scope.$parent.accountDetails
                 }
             );
+
+            $scope.clean = function() {
+                delete $scope.accoiuntListByMonthYear;
+            };
         }
 
 

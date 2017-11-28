@@ -90,18 +90,18 @@
                                     </div>
 
 
-                                    <div class="box-footer">
-                                        <button type="submit" class="btn btn-default" ng-click="closeThisDialog()">Cancel</button>
+                                   <!-- <div class="box-footer">
+                                        
                                         <button type="submit" ng-disabled="isDisabled || (detailform.oname.$invalid || detailform.addr.$invalid || detailform.city.$invalid || detailform.province.$invalid || detailform.postcode.$invalid)"
-                                                class="btn btn-primary pull-left" style="margin-right: 5px;" ng-click="updateOrg(orgDetails.id)">
-                                            <i class="fa fa-check" aria-hidden="true"></i> Update
+                                                class="btn btn-primary pull-left" style="margin-right: 5px;" ng-click="closeThisDialog(); clean()">
+                                            <i class="fa fa-check" aria-hidden="true"></i> Ok
                                         </button>
-                                    </div>
+                                    </div>-->
                                 </form>
 </div>
                         <div class="tab-pane active" ng-show="tab===2">
-                            <p style=" margin-left: 16px;">
-                                Wait Lists Served <span style="color:red">({{accoiuntListByMonthYear.length}})</span>
+                            <p style="margin-left: 16px;">
+                                Wait Lists Served <span style="color: red">({{accoiuntListByMonthYear.length}})</span>
                             </p>
 
                             <div class="form-group">
@@ -109,19 +109,19 @@
                                 <div class="col-sm-12 ">
 
                                     <div class="col-sm-2">
-                                        <div class="radio">
+                                        <!-- <div class="radio">
                                             <label style="margin-left: 10px;">
                                                 <input type="radio" name="optionsRadios" ng-click="getAllWaitList(accountDetails.organizationId)" ng-model="value" value="all" id="optionsRadios1" ng-checked="true">
                                                 <span style="font-size: .9em;">All </span>
                                             </label>
-                                        </div>
+                                        </div>-->
                                     </div>
 
                                     <div class="col-sm-2" style="padding-left: 0;">
                                         <div class="radio">
                                             <label style="margin-left: 10px;">
-                                                <input type="radio" name="optionsRadios" ng-click="" ng-model="value" value="monthYear" id="optionsRadios2" >
-                                                <span style="font-size: .9em;">Monthly </span>  - {{value}} <!---->
+                                                <input type="radio" name="optionsRadios" ng-click="" ng-model="value" value="monthYear" id="optionsRadios2" ng-checked="true">
+                                                <span style="font-size: .9em;">Monthly </span>  - <!-- {{value}} -->
                                             </label>
                                         </div>
                                     </div>
@@ -142,20 +142,20 @@
                                             <option>November</option>
                                             <option>December</option>-->
                                         </select>
-                                        {{mregister.monthId}}
+                                        <!-- {{mregister.monthId}} -->
                                     </div>
                                     <div class="col-sm-4" style="text-align: center; margin-top: 10px; padding-right: 0;">
                                         <select ng-model="yregister.yearId" ng-options="year.id as year.name for year in yregister.years" style="font-size: .9em;">
                                             <!--<option>2016</option>
-        <option>2017</option>
-        <option>2018</option>
-        <option>2019</option>
-        <option>2020</option>
-        <option>2021</option>
-        <option>2022</option>-->
+                                            <option>2017</option>
+                                            <option>2018</option>
+                                            <option>2019</option>
+                                            <option>2020</option>
+                                            <option>2021</option>
+                                            <option>2022</option>-->
                                         </select>
-                                        {{yregister.yearId}}
-                                        <a href="" ng-click="getMonthlyList(accountDetails.organizationId, mregister.monthId + yregister.yearId)"><i class="fa fa-arrow-circle-o-right" aria-hidden="true" style="color: #e82e2e;font-size: 1.25em;" title="filter..."></i></a>
+                                        <!-- {{yregister.yearId}} -->
+                                        <a href="" ng-click="getMonthlyList(accountDetails.organizationId, mregister.monthId + yregister.yearId)"><i class="fa fa-arrow-circle-o-right" aria-hidden="true" style="color: #e82e2e; font-size: 1.25em;" title="filter..."></i></a>
                                     </div>
 
 
@@ -197,21 +197,21 @@
                                     </thead>
                                     <tbody style="font-size: .75em;">
                                     <loading-spinner></loading-spinner>
-                                        <tr dir-paginate="list in accoiuntListByMonthYear | filter: q | filter: s | itemsPerPage:5 ">
-                                            <td><i class="fa fa-user" ng-class="{'row-available': list.waitingStatus === 'Available', 'row-waiting': list.waitingStatus === 'Waiting', 'row-served': list.waitingStatus === 'Served'}" title="{{list.waitingStatus}}"></i></td>
-                                            <td>{{list.guestFirstName}} {{list.guestLastName}}</td>
-                                            <td>{{list.guestContactTel}}</td>
-                                            <td>{{list.guestGroupSize}}</td>
-                                            <td>{{list.updateDate | date: 'short'}}</td>
+                                    <tr dir-paginate="list in accoiuntListByMonthYear | filter: q | filter: s | itemsPerPage:5 ">
+                                        <td><i class="fa fa-user" ng-class="{'row-available': list.waitingStatus === 'Available', 'row-waiting': list.waitingStatus === 'Waiting', 'row-served': list.waitingStatus === 'Served'}" title="{{list.waitingStatus}}"></i></td>
+                                        <td>{{list.guestFirstName}} {{list.guestLastName}}</td>
+                                        <td>{{list.guestContactTel}}</td>
+                                        <td>{{list.guestGroupSize}}</td>
+                                        <td>{{list.updateDate | date: 'short'}}</td>
 
 
-                                            <!--<td>{{list.waitingStatus}}</td>-->
-                                            <!--<td>{{list.notes}}</td>-->
+                                        <!--<td>{{list.waitingStatus}}</td>-->
+                                        <!--<td>{{list.notes}}</td>-->
 
 
 
 
-                                        </tr>
+                                    </tr>
 
 
 
@@ -225,9 +225,17 @@
                                 </table>
                                 <dir-pagination-controls ></dir-pagination-controls>
                             </div>
-                           <!-- Total: {{accoiuntListByMonthYear.length}} -->
+                            <!-- Total: {{accoiuntListByMonthYear.length}} -->
                         </div>
 
+                        
+                        <div class="box-footer">
+                            <!-- <button type="submit" class="btn btn-default" ng-click="closeThisDialog()">Cancel</button> -->
+                            <button type="submit" ng-disabled="isDisabled || (detailform.oname.$invalid || detailform.addr.$invalid || detailform.city.$invalid || detailform.province.$invalid || detailform.postcode.$invalid)"
+                                    class="btn btn-primary pull-left" style="margin-right: 5px;" ng-click="closeThisDialog(); clean()">
+                                <i class="fa fa-check" aria-hidden="true"></i> Ok
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
