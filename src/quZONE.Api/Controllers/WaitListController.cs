@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Results;
 using quZONE.Common.Messaging;
@@ -221,6 +222,7 @@ namespace quZONE.Api.Controllers
             return Ok();
         }
 
+        
 
         [Route("list/update/{id:int}")]
         public IHttpActionResult UpdateWaitList(int id, WalkInWaitList list)
