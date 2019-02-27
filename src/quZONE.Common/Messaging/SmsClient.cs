@@ -24,8 +24,8 @@ namespace quZONE.Common.Messaging
 
             //smsClient.SendMessage(fromNumber, "+16046195810", "Test sms");
 
-            //var accountSid = "AC77d88a49c272f063fe810c7501361d4c"; // Your Account SID from www.twilio.com/console
-            //var authToken = "425fd6d9cb1b5667e8fe49bde2d6fe73"; // Your Auth Token from www.twilio.com/console
+            //var accountSid = ""; // Your Account SID from www.twilio.com/console
+            //var authToken = ""; // Your Auth Token from www.twilio.com/console
 
             var twilio = new TwilioRestClient(accountSid, authToken);
             
