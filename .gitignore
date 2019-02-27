@@ -239,3 +239,4 @@ _Pvt_Extensions
 Web.config
 
 *.txt
+/src/quZONE.Api/Content/Logs/applog.log.2019-02-24
