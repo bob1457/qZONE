@@ -7,3 +7,9 @@ or
 
 1. Create a new empty database, quZONE
 2. Run script_qzone_seed_db.sql
+
+
+
+
+https://github.com/search?q=AC77d88a49c272f063fe810c7501361d4c&type=Code
+

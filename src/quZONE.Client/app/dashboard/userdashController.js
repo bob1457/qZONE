@@ -302,8 +302,8 @@
             //    body: 'Hi sms message from angularjs....'
             //});
 
-            var accountSid = "AC77d88a49c272f063fe810c7501361d4c";
-            var authToken = "425fd6d9cb1b5667e8fe49bde2d6fe73";
+            var accountSid = "";
+            var authToken = "";
 
             var testEndPoint = "https://api.twilio.com/2010-04-01/Accounts/" + accountSid + "/SMS/Messages.json";
             var liveEndPoint = "https://api.twilio.com/2010-04-01/Accounts/" + accountSid + "/Messages.json";

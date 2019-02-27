@@ -210,8 +210,8 @@
     //Twilio sms gateway
     app.config(function(TwilioProvider) {
         TwilioProvider.setCredentials({
-            accountSid: 'AC77d88a49c272f063fe810c7501361d4c',
-            authToken: '425fd6d9cb1b5667e8fe49bde2d6fe73'
+            accountSid: '',
+            authToken: ''
         });
     });
 
