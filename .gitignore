@@ -238,3 +238,4 @@ _Pvt_Extensions
 # Web config
 Web.config
 
+*.txt
